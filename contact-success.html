@@ -1,17 +1,77 @@
-<section class="section section2" aria-labelledby="success-title">
-    <div class="section-heading section-heading--center">
-        <p class="eyebrow">Message received</p>
+<!doctype html>
+<html lang="en-IE">
 
-        <h1 class="section-title title-dropcap" id="success-title">
-            Thank you for getting in touch
-        </h1>
+<head>
+    <!-- ================================================================
+        DOCUMENT SETUP
+        ----------------------------------------------------------------
+        Purpose:
+        - Displays a confirmation after a successful contact-form submission.
+        - Reuses the shared SYSTIR styling, header, footer, and theme system.
+    ================================================================= -->
 
-        <p class="section-intro">
-            Your enquiry has been submitted successfully. A member of the SYSTIR team will respond when possible.
-        </p>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <a class="button2" href="index.html">
-            Return home
-        </a>
-    </div>
-</section>
+    <title>SYSTIR | Enquiry Received</title>
+
+    <meta name="description" content="Confirmation that a SYSTIR contact enquiry has been submitted successfully." />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/homepage.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <script src="js/header.js" defer></script>
+    <script src="js/footer.js" defer></script>
+    <script src="js/nav.js" defer></script>
+    <script src="js/theme.js" defer></script>
+    <script src="js/current-year.js" defer></script>
+    <script src="js/page-back.js" defer></script>
+    <script src="js/main.js" defer></script>
+</head>
+
+<body class="theme-dark">
+    <a class="skip-link" href="#main-content">
+        Skip to content
+    </a>
+
+    <div id="siteHeader"></div>
+
+    <main id="main-content">
+        <section class="section section2" aria-labelledby="success-title">
+            <div class="section-heading section-heading--center">
+                <p class="eyebrow">
+                    Message received
+                </p>
+
+                <h1 class="section-title title-dropcap" id="success-title">
+                    Thank you for getting in touch
+                </h1>
+
+                <p class="section-intro">
+                    Your enquiry has been submitted successfully. A member of the SYSTIR team will respond when possible.
+                </p>
+
+                <div class="section-action">
+                    <a class="button2" href="index.html">
+                        Return home
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="siteFooter"></div>
+
+    <button class="page-back-button" type="button" data-page-back>
+        <span aria-hidden="true">←</span>
+        <span>Back</span>
+    </button>
+</body>
+
+</html>
