@@ -1,0 +1,2929 @@
+/* ================================================================
+   5.0 FILE OVERVIEW
+   ----------------------------------------------------------------
+   APEX STRUCTURE NOTES
+   - This file stores reusable interface components.
+   - Buttons, theme toggle, galleries, media tiles, member link lists,
+     fullscreen viewer, ambient glow, and live event archive styles live here.
+   - Page-specific hero/CTA styling belongs in homepage.css, not here.
+
+   Responsive system note:
+   - Component dimensions now lean on tokens from tokens.css.
+   - rem/em/clamp() are preferred for typography-linked sizing.
+   - Percentages are used mainly for widths and internal layout.
+================================================================ */
+
+
+/* ================================================================
+   5.1 BUTTON LIBRARY
+   ----------------------------------------------------------------
+   Reusable button styles.
+
+   .button  = animated border sheen
+   .button2 = filled gold sweep, formerly .button_alt
+   .button3 = borderless gold icon/text button with rose glow
+   .button4 = tracing border from bottom centre to top centre
+   .button5 = subtle underline-slide button
+   .button6 = ceremonial dark filled button
+   .button7 = ghost green glow button
+   .button8 = diagonal split-tone button
+
+   Usage:
+   <a class="button" href="#">Primary action</a>
+   <a class="button2" href="#">Secondary action</a>
+   <button class="button4">Open viewer</button>
+================================================================ */
+
+
+/* ------------------------------------------------
+   Shared base styling for all button variants
+   ------------------------------------------------
+   Purpose:
+   - Gives every button the same responsive sizing foundation.
+   - Individual button classes only change visual treatment.
+------------------------------------------------ */
+
+.button,
+.button2,
+.button3,
+.button4,
+.button5,
+.button6,
+.button7,
+.button8 {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    max-width: 80%;
+    min-height: var(--button-min-height);
+    padding: var(--button-padding-y) var(--button-padding-x);
+    overflow: hidden;
+    border-radius: var(--radius-none);
+    color: var(--color-text-primary);
+    font-size: var(--button-font-size);
+    font-weight: 900;
+    letter-spacing: var(--button-letter-spacing);
+    line-height: var(--button-line-height);
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: normal;
+    overflow-wrap: normal;
+    word-break: normal;
+    cursor: pointer;
+}
+
+
+/* Make SVGs inside buttons inherit the button colour */
+
+.button svg,
+.button2 svg,
+.button3 svg,
+.button4 svg,
+.button5 svg,
+.button6 svg,
+.button7 svg,
+.button8 svg {
+    width: 1.1em;
+    height: 1.1em;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+/* ================================================================
+   5.2 BUTTON 1
+   ----------------------------------------------------------------
+   Default animated border-sheen button.
+
+   Fix:
+   - Uses --color-surface-primary inside the button instead of the
+     broad page background.
+   - This gives button 1 clearer separation in light mode.
+================================================================ */
+
+.button {
+    border: 1px solid transparent;
+    background: linear-gradient( var(--color-surface-primary), var(--color-surface-primary)) padding-box, linear-gradient( 120deg, rgba(199, 163, 90, 0.52), rgba(234, 216, 170, 0.95), rgba(31, 93, 81, 0.72), rgba(199, 163, 90, 0.52)) border-box;
+    background-size: 100% 100%, 300% 100%;
+    background-position: 0 0, 0% 50%;
+    color: var(--color-text-primary);
+    transition: color var(--transition-medium), background-position 850ms ease, box-shadow var(--transition-medium);
+}
+
+.button:hover,
+.button:focus-visible {
+    background-position: 0 0, 100% 50%;
+    color: var(--color-accent-primary);
+    box-shadow: 0 0 0 1px rgba(199, 163, 90, 0.18), 0 0 22px rgba(199, 163, 90, 0.18);
+}
+
+body.theme-dark .button {
+    background: linear-gradient( var(--color-bg-primary), var(--color-bg-primary)) padding-box, linear-gradient( 120deg, rgba(199, 163, 90, 0.52), rgba(234, 216, 170, 0.95), rgba(31, 93, 81, 0.72), rgba(199, 163, 90, 0.52)) border-box;
+}
+
+body.theme-light .button {
+    background: linear-gradient( var(--color-surface-primary), var(--color-surface-primary)) padding-box, linear-gradient( 120deg, rgba(143, 103, 38, 0.58), rgba(255, 241, 194, 0.92), rgba(129, 48, 68, 0.48), rgba(143, 103, 38, 0.58)) border-box;
+    color: var(--color-text-primary);
+}
+
+body.theme-light .button:hover,
+body.theme-light .button:focus-visible {
+    color: var(--color-accent-secondary);
+    box-shadow: 0 0 0 1px rgba(129, 48, 68, 0.16), 0 0 20px rgba(143, 103, 38, 0.16);
+}
+
+
+/* ================================================================
+   5.3 BUTTON 2
+   ----------------------------------------------------------------
+   Former .button_alt.
+   Filled gold sweep across the button.
+================================================================ */
+
+.button2 {
+    isolation: isolate;
+    border: 1px solid var(--color-button-border);
+    background: var(--color-button-bg);
+    transition: color var(--transition-medium), border-color var(--transition-medium);
+}
+
+.button2::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    z-index: -1;
+    background: linear-gradient( 120deg, transparent 0%, rgba(199, 163, 90, 0.16) 20%, rgba(234, 216, 170, 0.95) 48%, rgba(199, 163, 90, 0.82) 62%, transparent 100%);
+    transform: translateX(-115%);
+    transition: transform 650ms ease;
+}
+
+.button2:hover::after,
+.button2:focus-visible::after {
+    transform: translateX(0);
+}
+
+.button2:hover,
+.button2:focus-visible {
+    color: var(--color-text-dark);
+    border-color: var(--color-accent-soft);
+}
+
+
+/* ================================================================
+   5.4 BUTTON 3
+   ----------------------------------------------------------------
+   Borderless gold button.
+   Designed for icons/SVGs/social-style actions.
+   Hover gives a rose/wine glow.
+================================================================ */
+
+.button3 {
+    min-height: auto;
+    padding: var(--button-compact-padding-y) var(--button-compact-padding-x);
+    border: none;
+    background: transparent;
+    color: var(--color-accent-primary);
+    transition: color var(--transition-medium), text-shadow var(--transition-medium), transform var(--transition-medium);
+}
+
+.button3:hover,
+.button3:focus-visible {
+    color: var(--color-accent-soft);
+    text-shadow: 0 0 10px rgba(111, 51, 69, 0.72), 0 0 24px rgba(111, 51, 69, 0.42);
+    transform: translateY(-0.125rem);
+}
+
+
+/* ================================================================
+   5.5 BUTTON 4
+   ----------------------------------------------------------------
+   Centre-out tracing-border button.
+
+   Visual behaviour:
+   - No visible border at rest.
+   - On hover, the top and bottom lines grow outward from the centre.
+   - The side lines then grow vertically to complete the frame.
+   - This avoids the old underline-then-pop effect.
+================================================================ */
+
+.button4 {
+    color: var(--color-text-primary);
+    border: none;
+    background: transparent;
+    transition: color 420ms cubic-bezier(0.77, 0, 0.175, 1), text-shadow 420ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.button4:visited {
+    color: var(--color-text-primary);
+}
+
+
+/* ------------------------------------------------------------
+   Horizontal tracing lines
+   ------------------------------------------------------------
+   ::before draws the top and bottom borders.
+   Each line starts at the centre and expands outward to both sides.
+------------------------------------------------------------ */
+
+.button4::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(var(--color-accent-primary), var(--color-accent-primary)) top center / 0% 1px no-repeat, linear-gradient(var(--color-accent-primary), var(--color-accent-primary)) bottom center / 0% 1px no-repeat;
+    opacity: 0;
+    transition: background-size 720ms cubic-bezier(0.77, 0, 0.175, 1), opacity 180ms ease;
+}
+
+
+/* ------------------------------------------------------------
+   Vertical tracing lines
+   ------------------------------------------------------------
+   ::after draws the left and right borders.
+   These start from the vertical centre and grow up/down.
+------------------------------------------------------------ */
+
+.button4::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(var(--color-accent-primary), var(--color-accent-primary)) left center / 1px 0% no-repeat, linear-gradient(var(--color-accent-primary), var(--color-accent-primary)) right center / 1px 0% no-repeat;
+    opacity: 0;
+    transition: background-size 720ms cubic-bezier(0.77, 0, 0.175, 1) 140ms, opacity 180ms ease;
+}
+
+.button4:hover,
+.button4:focus-visible {
+    color: var(--color-accent-primary);
+    text-shadow: 0 0 16px rgba(199, 163, 90, 0.28);
+}
+
+.button4:hover::before,
+.button4:focus-visible::before {
+    opacity: 1;
+    background-size: 100% 1px, 100% 1px;
+}
+
+.button4:hover::after,
+.button4:focus-visible::after {
+    opacity: 1;
+    background-size: 1px 100%, 1px 100%;
+}
+
+
+/* ================================================================
+   5.6 BUTTON 5
+   ----------------------------------------------------------------
+   Member-link / quiet directory button.
+
+   Fixes:
+   - Gives names more internal breathing room.
+   - Prevents letters touching or hiding behind borders.
+   - Keeps the style subtle.
+================================================================ */
+
+.button5 {
+    width: 100%;
+    min-height: clamp(3rem, 6vw, 3.5rem);
+    padding: clamp(0.7rem, 1.8vw, 0.9rem) clamp(0.85rem, 2.4vw, 1.15rem);
+    overflow: visible;
+    border: 1px solid rgba(199, 163, 90, 0.24);
+    background: rgba(7, 13, 11, 0.205);
+    color: var(--color-text-secondary);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: clamp(0.74rem, 1.2vw, 0.8rem);
+    letter-spacing: clamp(0.035em, 0.18vw, 0.055em);
+    line-height: 1.25;
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: break-word;
+    transition: color var(--transition-medium), border-color var(--transition-medium), background-color var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.button5::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0.45rem;
+    width: calc(100% - 2rem);
+    height: 1px;
+    background: linear-gradient( 90deg, var(--color-accent-secondary), var(--color-accent-primary));
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: center;
+    transition: transform 520ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.button5:hover,
+.button5:focus-visible {
+    color: var(--color-accent-primary);
+    border-color: rgba(199, 163, 90, 0.52);
+    background-color: rgba(199, 163, 90, 0.06);
+    box-shadow: 0 0 16px rgba(199, 163, 90, 0.08);
+}
+
+.button5:hover::after,
+.button5:focus-visible::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+
+/* ================================================================
+   5.7 BUTTON 6
+   ----------------------------------------------------------------
+   Ceremonial filled button.
+   Dark green/wine base with gold hover sheen.
+   Good for major CTAs like booking/contact.
+================================================================ */
+
+.button6 {
+    isolation: isolate;
+    border: 1px solid rgba(199, 163, 90, 0.46);
+    background: linear-gradient( 135deg, rgba(31, 93, 81, 0.92), rgba(111, 51, 69, 0.74));
+    color: var(--color-text-primary);
+    transition: color var(--transition-medium), border-color var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.button6::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient( 120deg, transparent 0%, rgba(234, 216, 170, 0.34) 45%, transparent 75%);
+    transform: translateX(-120%);
+    transition: transform 760ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.button6:hover::after,
+.button6:focus-visible::after {
+    transform: translateX(120%);
+}
+
+.button6:hover,
+.button6:focus-visible {
+    color: var(--color-accent-soft);
+    border-color: var(--color-accent-soft);
+    box-shadow: 0 0 0 1px rgba(199, 163, 90, 0.18), 0 0 26px rgba(111, 51, 69, 0.28);
+}
+
+
+/* ================================================================
+   5.8 BUTTON 7
+   ----------------------------------------------------------------
+   Ghost green glow button.
+   Subtle, atmospheric, less formal than gold.
+   Good for gallery/media controls.
+================================================================ */
+
+.button7 {
+    border: 1px solid rgba(31, 93, 81, 0.72);
+    background: radial-gradient( circle at 50% 120%, rgba(31, 93, 81, 0.32), transparent 60%);
+    color: var(--color-text-secondary);
+    transition: color var(--transition-medium), border-color var(--transition-medium), box-shadow var(--transition-medium), background-color var(--transition-medium);
+}
+
+.button7:hover,
+.button7:focus-visible {
+    color: var(--color-text-primary);
+    border-color: var(--color-accent-tertiary);
+    background-color: rgba(31, 93, 81, 0.16);
+    box-shadow: inset 0 0 22px rgba(31, 93, 81, 0.18), 0 0 18px rgba(31, 93, 81, 0.16);
+}
+
+
+/* ================================================================
+   5.9 BUTTON 8
+   ----------------------------------------------------------------
+   Diagonal split-tone button.
+   Wine/gold diagonal slide.
+   Good for special links or section-specific CTAs.
+================================================================ */
+
+.button8 {
+    isolation: isolate;
+    border: 1px solid rgba(199, 163, 90, 0.38);
+    background: transparent;
+    color: var(--color-text-primary);
+    transition: color var(--transition-medium), border-color var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.button8::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient( 135deg, var(--color-accent-secondary) 0%, var(--color-accent-secondary) 48%, var(--color-accent-primary) 52%, var(--color-accent-primary) 100%);
+    transform: translateX(-105%) skewX(-12deg);
+    transform-origin: left;
+    transition: transform 680ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.button8:hover::before,
+.button8:focus-visible::before {
+    transform: translateX(0) skewX(-12deg);
+}
+
+.button8:hover,
+.button8:focus-visible {
+    color: var(--color-text-dark);
+    border-color: var(--color-accent-soft);
+    box-shadow: 0 0 24px rgba(199, 163, 90, 0.16);
+}
+
+
+/* ================================================================
+   5.10 THEME TOGGLE
+   ----------------------------------------------------------------
+   Borderless icon-style theme toggle.
+   Matches the cleaner SVG/social icon interaction style.
+================================================================ */
+
+.theme-toggle {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: clamp(2.4rem, 5vw, 2.75rem);
+    height: clamp(2.4rem, 5vw, 2.75rem);
+    overflow: visible;
+    border: none;
+    background: transparent;
+    color: var(--color-text-secondary);
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    line-height: 1;
+    cursor: pointer;
+    transition: color var(--transition-medium), transform var(--transition-medium), text-shadow var(--transition-medium);
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+    color: var(--color-accent-primary);
+    transform: translateY(-0.125rem);
+    text-shadow: 0 0 10px rgba(111, 51, 69, 0.62), 0 0 22px rgba(199, 163, 90, 0.28);
+}
+
+.theme-toggle__icon {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    transform: translateY(-1px);
+}
+
+
+/* ================================================================
+   5.11 GALLERIES
+   ----------------------------------------------------------------
+   Purpose:
+   - Styles the reusable homepage/gallery preview cards.
+   - Supports a conveyor-belt style image transition:
+     old image fades/slides out to the right,
+     new image fades/slides in from the left.
+================================================================ */
+
+.gallery-card {
+    position: relative;
+    width: 100%;
+    height: 28rem;
+    min-height: 0;
+    overflow: hidden;
+    border: var(--border-strong);
+    background: var(--color-surface-primary);
+}
+
+.gallery-card--portrait {
+    height: 28rem;
+    min-height: 0;
+}
+
+.gallery-card__figure {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+
+/* ================================================================
+   5.12 GALLERY IMAGE CONVEYOR ANIMATION
+   ----------------------------------------------------------------
+   Default state:
+   - Image starts invisible, slightly left, and slightly enlarged.
+
+   Active state:
+   - Image is visible and centred.
+
+   Exiting state:
+   - Current image fades and slides out to the right.
+
+   Preparing-entry state:
+   - New image is placed invisibly on the left before sliding in.
+
+   Slower, smoother image movement:
+   transition:
+       opacity 750ms ease,
+       transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
+       filter var(--transition-slow);
+
+   Faster, snappier image movement:
+   transition:
+       opacity 300ms ease,
+       transform 350ms ease,
+       filter var(--transition-medium);
+
+   More cinematic / dreamy:
+   transition:
+       opacity 1000ms ease,
+       transform 1200ms cubic-bezier(0.16, 1, 0.3, 1),
+       filter 1000ms ease;
+
+   More mechanical conveyor-belt feel:
+   transition:
+       opacity 600ms linear,
+       transform 900ms linear,
+       filter var(--transition-slow);
+================================================================ */
+
+.gallery-card__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transform: translateX(-5%) scale(1.025);
+    filter: saturate(0.9) contrast(1.05);
+    transition: opacity 500ms ease, transform 500ms cubic-bezier(0.22, 1, 0.36, 1), filter var(--transition-slow);
+    will-change: opacity, transform;
+}
+
+.gallery-card__image.is-active {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+}
+
+.gallery-card__image.is-exiting {
+    opacity: 0;
+    transform: translateX(5%) scale(1.025);
+}
+
+.gallery-card__image.is-preparing-entry {
+    opacity: 0;
+    transform: translateX(-5%) scale(1.025);
+    transition: none;
+}
+
+
+/* ================================================================
+   5.13 IMAGE / MEDIA CAPTIONS
+   ----------------------------------------------------------------
+   Purpose:
+   - Gives captions enough contrast in both dark and light mode.
+   - Avoids dark caption boxes looking accidental on light mode.
+   - Keeps the style consistent across gallery cards and hero video cards.
+================================================================ */
+
+.gallery-card__caption,
+.video-card__caption {
+    position: absolute;
+    left: var(--space-sm);
+    bottom: var(--space-sm);
+    max-width: calc(100% - 2 * var(--space-sm));
+    padding: clamp(0.45rem, 1.2vw, 0.6rem) clamp(0.65rem, 1.6vw, 0.85rem);
+    border-left: 2px solid var(--color-accent-secondary);
+    background: rgba(7, 13, 11, 0.78);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-ui-sm);
+    letter-spacing: 0.05em;
+    line-height: 1.35;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(10px);
+}
+
+body.theme-dark .gallery-card__caption,
+body.theme-dark .video-card__caption {
+    background: rgba(7, 13, 11, 0.78);
+    color: var(--color-text-secondary);
+}
+
+body.theme-light .gallery-card__caption,
+body.theme-light .video-card__caption {
+    background: rgba(248, 239, 226, 0.88);
+    color: var(--color-text-primary);
+    border-left-color: var(--color-accent-secondary);
+    box-shadow: 0 10px 24px rgba(69, 45, 28, 0.16);
+}
+
+@media (min-width: 981px) {
+    .media-bio__inner {
+        width: min(100%, 68rem);
+    }
+    .media-bio__inner p {
+        max-width: var(--section-width-reading);
+    }
+}
+
+
+/* ================================================================
+   5.14 GALLERY CONTROLS
+================================================================ */
+
+.gallery-card__controls {
+    position: absolute;
+    right: var(--space-sm);
+    top: var(--space-sm);
+    display: flex;
+    gap: var(--space-2xs);
+}
+
+.gallery-card__button {
+    display: grid;
+    place-items: center;
+    width: clamp(2.25rem, 5vw, 2.625rem);
+    height: clamp(2.15rem, 4.5vw, 2.375rem);
+    border: 1px solid rgba(199, 163, 90, 0.58);
+    border-radius: 0;
+    background: rgba(7, 13, 11, 0.72);
+    color: var(--color-text-primary);
+    font-size: clamp(1.05rem, 3vw, 1.3rem);
+    transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.gallery-card__button:hover,
+.gallery-card__button:focus-visible {
+    background: var(--color-accent-primary);
+    border-color: var(--color-accent-soft);
+    color: var(--color-text-primary);
+}
+
+
+/* ================================================================
+   5.15 MEDIA GRID
+================================================================ */
+
+.media-preview {
+    background: transparent;
+}
+
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: clamp(11rem, 18vw, 13.75rem);
+    gap: var(--space-md);
+}
+
+.media-tile {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(199, 163, 90, 0.28);
+    background: var(--color-surface-primary);
+    color: var(--color-text-dark);
+    text-decoration: none;
+    transition: border-color var(--transition-medium), box-shadow var(--transition-medium), transform var(--transition-medium);
+}
+
+.media-tile:visited {
+    color: var(--color-text-dark);
+}
+
+.media-tile:hover,
+.media-tile:focus-visible {
+    color: var(--color-accent-soft);
+    border-color: rgba(199, 163, 90, 0.72);
+    box-shadow: 0 0 0 1px rgba(199, 163, 90, 0.12), 0 1.2rem 2.4rem rgba(0, 0, 0, 0.28);
+}
+
+.media-tile--large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.media-tile--wide {
+    grid-column: span 2;
+}
+
+.media-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.94;
+    filter: saturate(0.9) contrast(1.05);
+    transition: opacity var(--transition-slow), transform var(--transition-slow), filter var(--transition-slow);
+}
+
+.media-tile:hover img,
+.media-tile:focus-within img {
+    opacity: 1;
+    filter: saturate(1) contrast(1.08);
+    transform: scale(1.025);
+}
+
+.media-tile__image-button {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    cursor: zoom-in;
+}
+
+.media-tile__image-button img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* Media labels behave like small buttons because they visually read as CTAs. */
+
+.media-tile__label {
+    position: absolute;
+    left: var(--space-sm);
+    bottom: var(--space-sm);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--button-compact-min-height);
+    max-width: calc(100% - 2 * var(--space-sm));
+    padding: var(--button-compact-padding-y) var(--button-compact-padding-x);
+    border: 1px solid rgba(199, 163, 90, 0.42);
+    background: linear-gradient( rgba(7, 13, 11, 0.82), rgba(7, 13, 11, 0.82)) padding-box, linear-gradient( 120deg, rgba(111, 51, 69, 0.72), rgba(199, 163, 90, 0.72), rgba(31, 93, 81, 0.68), rgba(111, 51, 69, 0.72)) border-box;
+    background-size: 100% 100%, 280% 100%;
+    background-position: 0 0, 0% 50%;
+    color: var(--color-accent-soft);
+    font-size: var(--font-size-ui-xs);
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color var(--transition-medium), background-position 850ms ease, border-color var(--transition-medium), transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.media-tile__label:visited {
+    color: var(--color-accent-soft);
+}
+
+.media-tile:hover .media-tile__label,
+.media-tile:focus-within .media-tile__label {
+    background-position: 0 0, 100% 50%;
+    color: var(--color-accent-soft);
+    border-color: var(--color-accent-soft);
+    transform: translateY(-0.125rem);
+    box-shadow: 0 0 0 1px rgba(199, 163, 90, 0.16), 0 0 18px rgba(199, 163, 90, 0.16);
+}
+
+.section-action {
+    margin-top: var(--space-xl);
+    text-align: center;
+}
+
+
+/* ================================================================
+   5.16 MEMBERS / CTA
+================================================================ */
+
+
+/* ================================================================
+   5.17 MEMBERS LIST / MEMBER LINK GRID
+   ----------------------------------------------------------------
+   Purpose:
+   - Turns the member list into an even 5 x 2 grid on desktop.
+   - Keeps the grid centred inside the section.
+   - Makes each member link occupy a consistent box.
+================================================================ */
+
+.members-list {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(min(100%, 10rem), 1fr));
+    gap: var(--space-sm);
+    width: min(100%, 1180px);
+    margin: var(--space-lg) auto 0;
+    padding: 0;
+    list-style: none;
+}
+
+.members-list li {
+    display: flex;
+    min-width: 0;
+}
+
+.members-list .button5 {
+    width: 100%;
+    min-height: clamp(3rem, 5vw, 3.35rem);
+    padding: clamp(0.65rem, 1.5vw, 0.8rem) clamp(0.75rem, 1.8vw, 1rem);
+    border: 1px solid rgba(199, 163, 90, 0.26);
+    justify-content: center;
+    text-align: center;
+    white-space: normal;
+}
+
+
+/* ================================================================
+   5.18 HOMEPAGE MEMBERS GRID OVERRIDE
+   ----------------------------------------------------------------
+   Purpose:
+   - The homepage members list sits beside a gallery image.
+   - Because the available column width is smaller, the normal 5-column
+     member grid becomes too wide and collides with the image.
+   - This override changes the homepage version to a 3-column layout:
+     3 + 3 + 3 + 1, with the final item centred.
+================================================================ */
+
+.feature .members-list {
+    grid-template-columns: repeat(3, minmax(min(100%, 9rem), 1fr));
+    width: min(100%, 620px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Centre the final single item on the last row */
+
+.feature .members-list li:last-child {
+    grid-column: 2;
+}
+
+
+/* Keep each member button comfortably inside its grid cell */
+
+.feature .members-list .button5 {
+    min-height: clamp(3rem, 5vw, 3.4rem);
+    padding: clamp(0.65rem, 1.5vw, 0.75rem) clamp(0.7rem, 1.8vw, 0.9rem);
+    font-size: clamp(0.72rem, 1.1vw, 0.78rem);
+    letter-spacing: clamp(0.03em, 0.16vw, 0.045em);
+}
+
+
+/* ================================================================
+   5.19 FULLSCREEN VIEWER
+================================================================ */
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.fullscreen-viewer {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient( circle at center, rgba(111, 51, 69, 0.12), rgba(7, 13, 11, 0.96));
+    backdrop-filter: blur(16px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 420ms ease, visibility 420ms ease;
+    z-index: 99999;
+}
+
+.fullscreen-viewer.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.fullscreen-viewer__image {
+    max-width: min(92vw, 1500px);
+    max-height: 88vh;
+    object-fit: contain;
+    opacity: 0;
+    transform: scale(0.97);
+    border: 1px solid rgba(199, 163, 90, 0.28);
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.55);
+    transition: opacity 320ms ease, transform 420ms ease;
+}
+
+.fullscreen-viewer__image.is-visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+/* ================================================================
+   5.20 FULLSCREEN VIEWER CONTROLS
+   ----------------------------------------------------------------
+   Purpose:
+   - Uses clean borderless Font Awesome icons.
+   - Keeps controls visible without heavy boxed styling.
+================================================================ */
+
+.fullscreen-viewer__close,
+.fullscreen-viewer__nav {
+    position: fixed;
+    z-index: 10005;
+    display: grid;
+    place-items: center;
+    width: clamp(2.75rem, 6vw, 3rem);
+    height: clamp(2.75rem, 6vw, 3rem);
+    border: none;
+    background: transparent;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: color var(--transition-medium), transform var(--transition-medium), text-shadow var(--transition-medium);
+}
+
+.fullscreen-viewer__close {
+    top: clamp(1rem, 3vw, 2rem);
+    right: clamp(1rem, 3vw, 2rem);
+}
+
+.fullscreen-viewer__nav {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.fullscreen-viewer__nav--prev {
+    left: clamp(0.75rem, 3vw, 2.25rem);
+}
+
+.fullscreen-viewer__nav--next {
+    right: clamp(0.75rem, 3vw, 2.25rem);
+}
+
+.fullscreen-viewer__close:hover,
+.fullscreen-viewer__close:focus-visible,
+.fullscreen-viewer__nav:hover,
+.fullscreen-viewer__nav:focus-visible {
+    color: var(--color-accent-primary);
+    text-shadow: 0 0 10px rgba(111, 51, 69, 0.62), 0 0 22px rgba(199, 163, 90, 0.28);
+}
+
+.fullscreen-viewer__close:hover,
+.fullscreen-viewer__close:focus-visible {
+    transform: translateY(-0.125rem);
+}
+
+.fullscreen-viewer__nav:hover,
+.fullscreen-viewer__nav:focus-visible {
+    transform: translateY(-50%) scale(1.08);
+}
+
+.fullscreen-viewer__close i,
+.fullscreen-viewer__nav i {
+    font-size: clamp(1.25rem, 3vw, 1.55rem);
+    line-height: 1;
+}
+
+
+/* ================================================================
+   5.21 FULLSCREEN VIEWER CAPTION
+   ----------------------------------------------------------------
+   Purpose:
+   - Positions the fullscreen image caption at the bottom-left of the
+     viewer screen.
+   - Keeps it visually separate from the image centre so it feels
+     intentional rather than floating awkwardly beside the photo.
+================================================================ */
+
+.fullscreen-viewer__caption {
+    position: fixed;
+    left: clamp(1rem, 4vw, 3rem);
+    bottom: clamp(1rem, 4vw, 2.5rem);
+    z-index: 10004;
+    max-width: min(720px, 78vw);
+    margin: 0;
+    padding: clamp(0.65rem, 1.5vw, 0.8rem) clamp(0.8rem, 2vw, 1rem);
+    border-left: 3px solid var(--color-accent-secondary);
+    background: rgba(7, 13, 11, 0.72);
+    color: var(--color-text-secondary);
+    font-size: clamp(0.85rem, 1.3vw, 1.05rem);
+    letter-spacing: 0.04em;
+    line-height: 1.35;
+    opacity: 0;
+    transform: translateY(0.625rem);
+    transition: opacity 320ms ease, transform 420ms ease;
+}
+
+.fullscreen-viewer.active .fullscreen-viewer__caption {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+body.theme-light .fullscreen-viewer__caption {
+    background: rgba(239, 230, 215, 0.84);
+    color: var(--color-text-secondary);
+}
+
+
+/* ================================================================
+   5.22 AUDIO REACTIVE GLOW
+================================================================ */
+
+.ambient-glow {
+    position: absolute;
+    width: 60vw;
+    height: 60vw;
+    border-radius: 50%;
+    background: radial-gradient( circle, rgba(199, 163, 90, 0.22), rgba(111, 51, 69, 0.14), transparent 72%);
+    filter: blur(clamp(4rem, 8vw, 5.625rem));
+    pointer-events: none;
+    opacity: 0.22;
+    z-index: -1;
+    transition: opacity 400ms ease, transform 400ms ease;
+}
+
+
+/* ================================================================
+   5.23 LIVE EVENTS / TOUR ARCHIVE
+   ----------------------------------------------------------------
+   Purpose:
+   - Styles the live/tour dates page as a centred editorial archive.
+   - Keeps the archive centred on the screen.
+   - Uses fixed columns for Date, Time, Performance, Availability,
+     and Link so incomplete entries still align cleanly.
+   - Matches the updated js/live-events.js naming convention.
+================================================================ */
+
+
+/* ================================================================
+   5.24 LIVE EVENTS WRAPPER
+   ----------------------------------------------------------------
+   Purpose:
+   - Centres the full live archive.
+   - Prevents the event list from becoming too wide on large screens.
+================================================================ */
+
+.live-events {
+    width: min(100%, 1080px);
+    margin: 0 auto;
+}
+
+
+/* ================================================================
+   5.25 LIVE EVENTS FILTER BAR
+   ----------------------------------------------------------------
+   Purpose:
+   - Provides a consistent visual area for search/filter controls.
+   - Search and select functionality is handled by js/live-events.js.
+================================================================ */
+
+.live-events-filter {
+    width: min(100%, 1080px);
+    margin: 0 auto var(--space-xl);
+    padding: var(--panel-padding-sm);
+    border: var(--border-thin);
+    background: linear-gradient( 135deg, color-mix(in srgb, var(--color-surface-primary) 66%, transparent), color-mix(in srgb, var(--color-surface-secondary) 38%, transparent));
+    backdrop-filter: blur(10px);
+}
+
+.live-events-filter__inner {
+    display: grid;
+    grid-template-columns: minmax(240px, 1fr) minmax(130px, auto) minmax(160px, auto);
+    gap: var(--space-sm);
+    align-items: end;
+}
+
+.live-events-filter__field {
+    display: grid;
+    gap: var(--space-2xs);
+}
+
+.live-events-filter__label {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-ui-xs);
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.live-events-filter__input,
+.live-events-filter__select {
+    min-height: var(--form-control-min-height);
+    width: 100%;
+    padding: var(--form-control-padding-y) var(--form-control-padding-x);
+    border: var(--border-thin);
+    border-radius: var(--radius-none);
+    background: color-mix(in srgb, var(--color-bg-primary) 64%, transparent);
+    color: var(--color-text-primary);
+    font: inherit;
+    font-size: var(--form-control-font-size);
+    letter-spacing: 0.02em;
+    transition: border-color var(--transition-medium), box-shadow var(--transition-medium), background var(--transition-medium);
+}
+
+.live-events-filter__input::placeholder {
+    color: var(--color-text-muted);
+}
+
+.live-events-filter__input:focus,
+.live-events-filter__select:focus {
+    outline: none;
+    border-color: var(--color-accent-primary);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent-primary) 40%, transparent), 0 0 22px color-mix(in srgb, var(--color-accent-primary) 18%, transparent);
+}
+
+
+/* ================================================================
+   5.26 YEAR GROUP
+   ----------------------------------------------------------------
+   Purpose:
+   - Each year becomes a major archive group.
+   - The year heading sits slightly left of the main event list.
+================================================================ */
+
+.live-events__year {
+    position: relative;
+    margin-top: clamp(3.5rem, 7vw, 6rem);
+}
+
+.live-events__year:first-child {
+    margin-top: 0;
+}
+
+.live-events__year-title {
+    width: min(100%, 1080px);
+    margin: 0 auto var(--space-lg);
+    transform: translateX(clamp(-2.25rem, -3vw, -0.9rem));
+    color: var(--color-accent-primary);
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 5.25rem);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: 0.03em;
+}
+
+
+/* ================================================================
+   5.27 MONTH GROUP
+   ----------------------------------------------------------------
+   Purpose:
+   - Month headings sit left of the event rows, but less dramatically
+     than the year headings.
+================================================================ */
+
+.live-events__month {
+    margin-top: clamp(2.25rem, 4vw, 3.75rem);
+}
+
+.live-events__month-title {
+    width: min(100%, 1080px);
+    margin: 0 auto var(--space-md);
+    transform: translateX(clamp(-1.25rem, -2vw, -0.5rem));
+    color: var(--color-text-primary);
+    font-size: clamp(1rem, 1.8vw, 1.35rem);
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+
+/* ================================================================
+   5.28 EVENT LIST
+   ----------------------------------------------------------------
+   Purpose:
+   - Holds the event header row and the event cards.
+================================================================ */
+
+.live-events__list {
+    display: grid;
+    gap: var(--space-sm);
+}
+
+
+/* ================================================================
+   5.29 EVENT LIST HEADER
+   ----------------------------------------------------------------
+   Purpose:
+   - Labels the fixed event columns so empty dashes make sense.
+   - Uses the same grid as .live-event:
+     Date | Time | Performance | Availability | Link
+================================================================ */
+
+.live-events__list-header {
+    display: grid;
+    grid-template-columns: minmax(6.5rem, 0.75fr) minmax(4.5rem, 0.5fr) minmax(0, 2.5fr) minmax(7.5rem, 0.8fr) minmax(5.75rem, 0.65fr);
+    gap: var(--card-gap-sm);
+    align-items: center;
+    padding: 0 var(--panel-padding-sm) var(--space-2xs);
+    color: var(--color-accent-tertiary);
+    font-size: var(--font-size-ui-xs);
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+
+/* ================================================================
+   5.30 EVENT ROW / CARD
+   ----------------------------------------------------------------
+   Purpose:
+   - Creates a stable five-column row:
+     Date | Time | Details | Availability | Action.
+   - Empty fields render as a dash but keep their correct slot.
+================================================================ */
+
+.live-event {
+    display: grid;
+    grid-template-columns: minmax(6.5rem, 0.75fr) minmax(4.5rem, 0.5fr) minmax(0, 2.5fr) minmax(7.5rem, 0.8fr) minmax(5.75rem, 0.65fr);
+    gap: var(--card-gap-sm);
+    align-items: center;
+    padding: var(--panel-padding-sm);
+    border-left: 2px solid color-mix(in srgb, var(--color-accent-secondary) 68%, transparent);
+    background: linear-gradient( 135deg, color-mix(in srgb, var(--color-surface-primary) 66%, transparent), color-mix(in srgb, var(--color-surface-secondary) 34%, transparent));
+    backdrop-filter: blur(8px);
+    transition: border-color var(--transition-medium), transform var(--transition-medium), box-shadow var(--transition-medium), background var(--transition-medium);
+}
+
+.live-event:hover {
+    border-left-color: var(--color-accent-primary);
+    transform: translateX(0.25rem);
+    box-shadow: 0 12px 28px color-mix(in srgb, var(--color-accent-primary) 12%, transparent);
+}
+
+
+/* ================================================================
+   5.31 EVENT DATE / TIME SLOTS
+================================================================ */
+
+.live-event__date,
+.live-event__time {
+    color: var(--color-accent-primary);
+    font-size: var(--font-size-ui-md);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    line-height: 1.3;
+    text-transform: uppercase;
+}
+
+.live-event__time {
+    color: var(--color-text-secondary);
+}
+
+
+/* ================================================================
+   5.32 EVENT BODY
+   ----------------------------------------------------------------
+   Purpose:
+   - Main event information.
+   - Left aligned for readability inside the fixed grid.
+================================================================ */
+
+.live-event__body {
+    min-width: 0;
+    text-align: left;
+}
+
+.live-event__country {
+    margin: 0 0 var(--space-2xs);
+    color: var(--color-accent-secondary);
+    font-size: var(--font-size-ui-xs);
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.live-event__title {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-family: var(--font-display);
+    font-size: clamp(1.05rem, 1.5vw, 1.34rem);
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+.live-event__venue,
+.live-event__city {
+    margin: var(--space-2xs) 0 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body-sm);
+    line-height: 1.42;
+}
+
+
+/* ================================================================
+   5.33 EVENT AVAILABILITY SLOT
+   ----------------------------------------------------------------
+   Purpose:
+   - Styles non-clickable status labels such as SOLD OUT or TBC.
+================================================================ */
+
+.live-event__availability {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.live-event__availability:not(:has(.live-event__empty)) {
+    color: var(--color-accent-secondary);
+    font-size: var(--font-size-ui-xs);
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+
+/* ================================================================
+   5.34 EVENT ACTION SLOT
+   ----------------------------------------------------------------
+   Purpose:
+   - Holds the event action control.
+   - Past events use a Details button.
+   - Future events use a Tickets link where a ticket URL exists.
+   - Future events without a URL use a disabled Tickets label.
+================================================================ */
+
+.live-event__action {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+/* ================================================================
+   5.35 EVENT ACTION CONTROL BASE
+   ----------------------------------------------------------------
+   Purpose:
+   - Gives Details buttons, Tickets links, and disabled Tickets labels
+     the same visual footprint.
+================================================================ */
+
+.live-event__action-link,
+.live-event__action-button,
+.live-event__action-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: clamp(5.25rem, 10vw, 5.75rem);
+    min-height: var(--button-compact-min-height);
+    padding: var(--button-compact-padding-y) var(--button-compact-padding-x);
+    border: 1px solid color-mix(in srgb, var(--color-accent-primary) 58%, transparent);
+    border-radius: var(--radius-none);
+    background: transparent;
+    color: var(--color-accent-primary);
+    font: inherit;
+    font-size: var(--font-size-ui-xs);
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: color var(--transition-medium), border-color var(--transition-medium), background var(--transition-medium), box-shadow var(--transition-medium), opacity var(--transition-medium);
+}
+
+
+/* ================================================================
+   5.36 CLICKABLE ACTIONS
+   ----------------------------------------------------------------
+   Purpose:
+   - Applies pointer behaviour only to real interactive actions.
+================================================================ */
+
+.live-event__action-link,
+.live-event__action-button {
+    cursor: pointer;
+}
+
+.live-event__action-link:hover,
+.live-event__action-link:focus-visible,
+.live-event__action-button:hover,
+.live-event__action-button:focus-visible {
+    border-color: var(--color-accent-primary);
+    background: color-mix(in srgb, var(--color-accent-primary) 12%, transparent);
+    color: var(--color-accent-soft);
+    box-shadow: 0 0 18px color-mix(in srgb, var(--color-accent-primary) 20%, transparent);
+}
+
+
+/* ================================================================
+   5.37 DISABLED / UNAVAILABLE ACTION LABEL
+   ----------------------------------------------------------------
+   Purpose:
+   - Keeps future events without ticket links visually consistent,
+     but clearly non-clickable.
+================================================================ */
+
+.live-event__action-label--disabled {
+    opacity: 0.48;
+    cursor: default;
+}
+
+
+/* ================================================================
+   5.38 EMPTY SLOT
+   ----------------------------------------------------------------
+   Purpose:
+   - Gives missing data a consistent visual placeholder.
+   - The dash is deliberately muted so it explains structure without
+     competing with real event information.
+================================================================ */
+
+.live-event__empty {
+    color: color-mix(in srgb, var(--color-text-muted) 58%, transparent);
+    font-size: var(--font-size-ui-sm);
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+
+/* ================================================================
+   5.39 LIVE EVENTS EMPTY SEARCH STATE
+================================================================ */
+
+.live-events__empty {
+    width: min(100%, 760px);
+    margin: var(--space-xl) auto 0;
+    padding: var(--panel-padding-md);
+    border: var(--border-thin);
+    background: linear-gradient( 135deg, color-mix(in srgb, var(--color-surface-primary) 70%, transparent), color-mix(in srgb, var(--color-surface-secondary) 42%, transparent));
+    color: var(--color-text-secondary);
+    text-align: center;
+}
+
+
+/* ================================================================
+   5.40 LIVE EVENT DETAILS DROPDOWN
+   ----------------------------------------------------------------
+   Purpose:
+   - Styles the small dropdown panel opened by the Details button.
+   - Appears directly below a past event row.
+   - Matches the live archive aesthetic with a soft transparent surface,
+     accent border, and restrained text styling.
+================================================================ */
+
+
+/* ================================================================
+   5.41 LIVE EVENT GROUP
+   ----------------------------------------------------------------
+   Purpose:
+   - Wraps one event row and its optional details dropdown.
+   - Keeps the event and dropdown visually connected.
+================================================================ */
+
+.live-event-group {
+    display: grid;
+    gap: 0;
+}
+
+
+/* ================================================================
+   5.42 DETAILS PANEL OUTER
+   ----------------------------------------------------------------
+   Purpose:
+   - Creates the dropdown container.
+   - The [hidden] attribute fully hides the panel until JS opens it.
+================================================================ */
+
+.live-event-details {
+    margin-left: clamp(0.75rem, 2vw, 1.5rem);
+    margin-right: clamp(0.75rem, 2vw, 1.5rem);
+    margin-top: -0.2rem;
+    border-left: 2px solid color-mix(in srgb, var(--color-accent-primary) 72%, transparent);
+    border-right: 1px solid color-mix(in srgb, var(--color-accent-primary) 18%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-accent-primary) 18%, transparent);
+    background: linear-gradient( 135deg, color-mix(in srgb, var(--color-surface-primary) 72%, transparent), color-mix(in srgb, var(--color-surface-secondary) 42%, transparent));
+    backdrop-filter: blur(10px);
+}
+
+.live-event-details[hidden] {
+    display: none;
+}
+
+
+/* ================================================================
+   5.43 DETAILS PANEL INNER
+   ----------------------------------------------------------------
+   Purpose:
+   - Controls readable spacing inside the dropdown.
+================================================================ */
+
+.live-event-details__inner {
+    padding: clamp(1rem, 2.4vw, 1.4rem) clamp(1rem, 3vw, 1.6rem);
+}
+
+
+/* ================================================================
+   5.44 DETAILS LABEL
+   ----------------------------------------------------------------
+   Purpose:
+   - Small heading inside the dropdown.
+================================================================ */
+
+.live-event-details__label {
+    margin: 0 0 var(--space-xs);
+    color: var(--color-accent-primary);
+    font-size: var(--font-size-ui-xs);
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+
+/* ================================================================
+   5.45 DETAILS TEXT
+   ----------------------------------------------------------------
+   Purpose:
+   - Styles the English and local-language detail sentences.
+================================================================ */
+
+.live-event-details__text {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body-sm);
+    line-height: 1.6;
+}
+
+.live-event-details__text+.live-event-details__text {
+    margin-top: var(--space-xs);
+}
+
+
+/* ================================================================
+   5.46 DETAILS LANGUAGE LABEL
+   ----------------------------------------------------------------
+   Purpose:
+   - Highlights labels such as English:, Gaeilge:, Deutsch:, etc.
+================================================================ */
+
+.live-event-details__language {
+    color: var(--color-text-primary);
+    font-weight: 900;
+    letter-spacing: 0.04em;
+}
+
+
+/* ================================================================
+   5.47 OPEN DETAILS BUTTON STATE
+   ----------------------------------------------------------------
+   Purpose:
+   - Makes the Details button look intentionally active when its dropdown
+     is open.
+================================================================ */
+
+.live-event__action-button[aria-expanded="true"] {
+    border-color: var(--color-accent-primary);
+    background: color-mix(in srgb, var(--color-accent-primary) 14%, transparent);
+    color: var(--color-accent-soft);
+    box-shadow: 0 0 18px color-mix(in srgb, var(--color-accent-primary) 18%, transparent);
+}
+
+
+/* ================================================================
+   5.48 MEDIA PUSH COMPONENT
+   ----------------------------------------------------------------
+   Purpose:
+   - Reusable promotional block for YouTube, Instagram, live footage,
+     behind-the-scenes clips, and social media links.
+   - Can be used on live.html, media.html, index.html, news.html, etc.
+   - Designed to be eye-catching while still matching the SYSTIR style.
+================================================================ */
+
+.media-push {
+    width: min(calc(100% - clamp(2rem, 8vw, 7rem)), 72rem);
+    padding-top: 1rem;
+    margin: 0 auto var(--space-xl);
+}
+
+.media-push__inner {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    justify-items: center;
+    gap: var(--space-sm);
+    padding: clamp(1.5rem, 4vw, 2.75rem);
+    text-align: center;
+    border: 1px solid color-mix(in srgb, var(--color-accent-primary) 28%, transparent);
+    border-radius: var(--radius-lg);
+    background: radial-gradient( circle at 20% 20%, color-mix(in srgb, var(--color-accent-primary) 18%, transparent), transparent 18rem), radial-gradient( circle at 85% 80%, color-mix(in srgb, var(--color-accent-secondary) 16%, transparent), transparent 16rem), linear-gradient( 135deg, color-mix(in srgb, var(--color-surface-primary) 86%, transparent), color-mix(in srgb, var(--color-surface-secondary) 72%, transparent));
+    box-shadow: var(--shadow-soft);
+}
+
+.media-push__inner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient( 120deg, transparent, color-mix(in srgb, var(--color-accent-primary) 16%, transparent), transparent);
+    transform: translateX(-100%);
+    opacity: 0.75;
+    transition: transform var(--transition-slow);
+}
+
+.media-push__inner:hover::before {
+    transform: translateX(100%);
+}
+
+.media-push__title {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    color: var(--color-text-primary);
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 4vw, 2.65rem);
+    line-height: 1.1;
+}
+
+.media-push__text {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 42rem);
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body);
+    line-height: 1.65;
+}
+
+.media-push__actions {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-sm);
+    margin-top: var(--space-sm);
+}
+
+.media-push__link,
+.media-push__link:visited {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    min-height: var(--button-min-height);
+    padding: var(--button-padding-y) var(--button-padding-x);
+    color: var(--color-text-primary);
+    text-decoration: none;
+    border: 1px solid color-mix(in srgb, var(--color-accent-primary) 38%, transparent);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--color-bg-primary) 58%, transparent);
+    font-size: var(--button-font-size);
+    font-weight: 900;
+    letter-spacing: var(--button-letter-spacing);
+    line-height: var(--button-line-height);
+    text-transform: uppercase;
+    transition: transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.media-push__link i {
+    font-size: 1.15em;
+    line-height: 1;
+}
+
+.media-push__link:hover,
+.media-push__link:focus-visible {
+    transform: translateY(-2px);
+    border-color: var(--color-accent-primary);
+    background: color-mix(in srgb, var(--color-accent-primary) 16%, transparent);
+    color: var(--color-accent-soft);
+    box-shadow: 0 0 1.5rem color-mix(in srgb, var(--color-accent-primary) 20%, transparent);
+}
+
+
+/* ================================================================
+   5.49 PAGE TITLE WIDTH CONTROL
+   ----------------------------------------------------------------
+   Purpose:
+   - Keeps large page titles away from the screen edges.
+   - Centres the title within a readable content width.
+   - Works especially well for mobile layouts.
+================================================================ */
+
+#page-title {
+    width: min(100%, var(--section-width-reading));
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+
+/* ================================================================
+   5.50 MEDIA PAGE GALLERIES
+   ----------------------------------------------------------------
+   Purpose:
+   - Styles the media.html collective and individual member galleries.
+   - The collective/performance stills gallery uses one fixed editorial
+     frame with an artistic mixed-size image grid.
+   - The members gallery remains a horizontal scroll gallery.
+   - Both gallery types are separate from the homepage .gallery-card
+     carousel so each system is easier to troubleshoot.
+
+   Width / height notes:
+   - Change .media-gallery-frame width to adjust the collective frame width.
+   - Change .media-gallery-frame height to adjust the collective frame height.
+   - Change .media-gallery--members grid-auto-columns to adjust member card
+     width inside the scrollable member rail.
+================================================================ */
+
+.media-page-hero__inner,
+.media-bio__inner {
+    width: min(100%, var(--section-width-reading));
+    margin-inline: auto;
+}
+
+
+/* ------------------------------------------------------------
+   Fixed page back button
+   ------------------------------------------------------------
+   Purpose:
+   - Reusable back button for secondary pages.
+   - Fixed to the bottom-left corner with breathing room.
+------------------------------------------------------------ */
+
+.page-back-button {
+    position: fixed;
+    left: clamp(1rem, 3vw, 2rem);
+    bottom: clamp(1rem, 3vw, 2rem);
+    z-index: 80;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    min-height: var(--button-compact-min-height);
+    padding: var(--button-compact-padding-y) var(--button-compact-padding-x);
+    border: 1px solid color-mix(in srgb, var(--color-accent-primary) 42%, transparent);
+    background: color-mix(in srgb, var(--color-surface-primary) 78%, transparent);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-ui-xs);
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    text-transform: uppercase;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0.75rem 1.8rem color-mix(in srgb, #000 22%, transparent);
+    transition: color var(--transition-medium), border-color var(--transition-medium), background var(--transition-medium), transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.page-back-button:hover,
+.page-back-button:focus-visible {
+    transform: translateX(-0.125rem);
+    border-color: var(--color-accent-primary);
+    background: color-mix(in srgb, var(--color-accent-primary) 12%, var(--color-surface-primary));
+    color: var(--color-accent-soft);
+    box-shadow: 0 0 18px color-mix(in srgb, var(--color-accent-primary) 18%, transparent);
+}
+
+
+/* ------------------------------------------------------------
+   Media page section heading alignment
+------------------------------------------------------------ */
+
+.media-gallery-section>.section-heading,
+.media-gallery-section>.section-action {
+    width: min(100%, var(--section-width-reading));
+    margin-inline: auto;
+}
+
+.media-gallery-section>.section-heading {
+    margin-bottom: var(--space-xl);
+}
+
+
+/* ------------------------------------------------------------
+   Collective media carousel frame
+   ------------------------------------------------------------
+   Purpose:
+   - Styles the collective gallery as a fixed navigable image frame.
+   - Each slide is either:
+     1. one large image filling the frame, or
+     2. two stacked images inside the same frame.
+   - This keeps the page controlled and elegant without using a
+     fragile masonry/grid layout.
+------------------------------------------------------------ */
+
+.media-gallery-frame {
+    position: relative;
+    width: min(100%, 76rem);
+    margin-inline: auto;
+}
+
+.media-gallery-frame__viewport {
+    position: relative;
+    overflow: hidden;
+    height: clamp(32rem, 56vw, 44rem);
+    border: 1px solid color-mix(in srgb, var(--color-accent-primary) 34%, transparent);
+    background: linear-gradient( 135deg, color-mix(in srgb, var(--color-surface-primary) 72%, transparent), color-mix(in srgb, var(--color-surface-secondary) 42%, transparent));
+    box-shadow: 0 1.2rem 2.8rem color-mix(in srgb, #000 24%, transparent);
+}
+
+.media-gallery-frame__set {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-1.25rem) scale(0.99);
+    transition: opacity 420ms ease, visibility 420ms ease, transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.media-gallery-frame__set.is-active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0) scale(1);
+}
+
+.media-gallery-frame__set--single {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+.media-gallery-frame__set--stack {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+
+.media-gallery-frame__item {
+    position: relative;
+    overflow: hidden;
+    min-height: 0;
+    border: 1px solid color-mix(in srgb, var(--color-accent-primary) 28%, transparent);
+    background: var(--color-surface-primary);
+}
+
+.media-gallery-frame__image-button {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    cursor: zoom-in;
+}
+
+.media-gallery-frame__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.94;
+    filter: saturate(0.9) contrast(1.05);
+    transition: opacity var(--transition-slow), filter var(--transition-slow), transform var(--transition-slow);
+}
+
+.media-gallery-frame__item:hover .media-gallery-frame__image,
+.media-gallery-frame__item:focus-within .media-gallery-frame__image {
+    opacity: 1;
+    filter: saturate(1) contrast(1.08);
+    transform: scale(1.025);
+}
+
+.media-gallery-frame__caption {
+    position: absolute;
+    left: var(--space-sm);
+    right: auto;
+    bottom: var(--space-sm);
+    max-width: min(24rem, calc(100% - 2 * var(--space-sm)));
+    padding: clamp(0.45rem, 1.2vw, 0.6rem) clamp(0.65rem, 1.6vw, 0.85rem);
+    border-left: 2px solid var(--color-accent-secondary);
+    background: rgba(7, 13, 11, 0.78);
+    color: var(--color-text-secondary);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(10px);
+}
+
+.media-gallery-frame__label {
+    margin: 0 0 var(--space-2xs);
+    color: var(--color-accent-primary);
+    font-size: var(--font-size-ui-xs);
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.media-gallery-frame__title {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 1.6vw, 1.35rem);
+    line-height: 1.15;
+}
+
+.media-gallery-frame__controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+}
+
+.media-gallery-frame__control {
+    display: grid;
+    place-items: center;
+    width: clamp(2.6rem, 5vw, 3rem);
+    height: clamp(2.4rem, 5vw, 2.75rem);
+    border: 1px solid color-mix(in srgb, var(--color-accent-primary) 48%, transparent);
+    background: color-mix(in srgb, var(--color-surface-primary) 72%, transparent);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: color var(--transition-medium), border-color var(--transition-medium), background var(--transition-medium), transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.media-gallery-frame__control:hover,
+.media-gallery-frame__control:focus-visible {
+    transform: translateY(-0.125rem);
+    border-color: var(--color-accent-soft);
+    background: color-mix(in srgb, var(--color-accent-primary) 12%, var(--color-surface-primary));
+    color: var(--color-accent-soft);
+    box-shadow: 0 0 18px color-mix(in srgb, var(--color-accent-primary) 18%, transparent);
+}
+
+.media-gallery-frame__counter {
+    min-width: 3rem;
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-ui-xs);
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+body.theme-light .media-gallery-frame__caption {
+    background: rgba(248, 239, 226, 0.88);
+    color: var(--color-text-primary);
+    border-left-color: var(--color-accent-secondary);
+    box-shadow: 0 10px 24px rgba(69, 45, 28, 0.16);
+}
+
+
+/* ------------------------------------------------------------
+   Scrollable members gallery rail
+   ------------------------------------------------------------
+   Purpose:
+   - Keeps the members gallery as a horizontal scroll container.
+   - Only member image paths/content need changing later.
+------------------------------------------------------------ */
+
+.media-gallery {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(14rem, 20rem);
+    gap: var(--space-md);
+    width: min(100%, 78rem);
+    margin-inline: auto;
+    padding-bottom: var(--space-sm);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in srgb, var(--color-accent-primary) 62%, transparent) color-mix(in srgb, var(--color-surface-primary) 64%, transparent);
+}
+
+.media-gallery::-webkit-scrollbar {
+    height: 0.65rem;
+}
+
+.media-gallery::-webkit-scrollbar-track {
+    background: color-mix(in srgb, var(--color-surface-primary) 64%, transparent);
+}
+
+.media-gallery::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--color-accent-primary) 62%, transparent);
+}
+
+.media-gallery__item {
+    position: relative;
+    overflow: hidden;
+    min-height: clamp(20rem, 34vw, 28rem);
+    scroll-snap-align: center;
+    border: 1px solid color-mix(in srgb, var(--color-accent-primary) 34%, transparent);
+    background: linear-gradient( 135deg, color-mix(in srgb, var(--color-surface-primary) 74%, transparent), color-mix(in srgb, var(--color-surface-secondary) 48%, transparent));
+    box-shadow: 0 1rem 2.4rem color-mix(in srgb, #000 22%, transparent);
+}
+
+.media-gallery__image-button {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    cursor: zoom-in;
+}
+
+.media-gallery__image {
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+    object-fit: cover;
+    opacity: 0.92;
+    filter: saturate(0.9) contrast(1.05);
+    transition: opacity var(--transition-slow), filter var(--transition-slow), transform var(--transition-slow);
+}
+
+.media-gallery__item:hover .media-gallery__image,
+.media-gallery__item:focus-within .media-gallery__image {
+    opacity: 1;
+    filter: saturate(1) contrast(1.08);
+    transform: scale(1.025);
+}
+
+
+/* ------------------------------------------------------------
+   Individual member profile links
+------------------------------------------------------------ */
+
+.media-gallery__member-link,
+.media-gallery__member-link:visited {
+    position: absolute;
+    left: var(--space-sm);
+    right: var(--space-sm);
+    bottom: var(--space-sm);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--button-compact-min-height);
+    padding: var(--button-compact-padding-y) var(--button-compact-padding-x);
+    border: 1px solid color-mix(in srgb, var(--color-accent-primary) 46%, transparent);
+    background: linear-gradient( rgba(7, 13, 11, 0.82), rgba(7, 13, 11, 0.82));
+    color: var(--color-accent-soft);
+    text-decoration: none;
+    font-size: var(--font-size-ui-xs);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    line-height: 1.1;
+    text-align: center;
+    text-transform: uppercase;
+    backdrop-filter: blur(10px);
+    transition: color var(--transition-medium), border-color var(--transition-medium), background var(--transition-medium), transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.media-gallery__member-link:hover,
+.media-gallery__member-link:focus-visible {
+    transform: translateY(-0.125rem);
+    border-color: var(--color-accent-soft);
+    background: color-mix(in srgb, var(--color-accent-secondary) 52%, rgba(7, 13, 11, 0.82));
+    color: var(--color-accent-soft);
+    box-shadow: 0 0 18px color-mix(in srgb, var(--color-accent-primary) 18%, transparent);
+}
+
+
+/* ================================================================
+   5.51 MEDIA PAGE VIDEO GALLERY
+   ----------------------------------------------------------------
+   Purpose:
+   - Styles the YouTube iframe gallery on media.html.
+   - Keeps videos smaller than the main featured performance embed.
+   - Uses a centred 3-column desktop grid that continues downward.
+   - Stacks cleanly through responsive.css on tablets and phones.
+
+   Width note:
+   - Change 72rem below to control the full video grid width.
+   - Smaller example: 64rem.
+   - Wider example: 78rem.
+================================================================ */
+
+.media-video-section>.section-heading {
+    width: min(100%, var(--section-width-reading));
+    margin-inline: auto;
+    margin-bottom: var(--space-xl);
+}
+
+.media-video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-md);
+    width: min(100%, 72rem);
+    margin-inline: auto;
+}
+
+.media-video-card {
+    display: grid;
+    gap: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    overflow: visible;
+}
+
+.media-video-card__frame {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    border: 1px solid color-mix(in srgb, var(--color-accent-primary) 32%, transparent);
+    border-bottom: 0;
+    background: #000;
+}
+
+.media-video-card__iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.media-video-card__title {
+    margin: 0;
+    padding: var(--space-sm);
+    border-left: 1px solid color-mix(in srgb, var(--color-accent-primary) 32%, transparent);
+    border-right: 1px solid color-mix(in srgb, var(--color-accent-primary) 32%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-accent-primary) 32%, transparent);
+    background: linear-gradient( 135deg, color-mix(in srgb, var(--color-surface-primary) 72%, transparent), color-mix(in srgb, var(--color-surface-secondary) 42%, transparent));
+    color: var(--color-accent-soft);
+    font-size: var(--font-size-ui-sm);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    line-height: 1.25;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+
+/* ================================================================
+   5.52 CONTACT / CTA ACTION ALIGNMENT
+   ----------------------------------------------------------------
+   Purpose:
+   - Keeps shared contact-section buttons centred inside their parent.
+   - Applies across pages because the contact section is injected by JS.
+   - Allows responsive.css to stack the buttons on smaller screens.
+================================================================ */
+
+.cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-sm);
+    width: min(100%, 42rem);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: var(--space-lg);
+}
+
+.cta__actions .button,
+.cta__actions .button2,
+.cta__actions .button3,
+.cta__actions .button4,
+.cta__actions .button5,
+.cta__actions .button6,
+.cta__actions .button7,
+.cta__actions .button8 {
+    max-width: none;
+}
+
+
+/* ================================================================
+   5.53 MEDIA VIDEO DESCRIPTIONS
+   ----------------------------------------------------------------
+   Purpose:
+   - Adds short descriptive text panels beneath media page YouTube cards.
+   - Keeps each text panel in normal document flow below the iframe/title.
+   - Allows controlled horizontal overhang without vertical overlap.
+   - Creates a mismatched editorial rhythm while preserving the video grid.
+================================================================ */
+
+.media-video-card {
+    overflow: visible;
+}
+
+.media-video-card__description {
+    --media-video-description-extra: clamp(1rem, 2.5vw, 2.5rem);
+    width: min( calc(100% + var(--media-video-description-extra)), calc(100vw - 2rem));
+    margin-top: var(--space-xs);
+    margin-bottom: 0;
+    margin-left: calc(var(--media-video-description-extra) / -2);
+    margin-right: calc(var(--media-video-description-extra) / -2);
+    padding: var(--space-sm);
+    border-left: 2px solid var(--color-accent-secondary);
+    background: color-mix(in srgb, var(--color-bg-primary) 82%, transparent);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body-sm);
+    line-height: 1.55;
+    letter-spacing: 0.02em;
+    box-shadow: 0 0.75rem 1.8rem color-mix(in srgb, #000 16%, transparent);
+    backdrop-filter: blur(10px);
+}
+
+.media-video-card--description-narrow .media-video-card__description {
+    --media-video-description-extra: clamp(0.5rem, 1.5vw, 1.25rem);
+}
+
+.media-video-card--description-medium .media-video-card__description {
+    --media-video-description-extra: clamp(1rem, 2.5vw, 2.5rem);
+}
+
+.media-video-card--description-wide .media-video-card__description {
+    --media-video-description-extra: clamp(1.5rem, 3.5vw, 3.5rem);
+}
+
+body.theme-light .media-video-card__description {
+    background: rgba(248, 239, 226, 0.9);
+    color: var(--color-text-primary);
+    box-shadow: 0 0.75rem 1.5rem rgba(69, 45, 28, 0.14);
+}
+
+
+/* ================================================================
+   5.54 LIVE PAGE WIDE-SCREEN WIDTH OVERRIDE
+   ----------------------------------------------------------------
+   Purpose:
+   - Gives the live archive more presence on larger screens.
+   - Widens the event filter and event list without affecting the
+     narrower reading sections elsewhere on the site.
+================================================================ */
+
+.live-events,
+.live-events-filter {
+    width: min(100%, 1320px);
+}
+
+#liveEvents,
+#liveEventsFilter {
+    max-width: 1320px;
+}
+
+
+/* ================================================================
+   5.55 ANÚNA COLLECTIVE TEXT LINKS
+   ----------------------------------------------------------------
+   Purpose:
+   - Styles inline links to the ANÚNA website.
+   - Keeps these links distinct from ordinary navigation/buttons.
+================================================================ */
+
+.anuna-collective-link,
+.anuna-collective-link:visited {
+    color: var(--color-accent-tertiary);
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+.anuna-collective-link:hover,
+.anuna-collective-link:focus-visible {
+    color: var(--color-accent-soft);
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+}
+
+
+/* ================================================================
+   5.56 MEMBERS HERO
+   ----------------------------------------------------------------
+   Purpose:
+   - Gives the members directory page a distinct hero treatment.
+   - Reuses the SYSTIR hero background image without copying the full
+     homepage hero layout.
+   - Frames the page as a hub for accessing individual member profiles.
+================================================================ */
+
+.members-hero {
+    min-height: clamp(30rem, 72vh, 46rem);
+    display: grid;
+    align-items: center;
+    background: linear-gradient( 90deg, color-mix(in srgb, var(--color-bg-primary) 88%, transparent), color-mix(in srgb, var(--color-bg-primary) 58%, transparent) 48%, color-mix(in srgb, var(--color-bg-primary) 28%, transparent)), radial-gradient( circle at 18% 24%, color-mix(in srgb, var(--color-accent-primary) 22%, transparent), transparent 30rem), linear-gradient( var(--hero-vignette), var(--hero-vignette)), var(--hero-image) center / cover no-repeat, var(--color-bg-secondary);
+}
+
+.members-hero__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(17rem, 0.45fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: end;
+    width: 100%;
+    max-width: min(100%, 1260px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.members-hero__content {
+    max-width: 42rem;
+    padding-top: clamp(2rem, 5vw, 4rem);
+}
+
+.members-hero__title {
+    margin-bottom: var(--space-md);
+}
+
+.members-hero__lede {
+    max-width: 36rem;
+    margin: 0 0 var(--space-md);
+    color: var(--color-text-primary);
+    font-size: clamp(1.15rem, 2vw, 1.45rem);
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+.members-hero__text {
+    max-width: 38rem;
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body);
+    line-height: 1.7;
+}
+
+.members-hero__panel {
+    width: min(100%, 22rem);
+    justify-self: end;
+    padding: var(--panel-padding-md);
+    border-left: 2px solid var(--color-accent-secondary);
+    background: color-mix(in srgb, var(--color-bg-primary) 72%, transparent);
+    box-shadow: 0 1rem 2.5rem color-mix(in srgb, #000 22%, transparent);
+    backdrop-filter: blur(12px);
+}
+
+.members-hero__panel-label {
+    margin: 0 0 var(--space-xs);
+    color: var(--color-accent-primary);
+    font-size: var(--font-size-ui-xs);
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.members-hero__panel-text {
+    margin: 0 0 var(--space-md);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body-sm);
+    line-height: 1.6;
+}
+
+body.theme-light .members-hero {
+    background: linear-gradient( 90deg, color-mix(in srgb, var(--color-bg-primary) 86%, transparent), color-mix(in srgb, var(--color-bg-primary) 62%, transparent) 48%, color-mix(in srgb, var(--color-bg-primary) 34%, transparent)), radial-gradient( circle at 18% 24%, color-mix(in srgb, var(--color-accent-primary) 18%, transparent), transparent 30rem), linear-gradient( var(--hero-vignette), var(--hero-vignette)), var(--hero-image) center / cover no-repeat, var(--color-bg-secondary);
+}
+
+body.theme-light .members-hero__panel {
+    background: rgba(248, 239, 226, 0.84);
+    box-shadow: 0 1rem 2.2rem rgba(69, 45, 28, 0.14);
+}
+
+
+/* ================================================================
+   5.57 NEWS PAGE EDITORIAL FEED
+   ----------------------------------------------------------------
+   Purpose:
+   - Creates an alternating two-column news archive.
+   - Keeps text and media vertically centred within each story row.
+   - Supports full-width rows for text-heavy announcements.
+   - Reuses existing video-card iframe styling where possible.
+================================================================ */
+
+.news-hero {
+    min-height: clamp(14.5rem, 35vh, 23rem);
+    display: grid;
+    align-items: center;
+}
+
+.news-hero__inner {
+    width: min(100%, var(--section-width-wide));
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.news-hero__content {
+    width: min(100%, 48rem);
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.news-feed {
+    display: grid;
+    gap: clamp(3.5rem, 8vw, 7rem);
+    width: min(100%, 1360px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* ------------------------------------------------------------
+   Standard two-column story
+------------------------------------------------------------ */
+
+.news-story {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(min(100%, 24rem), 0.9fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: center;
+    width: 100%;
+    padding-top: clamp(1.5rem, 3vw, 2.5rem);
+    padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    border-top: 1px solid color-mix( in srgb, var(--color-accent-primary) 20%, transparent);
+}
+
+
+/* ------------------------------------------------------------
+   Alternating media-left version
+------------------------------------------------------------ */
+
+.news-story--media-left {
+    grid-template-columns: minmax(min(100%, 24rem), 0.9fr) minmax(0, 1fr);
+}
+
+.news-story--media-left .news-story__media {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.news-story--media-left .news-story__content {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+
+/* ------------------------------------------------------------
+   Full-width text story
+------------------------------------------------------------ */
+
+.news-story--full {
+    display: block;
+}
+
+.news-story__content--wide {
+    width: min(100%, 62rem);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* ------------------------------------------------------------
+   Story text
+------------------------------------------------------------ */
+
+.news-story__content {
+    align-self: center;
+    text-align: left;
+}
+
+.news-story__title {
+    max-width: 42rem;
+    margin-bottom: var(--space-md);
+}
+
+.news-story__content p:not(.eyebrow) {
+    max-width: 46rem;
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body);
+    line-height: 1.72;
+    text-align: left;
+}
+
+.news-story__content strong {
+    color: var(--color-text-primary);
+    font-weight: 900;
+}
+
+
+/* ------------------------------------------------------------
+   Story media
+------------------------------------------------------------ */
+
+.news-story__media {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    min-width: 0;
+}
+
+.news-story__media .media-video-card__frame {
+    width: min(100%, 36rem);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.news-story__image {
+    display: block;
+    width: min(100%, 36rem);
+    aspect-ratio: 4 / 3;
+    border: 1px solid color-mix( in srgb, var(--color-accent-primary) 30%, transparent);
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 0 1.2rem 2.8rem color-mix(in srgb, #000 22%, transparent);
+}
+
+
+/* ------------------------------------------------------------
+   News story actions
+------------------------------------------------------------ */
+
+.news-story__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    align-items: center;
+    margin-top: var(--space-lg);
+}
+
+
+/* ------------------------------------------------------------
+   Subtle alternating horizontal offset
+   ------------------------------------------------------------
+   Purpose:
+   - Keeps the rows editorial rather than mechanically identical.
+   - Does not disturb the actual two-column alignment.
+------------------------------------------------------------ */
+
+.news-story:nth-child(odd) {
+    padding-right: clamp(0rem, 2vw, 2rem);
+}
+
+.news-story:nth-child(even) {
+    padding-left: clamp(0rem, 2vw, 2rem);
+}
+
+
+/* ================================================================
+   5.58 CONTACT PAGE FORM
+   ----------------------------------------------------------------
+   Purpose:
+   - Styles the complete booking and enquiry form.
+   - Places the SYSTIR image beside the form on larger screens.
+   - Supports accessible text fields, selects, textarea controls,
+     member filtering, multi-selection, validation, and submission status.
+================================================================ */
+
+.contact-form-layout {
+    display: grid;
+    grid-template-columns: minmax(min(100%, 22rem), 0.72fr) minmax(0, 1.28fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: stretch;
+    width: min(100%, 82rem);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* ------------------------------------------------------------
+   Contact image panel
+------------------------------------------------------------ */
+
+.contact-form-visual {
+    position: relative;
+    isolation: isolate;
+    min-height: clamp(34rem, 62vw, 54rem);
+    overflow: hidden;
+    border: 1px solid color-mix( in srgb, var(--color-accent-primary) 34%, transparent);
+    background: var(--color-surface-primary);
+    box-shadow: 0 1.4rem 3rem color-mix(in srgb, #000 24%, transparent);
+}
+
+.contact-form-visual::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient( 180deg, color-mix(in srgb, var(--color-bg-primary) 8%, transparent), color-mix(in srgb, var(--color-bg-primary) 36%, transparent) 52%, color-mix(in srgb, var(--color-bg-primary) 92%, transparent));
+}
+
+.contact-form-visual__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: saturate(0.9) contrast(1.04);
+}
+
+.contact-form-visual__overlay {
+    position: absolute;
+    left: clamp(1.25rem, 3vw, 2.25rem);
+    right: clamp(1.25rem, 3vw, 2.25rem);
+    bottom: clamp(1.5rem, 4vw, 3rem);
+    z-index: 2;
+    padding: clamp(1rem, 2vw, 1.5rem);
+    border-left: 2px solid var(--color-accent-secondary);
+    background: color-mix( in srgb, var(--color-bg-primary) 76%, transparent);
+    backdrop-filter: blur(12px);
+}
+
+.contact-form-visual__title {
+    margin: 0 0 var(--space-md);
+    color: var(--color-text-primary);
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.4vw, 2.25rem);
+    line-height: 1.25;
+}
+
+.contact-form-visual__text {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body);
+    line-height: 1.65;
+}
+
+
+/* ------------------------------------------------------------
+   Form panel
+------------------------------------------------------------ */
+
+.contact-form-panel {
+    min-width: 0;
+    padding: clamp(1.25rem, 3.5vw, 3rem);
+    border: 1px solid color-mix( in srgb, var(--color-accent-primary) 28%, transparent);
+    background: linear-gradient( 135deg, color-mix( in srgb, var(--color-surface-primary) 76%, transparent), color-mix( in srgb, var(--color-surface-secondary) 54%, transparent));
+    box-shadow: 0 1.2rem 2.8rem color-mix(in srgb, #000 18%, transparent);
+    backdrop-filter: blur(14px);
+}
+
+.contact-form-panel>.section-heading {
+    width: 100%;
+    max-width: 46rem;
+    margin-left: 0;
+    margin-right: auto;
+    margin-bottom: var(--space-xl);
+    text-align: left;
+}
+
+.contact-form-panel>.section-heading .section-intro {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+
+/* ------------------------------------------------------------
+   Main form layout
+------------------------------------------------------------ */
+
+.contact-form {
+    display: grid;
+    gap: var(--space-xl);
+}
+
+.contact-form__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-lg);
+}
+
+.contact-form__field {
+    display: grid;
+    gap: var(--space-xs);
+    min-width: 0;
+}
+
+.contact-form__field--full,
+.contact-form__field--message {
+    grid-column: 1 / -1;
+}
+
+.contact-form__label {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-ui-sm);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    line-height: 1.3;
+    text-transform: uppercase;
+}
+
+
+/* ------------------------------------------------------------
+   Form controls
+------------------------------------------------------------ */
+
+.contact-form__control {
+    width: 100%;
+    min-height: clamp(2.8rem, 5vw, 3.2rem);
+    padding: clamp(0.7rem, 1.4vw, 0.9rem) var(--space-sm);
+    border: 1px solid color-mix( in srgb, var(--color-accent-primary) 28%, transparent);
+    border-radius: 0;
+    background: color-mix( in srgb, var(--color-bg-primary) 64%, transparent);
+    color: var(--color-text-primary);
+    outline: none;
+    transition: border-color var(--transition-medium), background-color var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.contact-form__control::placeholder {
+    color: var(--color-text-muted);
+    opacity: 0.82;
+}
+
+.contact-form__control:hover {
+    border-color: color-mix( in srgb, var(--color-accent-primary) 48%, transparent);
+}
+
+.contact-form__control:focus {
+    border-color: var(--color-accent-primary);
+    background: color-mix( in srgb, var(--color-bg-primary) 78%, transparent);
+    box-shadow: 0 0 0 1px color-mix( in srgb, var(--color-accent-primary) 20%, transparent), 0 0 18px color-mix( in srgb, var(--color-accent-primary) 12%, transparent);
+}
+
+.contact-form__control[aria-invalid="true"] {
+    border-color: var(--color-accent-secondary);
+}
+
+.contact-form__select {
+    cursor: pointer;
+}
+
+.contact-form__textarea {
+    min-height: 13rem;
+    resize: vertical;
+}
+
+
+/* ------------------------------------------------------------
+   Help text and character counter
+------------------------------------------------------------ */
+
+.contact-form__help-row {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-md);
+    align-items: flex-start;
+}
+
+.contact-form__help,
+.contact-form__count,
+.contact-form__privacy-note {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-ui-sm);
+    line-height: 1.5;
+}
+
+.contact-form__count {
+    flex: 0 0 auto;
+    text-align: right;
+}
+
+
+/* ------------------------------------------------------------
+   Member picker
+------------------------------------------------------------ */
+
+.contact-member-picker {
+    min-width: 0;
+    margin: 0;
+    padding: clamp(1rem, 2.5vw, 1.75rem);
+    border: 1px solid color-mix( in srgb, var(--color-accent-primary) 24%, transparent);
+    background: color-mix( in srgb, var(--color-bg-primary) 34%, transparent);
+}
+
+.contact-member-picker__legend {
+    padding: 0 var(--space-xs);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-body-lg);
+    font-weight: 900;
+    letter-spacing: 0.04em;
+}
+
+.contact-member-picker__intro {
+    margin: 0 0 var(--space-md);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body-sm);
+    line-height: 1.55;
+}
+
+.contact-member-picker__toolbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--space-sm);
+    align-items: end;
+}
+
+.contact-member-picker__search-label {
+    grid-column: 1 / -1;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-ui-sm);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.contact-member-picker__actions {
+    display: flex;
+    gap: var(--space-xs);
+}
+
+.contact-member-picker__actions .button4 {
+    max-width: none;
+    min-height: var(--button-compact-min-height);
+    padding: var(--button-compact-padding-y) var(--button-compact-padding-x);
+}
+
+.contact-member-picker__status {
+    margin: var(--space-sm) 0;
+    color: var(--color-accent-primary);
+    font-size: var(--font-size-ui-sm);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.contact-member-picker__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-xs);
+}
+
+.contact-member-option {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    min-width: 0;
+    padding: var(--space-sm);
+    border: 1px solid color-mix( in srgb, var(--color-accent-primary) 20%, transparent);
+    background: color-mix( in srgb, var(--color-surface-primary) 40%, transparent);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: color var(--transition-medium), border-color var(--transition-medium), background-color var(--transition-medium);
+}
+
+.contact-member-option:hover,
+.contact-member-option:focus-within {
+    border-color: color-mix( in srgb, var(--color-accent-primary) 50%, transparent);
+    color: var(--color-text-primary);
+}
+
+.contact-member-option:has(input:checked) {
+    border-color: var(--color-accent-primary);
+    background: color-mix( in srgb, var(--color-accent-primary) 10%, var(--color-surface-primary));
+    color: var(--color-accent-soft);
+}
+
+.contact-member-option input {
+    flex: 0 0 auto;
+    accent-color: var(--color-accent-primary);
+}
+
+.contact-member-option.is-filtered-out {
+    display: none;
+}
+
+
+/* ------------------------------------------------------------
+   Consent and submission
+------------------------------------------------------------ */
+
+.contact-form__consent {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: flex-start;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body-sm);
+    line-height: 1.55;
+}
+
+.contact-form__consent-input {
+    flex: 0 0 auto;
+    margin-top: 0.3rem;
+    accent-color: var(--color-accent-primary);
+}
+
+.contact-form__status {
+    min-height: 1.5rem;
+    color: var(--color-accent-primary);
+    font-size: var(--font-size-body-sm);
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.contact-form__status.is-error {
+    color: var(--color-accent-secondary);
+}
+
+.contact-form__submit-row {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-lg);
+    align-items: center;
+}
+
+.contact-form__submit {
+    flex: 0 0 auto;
+    max-width: none;
+}
+
+
+/* ------------------------------------------------------------
+   Honeypot
+------------------------------------------------------------ */
+
+.contact-form__honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+
+/* ------------------------------------------------------------
+   Light mode
+------------------------------------------------------------ */
+
+body.theme-light .contact-form-panel,
+body.theme-light .contact-member-picker {
+    background: color-mix( in srgb, var(--color-surface-primary) 86%, transparent);
+}
+
+body.theme-light .contact-form__control {
+    background: rgba(255, 250, 242, 0.76);
+}
+
+body.theme-light .contact-form-visual__overlay {
+    background: rgba(248, 239, 226, 0.86);
+}

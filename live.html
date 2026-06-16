@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en-IE">
+
+<head>
+    <!-- ================================================================
+        DOCUMENT SETUP
+        ----------------------------------------------------------------
+        Purpose:
+        - Defines the page metadata, mobile viewport behaviour, stylesheet
+          loading order, Font Awesome icons, and shared JavaScript behaviour.
+        - This page is the live/tour date destination.
+        - Event data is rendered by js/live-events.js.
+    ================================================================= -->
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>SYSTIR | Live</title>
+
+    <meta name="description" content="Upcoming and past live performances, festival appearances, and tour dates for SYSTIR." />
+
+    <!-- ================================================================
+        FONT AWESOME ICONS
+        ----------------------------------------------------------------
+        Purpose:
+        - Loads Font Awesome icons for interface/social icons.
+    ================================================================= -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <!-- ================================================================
+        CSS ARCHITECTURE
+        ----------------------------------------------------------------
+        Keep this order unchanged:
+        1. tokens.css      = design variables and colour themes
+        2. base.css        = reset, body, links, accessibility, typography
+        3. layout.css      = header, navbar, footer, section layouts
+        4. components.css  = buttons, cards, galleries, fullscreen viewer
+        5. homepage.css    = page-level visual sections currently shared
+        6. responsive.css  = tablet/mobile overrides
+    ================================================================= -->
+
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/homepage.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <!-- ================================================================
+        JAVASCRIPT ARCHITECTURE
+        ----------------------------------------------------------------
+        Important:
+        - header.js and footer.js load first because they inject shared
+          page elements.
+        - live-events.js renders the live/tour date archive on this page.
+    ================================================================= -->
+
+    <script src="js/header.js" defer></script>
+    <script src="js/footer.js" defer></script>
+    <script src="js/nav.js" defer></script>
+    <script src="js/theme.js" defer></script>
+    <script src="js/current-year.js" defer></script>
+    <script src="js/contact-section.js" defer></script>
+    <script src="js/live-events.js" defer></script>
+    <script src="js/parallax.js" defer></script>
+    <script src="js/galleries.js" defer></script>
+    <script src="js/fullscreen-viewer.js" defer></script>
+    <script src="js/ambient-glow.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/page-back.js" defer></script>
+</head>
+
+<html class="theme-dark">
+<!-- ================================================================
+        SHARED SITE HEADER
+        ----------------------------------------------------------------
+        Purpose:
+        - Header/navbar is injected by js/header.js.
+        - This keeps navigation consistent across all pages.
+    ================================================================= -->
+
+<div id="siteHeader"></div>
+
+<!-- ================================================================
+        ACCESSIBILITY SKIP LINK
+        ----------------------------------------------------------------
+        Purpose:
+        - Allows keyboard users to jump past repeated navigation.
+    ================================================================= -->
+
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<body id="main-content">
+    <!-- ================================================================
+            LIVE HERO / PAGE INTRO
+            ----------------------------------------------------------------
+            Section library role:
+            - .section  = base section spacing
+            - .section2 = centred ceremonial section
+
+            Purpose:
+            - Introduces the live/tour archive.
+            - Keeps the page clear before the detailed event list begins.
+        ================================================================= -->
+
+    <section class="live-page-hero hero section section-hero" aria-labelledby="page-title">
+        <div class="hero__ornament" aria-hidden="true"></div>
+
+        <div class="live-page-hero__content">
+            <p class="eyebrow">
+                SYSTIR: On tour
+            </p>
+
+            <h1 class="section-title title-dropcap" id="page-title">
+                Performance Archive
+            </h1>
+
+            <p class="section-intro">
+                Performances in Estonia, Finland, Germany and Latvia to follow for 2026.
+            </p>
+
+            <!-- ================================================================
+            LIVE EVENTS ARCHIVE
+            ----------------------------------------------------------------
+            Section library role:
+            - .section  = base section spacing
+            - .section5 = wider content area for structured event listings
+
+            Purpose:
+            - Event groups are rendered by js/live-events.js.
+            - The HTML remains clean while the event data stays easy to edit.
+        ================================================================= -->
+            <p class="live-page-hero__summary">
+                Upcoming and past SYSTIR performances are listed below, including festival appearances, concert dates, and archive entries from previous seasons.
+            </p>
+        </div>
+    </section>
+    <!-- ================================================================
+    SOCIAL MEDIA PUSH SECTION
+    ---------------------------------------------------------------->
+    <section class="media-push" aria-labelledby="media-push-title">
+        <div class="media-push__inner">
+            <p class="eyebrow">Watch and follow</p>
+
+            <h2 class="media-push__title" id="media-push-title">
+                Performances beyond the stage
+            </h2>
+
+            <p class="media-push__text">
+                A selection of SYSTIR performances is available to watch on YouTube and Instagram.
+            </p>
+
+            <div class="media-push__actions" aria-label="SYSTIR social media links">
+                <a class="media-push__link" href="https://www.youtube.com/@anunachoir" target="_blank" rel="noopener" aria-label="Watch SYSTIR performances on YouTube">
+                    <i class="fa-brands fa-youtube" aria-hidden="true"></i>
+                    <span>Watch on YouTube</span>
+                </a>
+
+                <a class="media-push__link" href="https://www.instagram.com/systirofficial/" target="_blank" rel="noopener" aria-label="Follow SYSTIR on Instagram">
+                    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                    <span>Follow on Instagram</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- ================================================================
+    LIVE EVENTS FILTER BAR
+    ----------------------------------------------------------------
+    Purpose:
+    - Provides search and filtering controls for the live archive.
+    - Search checks country, city, venue, title, month, year, date,
+      time, availability, and action labels.
+    - Availability filter checks both availability labels and action
+      labels, so options like Tickets and Details still work.
+================================================================ -->
+
+    <form class="live-events-filter" id="liveEventsFilter" role="search">
+        <div class="live-events-filter__inner">
+
+            <label class="live-events-filter__field">
+            <span class="live-events-filter__label">Search</span>
+
+            <input
+                class="live-events-filter__input"
+                type="search"
+                id="liveEventsSearch"
+                placeholder="Search country, city, venue, festival, date..."
+                autocomplete="off"
+            />
+        </label>
+
+            <label class="live-events-filter__field">
+            <span class="live-events-filter__label">Year</span>
+
+            <select class="live-events-filter__select" id="liveEventsYear">
+                <option value="">All years</option>
+                <option value="2026">2026</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+            </select>
+        </label>
+
+            <label class="live-events-filter__field">
+            <span class="live-events-filter__label">Availability</span>
+
+            <select class="live-events-filter__select" id="liveEventsStatus">
+                <option value="">All availability</option>
+                <option value="tickets">Tickets</option>
+                <option value="details">Details</option>
+                <option value="sold out">Sold out</option>
+                <option value="tbc">TBC</option>
+            </select>
+        </label>
+
+        </div>
+    </form>
+    <div class="live-events" id="liveEvents" aria-label="SYSTIR live performance dates">
+        <!-- js/live-events.js renders the event archive here. -->
+    </div>
+
+    <!-- ================================================================
+            CONTACT PLACEHOLDER
+            ----------------------------------------------------------------
+            Purpose:
+            - This is where the shared contact section will go later.
+            - We will fix/standardise this after the live page revamp.
+        ================================================================= -->
+
+    <div id="contactSection"></div>
+    </section>
+
+    <!-- ================================================================
+        SHARED SITE FOOTER
+        ----------------------------------------------------------------
+        Purpose:
+        - Footer is injected by js/footer.js.
+        - This keeps footer/social/copyright content consistent.
+    ================================================================= -->
+
+    <div id="siteFooter"></div>
+    <!-- ================================================================
+    FIXED BACK BUTTON
+    ----------------------------------------------------------------
+    Purpose:
+    - Returns visitors to the previous page.
+    - Fixed to the bottom-left corner with breathing room.
+================================================================ -->
+
+    <button class="page-back-button" type="button" data-page-back>
+    <span aria-hidden="true">←</span>
+    <span>Back</span>
+</button>
+
+    <!-- ================================================================
+        FULLSCREEN IMAGE VIEWER
+        ----------------------------------------------------------------
+        Purpose:
+        - Shared component used by gallery/media images when available.
+    ================================================================= -->
+
+    <img class="fullscreen-viewer" id="fullscreenViewer">
+
+    <button class="fullscreen-viewer__close" id="closeFullscreen" aria-label="Close fullscreen viewer">
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+
+    <button class="fullscreen-viewer__nav fullscreen-viewer__nav--prev" id="fullscreenPrev" aria-label="Previous image">
+            <i class="fa-solid fa-angle-left" aria-hidden="true"></i>
+        </button>
+
+    <img class="fullscreen-viewer__image" id="fullscreenImage" src="" alt="" />
+
+    <p class="fullscreen-viewer__caption" id="fullscreenCaption">
+        Image caption
+    </p>
+
+    <button class="fullscreen-viewer__nav fullscreen-viewer__nav--next" id="fullscreenNext" aria-label="Next image">
+            <i class="fa-solid fa-angle-right" aria-hidden="true"></i>
+        </button>
+
+    <div class="ambient-glow"></div>
+
+    </img>
+</body>
+
+</html>

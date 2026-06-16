@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en-IE">
+
+<link>
+<!-- ================================================================
+        DOCUMENT SETUP
+        ----------------------------------------------------------------
+        Purpose:
+        - Defines the members directory page.
+        - Uses the same global CSS/JS architecture as index.html.
+        - This page lists members and links to the reusable member profile
+          page: member.html?id=...
+    ================================================================= -->
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>SYSTIR | Members</title>
+
+<meta name="description" content="Meet the performers and collaborators of SYSTIR, an Irish-based contemporary vocal ensemble rooted in ancient traditions and modern storytelling." />
+
+<!-- ================================================================
+        CSS ARCHITECTURE
+        ----------------------------------------------------------------
+        Keep this order:
+        1. tokens.css
+        2. base.css
+        3. layout.css
+        4. components.css
+        5. homepage.css
+        6. responsive.css
+
+        Note:
+        - homepage.css can stay linked for now because many reusable section
+          styles still live there during this transition.
+    ================================================================= -->
+
+<link rel="stylesheet" href="css/tokens.css" />
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/layout.css" />
+<link rel="stylesheet" href="css/components.css" />
+<link rel="stylesheet" href="css/homepage.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+<!-- ================================================================
+        JAVASCRIPT ARCHITECTURE
+        ----------------------------------------------------------------
+        This page does not need members.js.
+        members.js is only needed on member.html, because member.html uses
+        the URL ID to populate one individual profile.
+    ================================================================= -->
+<script src="js/header.js" defer></script>
+<script src="js/footer.js" defer></script>
+<script src="js/nav.js" defer></script>
+<script src="js/theme.js" defer></script>
+<script src="js/contact-section.js" defer></script>
+<script src="js/current-year.js" defer></script>
+<script src="js/parallax.js" defer></script>
+<script src="js/galleries.js" defer></script>
+<script src="js/fullscreen-viewer.js" defer></script>
+<script src="js/ambient-glow.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/page-back.js" defer></script>
+</link>
+
+<body class="theme-dark">
+    <!-- ================================================================
+        ACCESSIBILITY SKIP LINK
+    ================================================================= -->
+
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <!-- ================================================================
+    SHARED SITE HEADER
+    ----------------------------------------------------------------
+    Purpose:
+    - Header/navbar is injected by js/header.js.
+    - This keeps navigation consistent across all pages.
+================================================================ -->
+
+    <div id="siteHeader"></div>
+
+    <main id="main-content">
+        <!-- ================================================================
+    MEMBERS HERO / DIRECTORY INTRODUCTION
+    ----------------------------------------------------------------
+    Purpose:
+    - Introduces the members directory as a hub page.
+    - Uses the shared hero background image and ornamental treatment.
+    - Keeps the text offset so this page feels related to the homepage
+      without copying the homepage layout exactly.
+================================================================ -->
+
+        <section class="hero section section-hero" aria-labelledby="page-title">
+            <div class="hero__ornament" aria-hidden="true"></div>
+            <div class="members-hero__content">
+                <p class="eyebrow">Members</p>
+
+                <h1 class="members-hero__title section-title title-dropcap" id="members-page-title">
+                    Performers and collaborators
+                </h1>
+
+                <p class="members-hero__lede">
+                    A flexible ensemble of voices, artists, and collaborators connected through SYSTIR’s performance world.
+                </p>
+
+                <p class="members-hero__text">
+                    Explore individual performer profiles and discover the voices that shape SYSTIR on stage, in recording, and across the wider ANÚNA Collective.
+                </p>
+            </div>
+
+            <aside class="members-hero__panel" aria-label="Members page guide">
+                <p class="members-hero__panel-label">Directory hub</p>
+
+                <p class="members-hero__panel-text">
+                    Select a performer below to open their individual profile.
+                </p>
+
+                <a class="button4" href="#members-directory-title">
+                Browse members
+            </a>
+            </aside>
+            </div>
+        </section>
+
+        <!-- ================================================================
+            MEMBERS DIRECTORY GRID
+            ----------------------------------------------------------------
+            Purpose:
+            - Gives every member a clear link target.
+            - Uses member.html?id=... so one reusable profile template can
+              serve many members.
+        ================================================================= -->
+
+        <section class="section" id="members-directory" aria-labelledby="members-directory-title">
+            <div class="section-heading">
+                <p class="eyebrow">Directory</p>
+
+                <h2 class="section-title" id="members-directory-title">
+                    Selected SYSTIR members
+                </h2>
+
+                <p class="section-intro">
+                    Each profile page can later include biography, role, images, recordings, credits, and social or professional links.
+                </p>
+            </div>
+
+            <ul class="members-list" aria-label="SYSTIR member profile links">
+                <li>
+                    <a class="button5" href="member.html?id=amelia-jones">Amelia Jones</a>
+                </li>
+                <li>
+                    <a class="button5" href="member.html?id=ash-mcglynn">Ash McGlynn</a>
+                </li>
+                <li>
+                    <a class="button5" href="member.html?id=judith-lyons">Judith Lyons</a>
+                </li>
+                <li>
+                    <a class="button5" href="member.html?id=lauren-mcglynn">Lauren McGlynn</a>
+                </li>
+                <li>
+                    <a class="button5" href="member.html?id=lorna-breen">Lorna Breen</a>
+                </li>
+                <li>
+                    <a class="button5" href="member.html?id=sara-weeda">Sara Weeda</a>
+                </li>
+                <li>
+                    <a class="button5" href="member.html?id=sara-di-bella">Sara Di Bella</a>
+                </li>
+                <li>
+                    <a class="button5" href="member.html?id=sigrid-algesten">Sigrid Algesten</a>
+                </li>
+                <li>
+                    <a class="button5" href="member.html?id=sorcha-fenlon">Sorcha Fenlon</a>
+                </li>
+                <li>
+                    <a class="button5" href="member.html?id=stephanie-devlin">Stephanie Devlin</a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- ================================================================
+            MEMBERS CONTEXT / LONG-TERM CONTENT SLOT
+            ----------------------------------------------------------------
+            Purpose:
+            - Gives the page room to grow beyond a plain list.
+            - This can later contain rehearsal images, a group statement,
+              credits, role descriptions, or rotating ensemble notes.
+        ================================================================= -->
+
+        <section class="feature feature--media-right section section--ornament-left" aria-labelledby="members-context-title">
+            <div class="feature__text">
+                <p class="eyebrow">Ensemble structure</p>
+
+                <h2 class="section-title" id="members-context-title">
+                    A flexible collective of voices
+                </h2>
+
+                <p>
+                    SYSTIR’s stage formation may vary depending on performance context, repertoire, and collaboration. This page can become the central directory for current performers, guest artists, and creative collaborators.
+                </p>
+
+                <p>
+                    As the site develops, each member profile can include biographical details, performance credits, featured media, and links to related projects.
+                </p>
+
+                <a class="button4" href="media.html">Explore media archive</a>
+            </div>
+
+            <div class="gallery-card" data-gallery="members" aria-label="SYSTIR members gallery">
+                <figure class="gallery-card__figure">
+                    <img class="gallery-card__image" src="images/gallery/systir-media-image.png" alt="SYSTIR members portrait" data-gallery-image />
+                    <figcaption class="gallery-card__caption" data-gallery-caption>
+                        SYSTIR members
+                    </figcaption>
+                </figure>
+
+                <div class="gallery-card__controls" aria-label="Gallery controls">
+                    <button class="gallery-card__button" type="button" data-gallery-prev aria-label="Previous image">‹</button>
+                    <button class="gallery-card__button" type="button" data-gallery-next aria-label="Next image">›</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================
+            CONTACT CTA
+            ----------------------------------------------------------------
+            Purpose:
+            - Gives agencies, venues, press, and collaborators a clear next
+              step from the members directory.
+        ================================================================= -->
+
+        <section class="cta section section--ornament-both" aria-labelledby="members-cta-title">
+            <div class="cta__inner">
+                <p class="eyebrow">Bookings and enquiries</p>
+
+                <h2 class="section-title" id="members-cta-title">
+                    Interested in SYSTIR’s performers?
+                </h2>
+
+                <p>
+                    For programming, press, collaboration, and booking enquiries, contact the ensemble directly.
+                </p>
+
+                <div class="cta__actions">
+                    <a class="button6" href="contact.html">Contact SYSTIR</a>
+                    <a class="button6" href="live.html">View live dates</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================================================================
+        SITE FOOTER
+    ================================================================= -->
+
+    <!-- ================================================================
+    SHARED SITE FOOTER
+    ----------------------------------------------------------------
+    Purpose:
+    - Footer is injected by js/footer.js.
+    - This keeps footer/social/copyright content consistent across pages.
+================================================================ -->
+
+    <div id="siteFooter"></div>
+    <!-- ================================================================
+    FIXED BACK BUTTON
+    ----------------------------------------------------------------
+    Purpose:
+    - Returns visitors to the previous page.
+    - Fixed to the bottom-left corner with breathing room.
+================================================================ -->
+
+    <button class="page-back-button" type="button" data-page-back>
+    <span aria-hidden="true">←</span>
+    <span>Back</span>
+</button>
+    <!-- ================================================================
+        FULLSCREEN IMAGE VIEWER
+    ================================================================= -->
+
+    <div class="fullscreen-viewer" id="fullscreenViewer">
+
+        <button class="fullscreen-viewer__close" id="closeFullscreen" aria-label="Close fullscreen viewer">
+            ×
+        </button>
+
+        <button class="fullscreen-viewer__nav fullscreen-viewer__nav--prev" id="fullscreenPrev" aria-label="Previous image">
+            ‹
+        </button>
+
+        <img class="fullscreen-viewer__image" id="fullscreenImage" src="" alt="" />
+
+        <p class="fullscreen-viewer__caption" id="fullscreenCaption">
+            Image caption
+        </p>
+
+        <button class="fullscreen-viewer__nav fullscreen-viewer__nav--next" id="fullscreenNext" aria-label="Next image">
+            ›
+        </button>
+
+        <div class="ambient-glow"></div>
+
+    </div>
+</body>
+
+</html>

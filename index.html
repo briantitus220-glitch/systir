@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en-IE">
+
+<link>
+<!-- ================================================================
+        DOCUMENT SETUP
+        ----------------------------------------------------------------
+        Purpose:
+        - Defines the page language, character encoding, mobile scaling,
+          browser tab title, SEO description, stylesheet links, font links,
+          and script links.
+        - This file is the launch-architecture homepage.
+        - Save this file as index.html.
+    ================================================================= -->
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>SYSTIR | Contemporary Vocal Ensemble</title>
+
+<meta name="description" content="SYSTIR is an Irish-based contemporary vocal ensemble rooted in ancient traditions, modern storytelling, and the female voice." />
+
+<!-- ================================================================
+        FONT LINKS
+        ----------------------------------------------------------------
+        Purpose:
+        - Loads UnifrakturMaguntia for decorative first letters.
+        - The main site fonts remain controlled through the CSS token
+          system.
+    ================================================================= -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet" />
+
+<!-- ================================================================
+    FONT AWESOME ICONS
+    ----------------------------------------------------------------
+    Purpose:
+    - Loads Font Awesome Free icons for interface controls.
+    - Used here for fullscreen close/previous/next buttons.
+================================================================ -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+
+<!-- ================================================================
+        CSS ARCHITECTURE
+        ----------------------------------------------------------------
+        Loading order matters:
+        1. tokens.css      = design variables, themes, colours, spacing
+        2. base.css        = reset, body, links, typography helpers
+        3. layout.css      = header, nav, footer, section library
+        4. components.css  = buttons, cards, galleries, viewer, controls
+        5. homepage.css    = homepage-specific hero/media/CTA styling
+        6. responsive.css  = mobile and tablet overrides
+    ================================================================= -->
+
+<link rel="stylesheet" href="css/tokens.css" />
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/layout.css" />
+<link rel="stylesheet" href="css/components.css" />
+<link rel="stylesheet" href="css/homepage.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+
+<!-- ================================================================
+        JAVASCRIPT ARCHITECTURE
+        ----------------------------------------------------------------
+        Purpose:
+        - Each script controls one behaviour area.
+        - defer ensures scripts load after the HTML is parsed without
+          blocking the page render.
+    ================================================================= -->
+<script src="js/header.js" defer></script>
+<script src="js/footer.js" defer></script>
+<script src="js/nav.js" defer></script>
+<script src="js/theme.js" defer></script>
+<script src="js/contact-section.js" defer></script>
+<script src="js/current-year.js" defer></script>
+<script src="js/parallax.js" defer></script>
+<script src="js/galleries.js" defer></script>
+<script src="js/fullscreen-viewer.js" defer></script>
+<script src="js/ambient-glow.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/page-back.js" defer></script>
+</link>
+
+<body class="theme-dark">
+    <!-- ================================================================
+        ACCESSIBILITY SKIP LINK
+        ----------------------------------------------------------------
+        Purpose:
+        - Allows keyboard and screen-reader users to skip directly past
+          the repeated navigation and into the main page content.
+    ================================================================= -->
+
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <!-- ================================================================
+    SHARED SITE HEADER
+    ----------------------------------------------------------------
+    Purpose:
+    - Header/navbar is injected by js/header.js.
+    - This keeps navigation consistent across all pages.
+================================================================ -->
+
+    <div id="siteHeader"></div>
+
+    <main id="main-content" class="homepage">
+        <!-- ================================================================
+            HERO SECTION
+            ----------------------------------------------------------------
+            Section library role:
+            - .section      = base section spacing and side padding
+            - .section-hero = simplified hero section class
+            - .hero         = homepage-specific hero layout/styling
+
+            Purpose:
+            - Introduces SYSTIR immediately.
+            - Provides two primary homepage actions.
+            - Keeps the video/media preview visually prominent.
+        ================================================================= -->
+
+        <section class="hero section section-hero" aria-labelledby="hero-title">
+            <div class="hero__ornament" aria-hidden="true"></div>
+
+            <div class="hero__content">
+                <p class="eyebrow">Irish contemporary vocal ensemble</p>
+
+                <!--<h1 class="hero__title" id="hero-title">SYSTIR</h1>-->
+                <h1 class="hero__title hero__title--logo" id="hero-title">
+                    <img class="hero__logo" src="images/logo/systir-logo.png" alt="SYSTIR" />
+                </h1>
+
+                <p class="hero__lede">
+                    Ancient voice, contemporary ritual, and performance rooted in story.
+                </p>
+
+                <p class="hero__text">
+                    SYSTIR brings together ethereal vocal textures, old and new traditions, and a performance language shaped by the female voice.
+                </p>
+
+                <div class="hero__actions" aria-label="Primary actions">
+                    <a class="button" href="#featured-performance">Watch featured video</a>
+                    <a class="button" href="news.html">Latest Releases</a>
+                </div>
+            </div>
+
+            <aside class="hero__media" aria-label="Featured SYSTIR media">
+                <a class="video-card video-card--hero" href="#featured-performance" aria-label="Jump to featured performance video">
+                    <img class="video-card__image" src="images/gallery/systir-youtube-thumbnail.png" alt="SYSTIR - Army Dreamers performance thumbnail" loading="eager" />
+                    <span class="video-card__play" aria-hidden="true">▶</span>
+                    <span class="video-card__caption">Featured performance</span>
+                </a>
+            </aside>
+        </section>
+
+        <!-- ================================================================
+            INTRO / ABOUT PREVIEW
+            ----------------------------------------------------------------
+            Section library role:
+            - .section  = base section spacing
+            - .section7 = asymmetric text/media feature section
+            - .feature  = two-column text/media grid
+
+            Purpose:
+            - Introduces the ensemble identity.
+            - Uses the first hybrid gallery module.
+            - Provides a route to the fuller biography/media page.
+        ================================================================= -->
+
+        <section class="feature feature--media-right section section7" id="intro" aria-labelledby="intro-title">
+            <div class="feature__text">
+                <p class="eyebrow">About the ensemble</p>
+
+                <!-- Decorative first-letter title -->
+                <h2 class="section-title title-dropcap" id="intro-title">
+                    A voice between ancient tradition and modern storytelling
+                </h2>
+
+                <p>
+                    <strong>SYSTIR</strong>, meaning “sister” in Icelandic, emerged from the legendary <a class="anuna-collective-link" href="https://www.anuna.ie/" target="_blank" rel="noopener">ANÚNA</a> to forge a distinctive musical identity focused
+                    on the female voice. The ensemble combines contemporary performance techniques with older traditions, creating an ethereal and immersive sound world.
+                </p>
+
+                <p>
+                    Their repertoire draws from indigenous European music, medieval sources, original songs, and contemporary artists, connecting historical memory with present-day emotional experience.
+                </p>
+
+                <a class="text-link" href="media.html">Read the full biography</a>
+            </div>
+
+            <div class="gallery-card" data-gallery="intro" aria-label="SYSTIR image gallery preview">
+                <figure class="gallery-card__figure">
+                    <img class="gallery-card__image" src="images/gallery/systir-gallery-image1.png" alt="SYSTIR ensemble portrait" data-gallery-image />
+                    <figcaption class="gallery-card__caption" data-gallery-caption>
+                        SYSTIR, ensemble portrait
+                    </figcaption>
+                </figure>
+
+                <div class="gallery-card__controls" aria-label="Gallery controls">
+                    <button class="gallery-card__button" type="button" data-gallery-prev aria-label="Previous image">‹</button>
+                    <button class="gallery-card__button" type="button" data-gallery-next aria-label="Next image">›</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================
+            FEATURED PERFORMANCE
+            ----------------------------------------------------------------
+            Section library role:
+            - .section  = base section spacing
+            - .section2 = centred ceremonial section
+
+            Purpose:
+            - Gives visitors a fast listening/watching point.
+            - Uses an embedded YouTube iframe so the video can play without
+              leaving the website.
+        ================================================================= -->
+
+        <section class="performance section section2" id="featured-performance" aria-labelledby="performance-title">
+            <div class="section-heading section-heading--center">
+                <p class="eyebrow">Featured performance</p>
+
+                <!-- Decorative first-letter title -->
+                <h2 class="section-title title-dropcap" id="performance-title">
+                    Watch SYSTIR perform
+                </h2>
+
+                <p class="section-intro">
+                    A first listening point for visitors arriving on the homepage.
+                </p>
+            </div>
+
+            <div class="performance__frame">
+                <iframe class="performance__video" src="https://www.youtube.com/embed/R41uESAhymo" title="SYSTIR - Army Dreamers" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <!-- ================================================================
+            COLLECTIVE / CONTEXT SECTION
+            ----------------------------------------------------------------
+            Section library role:
+            - .section             = base section spacing
+            - .section7            = asymmetric text/media feature section
+            - .feature--media-left = media appears before text
+
+            Purpose:
+            - Connects SYSTIR to the wider ANÚNA Collective.
+            - Uses the second hybrid gallery module.
+        ================================================================= -->
+
+        <section class="feature feature--media-left section section7" aria-labelledby="collective-title">
+            <div class="gallery-card gallery-card--portrait" data-gallery="collective" aria-label="SYSTIR collective gallery">
+                <figure class="gallery-card__figure">
+                    <img class="gallery-card__image" src="images/gallery/systir-live-image.png" alt="SYSTIR performers in a live or outdoor setting" data-gallery-image />
+                    <figcaption class="gallery-card__caption" data-gallery-caption>
+                        Part of the ANÚNA Collective
+                    </figcaption>
+                </figure>
+
+                <div class="gallery-card__controls" aria-label="Gallery controls">
+                    <button class="gallery-card__button" type="button" data-gallery-prev aria-label="Previous image">‹</button>
+                    <button class="gallery-card__button" type="button" data-gallery-next aria-label="Next image">›</button>
+                </div>
+            </div>
+
+            <div class="feature__text">
+                <p class="eyebrow">The ANÚNA Collective</p>
+
+                <!-- Decorative first-letter title -->
+                <h2 class="section-title title-dropcap" id="collective-title">
+                    Part of a wider vocal tradition
+                </h2>
+
+                <p>
+                    SYSTIR is part of the <a class="anuna-collective-link" href="https://www.anuna.ie/" target="_blank" rel="noopener">ANÚNA Collective</a>, with artistic direction from Irish composer Michael McGlynn. Their performances span original
+                    songs and arrangements alongside works connected to older sacred, folk, and storytelling traditions.
+                </p>
+
+                <p>
+                    The ensemble has toured internationally, bringing an Irish-rooted but outward-looking vocal identity to audiences across Europe and beyond.
+                </p>
+            </div>
+        </section>
+
+        <!-- ================================================================
+            MEDIA ARCHIVE PREVIEW
+            ----------------------------------------------------------------
+            Section library role:
+            - .section  = base section spacing
+            - .section5 = wide media/gallery section
+
+            Purpose:
+            - Shows a visual preview of the media archive.
+            - Clicking an image opens the fullscreen viewer.
+            - Clicking the label opens the relevant media page.
+        ================================================================= -->
+
+        <section class="media-preview section section5" aria-labelledby="media-title">
+            <div class="section-heading">
+                <p class="eyebrow">Media archive</p>
+
+                <!-- Decorative first-letter title -->
+                <h2 class="section-title title-dropcap" id="media-title">
+                    Images, performances, and live recordings
+                </h2>
+
+                <p class="section-intro">
+                    A curated glimpse of SYSTIR’s visual and performance world.
+                </p>
+            </div>
+
+            <div class="media-grid" aria-label="Selected media previews">
+
+                <article class="media-tile media-tile--large">
+                    <button class="media-tile__image-button" type="button" aria-label="Open gallery image fullscreen">
+                        <img
+                            src="images/gallery/systir-gallery-image2.png"
+                            alt="SYSTIR group image in performance setting"
+                            loading="lazy"
+                        />
+                    </button>
+
+                    <a class="media-tile__label" href="media.html">
+                        Gallery
+                    </a>
+                </article>
+
+                <article class="media-tile">
+                    <button class="media-tile__image-button" type="button" aria-label="Open photography image fullscreen">
+                        <img
+                            src="images/gallery/systir-photography.png"
+                            alt="SYSTIR performers in a photography setting"
+                            loading="lazy"
+                        />
+                    </button>
+
+                    <a class="media-tile__label" href="members.html">
+                        Members
+                    </a>
+                </article>
+
+                <article class="media-tile">
+                    <button class="media-tile__image-button" type="button" aria-label="Open live image fullscreen">
+                        <img
+                            src="images/gallery/systir-live-image.png"
+                            alt="SYSTIR live performance still"
+                            loading="lazy"
+                        />
+                    </button>
+
+                    <a class="media-tile__label" href="live.html">
+                        Live
+                    </a>
+                </article>
+
+                <article class="media-tile media-tile--wide">
+                    <button class="media-tile__image-button" type="button" aria-label="Open video thumbnail fullscreen">
+                        <img
+                            src="images/gallery/systir-youtube-thumbnail.png"
+                            alt="SYSTIR video performance thumbnail"
+                            loading="lazy"
+                        />
+                    </button>
+
+                    <a class="media-tile__label" href="news.html">
+                        News
+                    </a>
+                </article>
+
+            </div>
+
+            <div class="section-action">
+                <a class="button4" href="media.html">Open full media archive</a>
+            </div>
+        </section>
+
+        <!-- ================================================================
+            MEMBERS SECTION
+            ----------------------------------------------------------------
+            Section library role:
+            - .section  = base section spacing
+            - .section7 = asymmetric text/media feature section
+
+            Purpose:
+            - Lists selected SYSTIR members.
+            - Member links point to reusable member profile pages:
+              member.html?id=member-name
+        ================================================================= -->
+
+        <section class="feature feature--media-right section section3" aria-labelledby="members-title">
+            <div class="feature__text">
+                <p class="eyebrow">Members</p>
+
+                <!-- Decorative first-letter title -->
+                <h2 class="section-title title-dropcap" id="members-title">
+                    Performers and collaborators
+                </h2>
+
+                <p>
+                    SYSTIR features a flexible ensemble of six or more performers on stage, with members and collaborators drawn from the wider <a class="anuna-collective-link" href="https://www.anuna.ie/" target="_blank" rel="noopener">ANÚNA Collective</a>.
+                </p>
+
+                <ul class="members-list" aria-label="Selected SYSTIR members">
+                    <li><a class="button5" href="member.html?id=amelia-jones">Amelia Jones</a></li>
+                    <li><a class="button5" href="member.html?id=ash-mcglynn">Ash McGlynn</a></li>
+                    <li><a class="button5" href="member.html?id=judith-lyons">Judith Lyons</a></li>
+                    <li><a class="button5" href="member.html?id=lauren-mcglynn">Lauren McGlynn</a></li>
+                    <li><a class="button5" href="member.html?id=lorna-breen">Lorna Breen</a></li>
+                    <li><a class="button5" href="member.html?id=sara-weeda">Sara Weeda</a></li>
+                    <li><a class="button5" href="member.html?id=sara-di-bella">Sara Di Bella</a></li>
+                    <li><a class="button5" href="member.html?id=sigrid-algesten">Sigrid Algesten</a></li>
+                    <li><a class="button5" href="member.html?id=sorcha-fenlon">Sorcha Fenlon</a></li>
+                    <li><a class="button5" href="member.html?id=stephanie-devlin">Stephanie Devlin</a></li>
+                </ul>
+            </div>
+
+            <div class="gallery-card" data-gallery="members" aria-label="SYSTIR members gallery">
+                <figure class="gallery-card__figure">
+                    <img class="gallery-card__image" src="images/gallery/systir-members-image.png" alt="SYSTIR members portrait" data-gallery-image />
+                    <figcaption class="gallery-card__caption" data-gallery-caption>
+                        SYSTIR members
+                    </figcaption>
+                </figure>
+
+                <div class="gallery-card__controls" aria-label="Gallery controls">
+                    <button class="gallery-card__button" type="button" data-gallery-prev aria-label="Previous image">‹</button>
+                    <button class="gallery-card__button" type="button" data-gallery-next aria-label="Next image">›</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================
+            CONTACT / BOOKING CTA
+            ----------------------------------------------------------------
+            Section library role:
+            - .section  = base section spacing
+            - .section1 = standard content section
+            - .cta      = homepage CTA-specific styling
+
+            Purpose:
+            - Final homepage action section.
+            - Uses a stronger ceremonial button for Contact and a softer
+              secondary button for live dates.
+        ================================================================= -->
+        <div id="contactSection"></div>
+    </main>
+    <!-- ================================================================
+        SITE FOOTER
+        ----------------------------------------------------------------
+        Purpose:
+        - Provides persistent brand identity.
+        - Provides social/media platform links.
+        - Provides current-year copyright text through JS.
+    ================================================================= -->
+
+    <!-- ================================================================
+    SHARED SITE FOOTER
+    ----------------------------------------------------------------
+    Purpose:
+    - Footer is injected by js/footer.js.
+    - This keeps footer/social/copyright content consistent across pages.
+================================================================ -->
+
+    <div id="siteFooter"></div>
+    <!-- ================================================================
+    FULLSCREEN IMAGE VIEWER
+    ----------------------------------------------------------------
+    Purpose:
+    - Opens selected gallery/media images fullscreen.
+    - Caption is populated by fullscreen-viewer.js.
+    - Font Awesome icons are used for cleaner close/previous/next controls.
+================================================================ -->
+
+    <div class="fullscreen-viewer" id="fullscreenViewer">
+
+        <button class="fullscreen-viewer__close" id="closeFullscreen" aria-label="Close fullscreen viewer">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    </button>
+
+        <button class="fullscreen-viewer__nav fullscreen-viewer__nav--prev" id="fullscreenPrev" aria-label="Previous image">
+        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+    </button>
+
+        <img class="fullscreen-viewer__image" id="fullscreenImage" src="" alt="" />
+
+        <p class="fullscreen-viewer__caption" id="fullscreenCaption">
+            Image caption
+        </p>
+
+        <button class="fullscreen-viewer__nav fullscreen-viewer__nav--next" id="fullscreenNext" aria-label="Next image">
+        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+    </button>
+
+        <div class="ambient-glow"></div>
+
+    </div>
+</body>
+
+</html>

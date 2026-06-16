@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en-IE">
+
+<head>
+    <!-- ================================================================
+        DOCUMENT SETUP
+        ----------------------------------------------------------------
+        Purpose:
+        - Defines the page metadata, mobile viewport behaviour, stylesheet
+          loading order, and shared JavaScript behaviour for this SYSTIR page.
+        - This page acts as the SYSTIR media, biography, gallery, and press hub.
+    ================================================================= -->
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>SYSTIR | Media and Biography</title>
+
+    <meta name="description" content="Media, biography, images, video, press resources, and member links for SYSTIR." />
+
+    <!-- ================================================================
+        FONT AWESOME ICONS
+        ----------------------------------------------------------------
+        Purpose:
+        - Used for fullscreen viewer controls and social/media links.
+    ================================================================= -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <!-- ================================================================
+        CSS ARCHITECTURE
+        ----------------------------------------------------------------
+        Keep this order unchanged:
+        1. tokens.css      = design variables and colour themes
+        2. base.css        = reset, body, links, accessibility, typography
+        3. layout.css      = header, navbar, footer, section layouts
+        4. components.css  = buttons, cards, galleries, fullscreen viewer
+        5. homepage.css    = homepage-specific visual sections
+        6. responsive.css  = tablet/mobile overrides
+    ================================================================= -->
+
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/homepage.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <!-- ================================================================
+        JAVASCRIPT ARCHITECTURE
+        ----------------------------------------------------------------
+        Each file controls one behaviour group.
+    ================================================================= -->
+
+    <script src="js/header.js" defer></script>
+    <script src="js/footer.js" defer></script>
+    <script src="js/nav.js" defer></script>
+    <script src="js/theme.js" defer></script>
+    <script src="js/contact-section.js" defer></script>
+    <script src="js/current-year.js" defer></script>
+    <script src="js/parallax.js" defer></script>
+    <script src="js/galleries.js" defer></script>
+    <script src="js/media-gallery-sets.js" defer></script>
+    <script src="js/fullscreen-viewer.js" defer></script>
+    <script src="js/ambient-glow.js" defer></script>
+    <script src="js/page-back.js" defer></script>
+    <script src="js/main.js" defer></script>
+</head>
+
+<body class="theme-dark media-page">
+    <!-- ================================================================
+        ACCESSIBILITY SKIP LINK
+    ================================================================= -->
+
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <!-- ================================================================
+        SHARED SITE HEADER
+    ================================================================= -->
+
+    <div id="siteHeader"></div>
+
+    <main id="main-content">
+        <!-- ================================================================
+            MEDIA PAGE HERO
+            ----------------------------------------------------------------
+            Purpose:
+            - Introduces the media page as a professional press/media hub.
+            - Includes a reusable back button for returning to the previous page.
+        ================================================================= -->
+
+        <section class="hero section section-hero" aria-labelledby="page-title">
+            <div class="media-page-hero__inner">
+                <div class="hero__ornament" aria-hidden="true"></div>
+
+                <div class="section-heading section-heading--center">
+                    <p class="eyebrow">Media archive</p>
+
+                    <h1 class="section-title title-dropcap" id="page-title">
+                        Media and biography
+                    </h1>
+
+                    <p class="section-intro">
+                        Biography, performance images, portraits, videos, and press resources from SYSTIR’s visual and musical world.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================
+            MEDIA PUSH
+            ----------------------------------------------------------------
+            Purpose:
+            - Promotes SYSTIR video/social platforms before the gallery.
+            - Reuses the media-push component from components.css.
+        ================================================================= -->
+
+        <section class="media-push" aria-labelledby="media-push-title">
+            <div class="media-push__inner">
+                <p class="eyebrow">Watch and follow</p>
+
+                <h2 class="media-push__title" id="media-push-title">
+                    Performances beyond the stage
+                </h2>
+
+                <p class="media-push__text">
+                    A selection of SYSTIR performances is available to watch on YouTube and Instagram.
+                </p>
+
+                <div class="media-push__actions" aria-label="SYSTIR social media links">
+                    <a class="media-push__link" href="https://www.youtube.com/@anunachoir" target="_blank" rel="noopener" aria-label="Watch SYSTIR performances on YouTube">
+                        <i class="fa-brands fa-youtube" aria-hidden="true"></i>
+                        <span>Watch on YouTube</span>
+                    </a>
+
+                    <a class="media-push__link" href="https://www.instagram.com/systirofficial/" target="_blank" rel="noopener" aria-label="Follow SYSTIR on Instagram">
+                        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                        <span>Follow on Instagram</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================
+            BIOGRAPHY SECTION
+            ----------------------------------------------------------------
+            Purpose:
+            - Gives promoters, press, and new listeners a clear overview.
+            - This can later be expanded into short bio / long bio downloads.
+        ================================================================= -->
+
+        <section class="media-bio section section4" aria-labelledby="bio-title">
+            <div class="media-bio__inner">
+                <p class="eyebrow">Biography</p>
+
+                <h2 class="section-title title-dropcap" id="bio-title">
+                    A contemporary vocal ensemble rooted in older memory
+                </h2>
+
+                <p>
+                    <strong>SYSTIR</strong>, meaning “sister” in Icelandic, has emerged from the legendary ANÚNA to forge a distinctive and eclectic musical identity focused on the female voice. Today Anúna is the parent ensemble of the <a class="anuna-collective-link" href="https://www.anuna.ie/" target="_blank" rel="noopener">ANÚNA COLLECTIVE</a>, which includes the ensembles Systir and <a class="anuna-collective-link" href="https://www.manam.ie/" target="_blank" rel="noopener">M’ANAM</a>.
+                </p>
+
+                <p>
+                    Created originally in 2019 and reactivated in 2023 post COVID, Systir features six or more performers on stage. They combine contemporary performance techniques with ancient traditions, crafting an ethereal and immersive soundscape. Their repertoire draws heavily from indigenous European music, connecting medieval to modern contemporary storytelling.
+                </p>
+
+                <p>
+                    Systir’s performances span original songs and arrangements alongside works by the 11th-century abbess Hildegard of Bingen and contemporary artists such as Janelle Monáe and Kate Bush. Central to their music is the story behind the songs, personal and historical. Systir explore universal human emotions and experiences that resonate broadly across audiences.
+                </p>
+
+                <p>
+                    Systir have toured Italy, China, Japan, Germany, Ireland, Finland and Iceland in the last two years, with performances in England, Germany, Finland, Estonia and Latvia scheduled in 2026. The group is currently completing their debut album set for release in 2026. Irish composer <a class="anuna-collective-link" href="https://www.michaelmcglynn.com/" target="_blank" rel="noopener">Michael McGlynn</a> serves as the artistic director of Systir, guiding their creative vision and providing some of his own works and arrangements to their repertoire.
+                </p>
+            </div>
+        </section>
+
+        <!-- ================================================================
+            COLLECTIVE GALLERY
+            ----------------------------------------------------------------
+            Purpose:
+            - Displays collective and performance images inside one fixed
+              navigable gallery container.
+            - Each slide contains either one large image or two stacked images.
+            - The gallery follows a 1 / 2 / 1 / 1 / 2 rhythm so it feels more
+              varied without returning to the unstable masonry-grid layout.
+            - Each image can still open in the fullscreen viewer.
+            - Fullscreen next/previous navigation is scoped to this gallery
+              through data-fullscreen-gallery="collective".
+        ================================================================= -->
+
+        <section class="media-gallery-section section section5" aria-labelledby="collective-gallery-title">
+            <div class="section-heading">
+                <p class="eyebrow">Collective gallery</p>
+
+                <h2 class="section-title title-dropcap" id="collective-gallery-title">
+                    Ensemble images and performance stills
+                </h2>
+
+                <p class="section-intro">
+                    Selected images of SYSTIR as a collective ensemble, including performance stills, portraits, and visual material for media use.
+                </p>
+            </div>
+
+            <div class="media-gallery-frame media-gallery-frame--carousel" data-media-gallery-sets data-fullscreen-gallery="collective" aria-label="SYSTIR collective image gallery">
+                <div class="media-gallery-frame__viewport">
+                    <!-- ====================================================
+                        SLIDE 1: SINGLE IMAGE
+                    ===================================================== -->
+
+                    <article class="media-gallery-frame__set media-gallery-frame__set--single is-active" data-media-gallery-set>
+                        <div class="media-gallery-frame__item">
+                            <button class="media-gallery-frame__image-button media-tile__image-button" type="button" aria-label="Open ensemble portrait fullscreen" data-fullscreen-caption="Collective — Ensemble portrait">
+                                <img
+                                    class="media-gallery-frame__image"
+                                    src="images/gallery/systir-gallery-image1.png"
+                                    alt="SYSTIR ensemble portrait"
+                                    loading="lazy"
+                                />
+                            </button>
+
+                            <div class="media-gallery-frame__caption">
+                                <p class="media-gallery-frame__label">Collective</p>
+                                <h3 class="media-gallery-frame__title">Ensemble portrait</h3>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ====================================================
+                        SLIDE 2: TWO STACKED IMAGES
+                    ===================================================== -->
+
+                    <article class="media-gallery-frame__set media-gallery-frame__set--stack" data-media-gallery-set>
+                        <div class="media-gallery-frame__item">
+                            <button class="media-gallery-frame__image-button media-tile__image-button" type="button" aria-label="Open performance image fullscreen" data-fullscreen-caption="Performance — Live image">
+                                <img
+                                    class="media-gallery-frame__image"
+                                    src="images/gallery/systir-live-image.png"
+                                    alt="SYSTIR performers in a live setting"
+                                    loading="lazy"
+                                />
+                            </button>
+
+                            <div class="media-gallery-frame__caption">
+                                <p class="media-gallery-frame__label">Performance</p>
+                                <h3 class="media-gallery-frame__title">Live image</h3>
+                            </div>
+                        </div>
+
+                        <div class="media-gallery-frame__item">
+                            <button class="media-gallery-frame__image-button media-tile__image-button" type="button" aria-label="Open photography image fullscreen" data-fullscreen-caption="Photography — Press image">
+                                <img
+                                    class="media-gallery-frame__image"
+                                    src="images/gallery/systir-photography.png"
+                                    alt="SYSTIR performers in a photography setting"
+                                    loading="lazy"
+                                />
+                            </button>
+
+                            <div class="media-gallery-frame__caption">
+                                <p class="media-gallery-frame__label">Photography</p>
+                                <h3 class="media-gallery-frame__title">Press image</h3>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ====================================================
+                        SLIDE 3: SINGLE IMAGE
+                    ===================================================== -->
+
+                    <article class="media-gallery-frame__set media-gallery-frame__set--single" data-media-gallery-set>
+                        <div class="media-gallery-frame__item">
+                            <button class="media-gallery-frame__image-button media-tile__image-button" type="button" aria-label="Open archive image fullscreen" data-fullscreen-caption="Archive — Visual archive">
+                                <img
+                                    class="media-gallery-frame__image"
+                                    src="images/gallery/systir-gallery-image2.png"
+                                    alt="SYSTIR group image in performance setting"
+                                    loading="lazy"
+                                />
+                            </button>
+
+                            <div class="media-gallery-frame__caption">
+                                <p class="media-gallery-frame__label">Archive</p>
+                                <h3 class="media-gallery-frame__title">Visual archive</h3>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ====================================================
+                        SLIDE 4: SINGLE IMAGE
+                    ===================================================== -->
+
+                    <article class="media-gallery-frame__set media-gallery-frame__set--single" data-media-gallery-set>
+                        <div class="media-gallery-frame__item">
+                            <img class="media-gallery-frame__image-button media-tile__image-button" type="button" aria-label="Open photography image fullscreen" data-fullscreen-caption="Photography — Press image">
+                            <img class="media-gallery-frame__image" src="images/gallery/systir-photography.png" alt="SYSTIR performers in a photography setting" loading="lazy" />
+                            </img>
+
+                            <div class="media-gallery-frame__caption">
+                                <p class="media-gallery-frame__label">Photography</p>
+                                <h3 class="media-gallery-frame__title">Press image</h3>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ====================================================
+                        SLIDE 5: TWO STACKED IMAGES
+                    ===================================================== -->
+
+                    <article class="media-gallery-frame__set media-gallery-frame__set--stack" data-media-gallery-set>
+                        <div class="media-gallery-frame__item">
+                            <button class="media-gallery-frame__image-button media-tile__image-button" type="button" aria-label="Open ensemble portrait fullscreen" data-fullscreen-caption="Collective — Ensemble portrait">
+                                <img
+                                    class="media-gallery-frame__image"
+                                    src="images/gallery/systir-gallery-image1.png"
+                                    alt="SYSTIR ensemble portrait"
+                                    loading="lazy"
+                                />
+                            </button>
+
+                            <div class="media-gallery-frame__caption">
+                                <p class="media-gallery-frame__label">Collective</p>
+                                <h3 class="media-gallery-frame__title">Ensemble portrait</h3>
+                            </div>
+                        </div>
+
+                        <div class="media-gallery-frame__item">
+                            <button class="media-gallery-frame__image-button media-tile__image-button" type="button" aria-label="Open performance image fullscreen" data-fullscreen-caption="Performance — Live image">
+                                <img
+                                    class="media-gallery-frame__image"
+                                    src="images/gallery/systir-live-image.png"
+                                    alt="SYSTIR performers in a live setting"
+                                    loading="lazy"
+                                />
+                            </button>
+
+                            <div class="media-gallery-frame__caption">
+                                <p class="media-gallery-frame__label">Performance</p>
+                                <h3 class="media-gallery-frame__title">Live image</h3>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="media-gallery-frame__controls" aria-label="Collective gallery controls">
+                    <button class="media-gallery-frame__control" type="button" data-media-gallery-prev aria-label="Previous collective gallery slide">
+                        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                    </button>
+
+                    <p class="media-gallery-frame__counter" aria-live="polite">
+                        <span data-media-gallery-current>1</span>
+                        <span aria-hidden="true">/</span>
+                        <span data-media-gallery-total>5</span>
+                    </p>
+
+                    <button class="media-gallery-frame__control" type="button" data-media-gallery-next aria-label="Next collective gallery slide">
+                        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================
+            INDIVIDUAL MEMBERS GALLERY
+            ----------------------------------------------------------------
+            Purpose:
+            - Shows individual members/collaborators.
+            - Each card can open the image fullscreen.
+            - Each card also links to the relevant member profile.
+        ================================================================= -->
+
+        <section class="media-gallery-section section section5" aria-labelledby="members-gallery-title">
+            <div class="section-heading">
+                <p class="eyebrow">Individual profiles</p>
+
+                <h2 class="section-title title-dropcap" id="members-gallery-title">
+                    Members and collaborators
+                </h2>
+
+                <p class="section-intro">
+                    Individual performers and collaborators from the SYSTIR ensemble and the wider <a class="anuna-collective-link" href="https://www.anuna.ie/" target="_blank" rel="noopener">ANÚNA Collective</a>.
+                </p>
+            </div>
+
+            <div class="media-gallery media-gallery--members" data-fullscreen-gallery="members" aria-label="SYSTIR individual members gallery">
+                <article class="media-gallery__item media-gallery__item--portrait">
+                    <button class="media-gallery__image-button media-tile__image-button" type="button" aria-label="Open Amelia Jones portrait fullscreen">
+                        <img class="media-gallery__image" src="images/members/amelia-jones.png" alt="Amelia Jones portrait" loading="lazy" />
+                    </button>
+
+                    <a class="media-gallery__member-link" href="member.html?id=amelia-jones">
+                        Amelia Jones
+                    </a>
+                </article>
+
+                <article class="media-gallery__item media-gallery__item--portrait">
+                    <button class="media-gallery__image-button media-tile__image-button" type="button" aria-label="Open Ash McGlynn portrait fullscreen">
+                        <img class="media-gallery__image" src="images/members/ash-mcglynn.png" alt="Ash McGlynn portrait" loading="lazy" />
+                    </button>
+
+                    <a class="media-gallery__member-link" href="member.html?id=ash-mcglynn">
+                        Ash McGlynn
+                    </a>
+                </article>
+
+                <article class="media-gallery__item media-gallery__item--portrait">
+                    <button class="media-gallery__image-button media-tile__image-button" type="button" aria-label="Open Judith Lyons portrait fullscreen">
+                        <img class="media-gallery__image" src="images/members/judith-lyons.png" alt="Judith Lyons portrait" loading="lazy" />
+                    </button>
+
+                    <a class="media-gallery__member-link" href="member.html?id=judith-lyons">
+                        Judith Lyons
+                    </a>
+                </article>
+
+                <article class="media-gallery__item media-gallery__item--portrait">
+                    <button class="media-gallery__image-button media-tile__image-button" type="button" aria-label="Open Lauren McGlynn portrait fullscreen">
+                        <img class="media-gallery__image" src="images/members/lauren-mcglynn.png" alt="Lauren McGlynn portrait" loading="lazy" />
+                    </button>
+
+                    <a class="media-gallery__member-link" href="member.html?id=lauren-mcglynn">
+                        Lauren McGlynn
+                    </a>
+                </article>
+
+                <article class="media-gallery__item media-gallery__item--portrait">
+                    <button class="media-gallery__image-button media-tile__image-button" type="button" aria-label="Open Lorna Breen portrait fullscreen">
+                        <img class="media-gallery__image" src="images/members/lorna-breen.png" alt="Lorna Breen portrait" loading="lazy" />
+                    </button>
+
+                    <a class="media-gallery__member-link" href="member.html?id=lorna-breen">
+                        Lorna Breen
+                    </a>
+                </article>
+
+                <article class="media-gallery__item media-gallery__item--portrait">
+                    <button class="media-gallery__image-button media-tile__image-button" type="button" aria-label="Open Sara Weeda portrait fullscreen">
+                        <img class="media-gallery__image" src="images/members/sara-weeda.png" alt="Sara Weeda portrait" loading="lazy" />
+                    </button>
+
+                    <a class="media-gallery__member-link" href="member.html?id=sara-weeda">
+                        Sara Weeda
+                    </a>
+                </article>
+
+                <article class="media-gallery__item media-gallery__item--portrait">
+                    <button class="media-gallery__image-button media-tile__image-button" type="button" aria-label="Open Sara Di Bella portrait fullscreen">
+                        <img class="media-gallery__image" src="images/members/sara-di-bella.png" alt="Sara Di Bella portrait" loading="lazy" />
+                    </button>
+
+                    <a class="media-gallery__member-link" href="member.html?id=sara-di-bella">
+                        Sara Di Bella
+                    </a>
+                </article>
+
+                <article class="media-gallery__item media-gallery__item--portrait">
+                    <button class="media-gallery__image-button media-tile__image-button" type="button" aria-label="Open Sigrid Algesten portrait fullscreen">
+                        <img class="media-gallery__image" src="images/members/sigrid-algesten.png" alt="Sigrid Algesten portrait" loading="lazy" />
+                    </button>
+
+                    <a class="media-gallery__member-link" href="member.html?id=sigrid-algesten">
+                        Sigrid Algesten
+                    </a>
+                </article>
+            </div>
+
+            <div class="section-action">
+                <a class="button4" href="members.html">View full members page</a>
+            </div>
+        </section>
+
+        <!-- ================================================================
+            VIDEO GALLERY
+            ----------------------------------------------------------------
+            Purpose:
+            - Displays selected SYSTIR YouTube videos in a centred iframe grid.
+            - Uses smaller video cards than the featured homepage video.
+            - Designed as a 3-column desktop grid that stacks neatly on mobile.
+        ================================================================= -->
+
+        <section class="media-video-section section section5" aria-labelledby="video-gallery-title">
+            <div class="section-heading section-heading--center">
+                <p class="eyebrow">Video archive</p>
+
+                <h2 class="section-title title-dropcap" id="video-gallery-title">
+                    Performances on film
+                </h2>
+
+                <p class="section-intro">
+                    Selected video performances, live recordings, and visual material from SYSTIR’s online archive.
+                </p>
+            </div>
+
+            <div class="media-video-grid" aria-label="SYSTIR YouTube video gallery">
+                <article class="media-video-card media-video-card--description-wide">
+                    <div class="media-video-card__frame">
+                        <iframe class="media-video-card__iframe" src="https://www.youtube.com/embed/R41uESAhymo" title="SYSTIR video performance" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+
+                    <h3 class="media-video-card__title">
+                        Performance archive
+                    </h3>
+
+                    <p class="media-video-card__description">
+                        A filmed performance shaped by close harmony, ritual atmosphere, and the stillness that surrounds the ensemble’s sound.
+                    </p>
+                </article>
+
+                <article class="media-video-card media-video-card--description-narrow">
+                    <div class="media-video-card__frame">
+                        <iframe class="media-video-card__iframe" src="https://www.youtube.com/embed/Iwj5cIHKd8o" title="SYSTIR video performance" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+
+                    <h3 class="media-video-card__title">
+                        Performance archive
+                    </h3>
+
+                    <p class="media-video-card__description">
+                        Voices gather in a restrained visual frame, allowing small gestures and vocal colour to carry the performance.
+                    </p>
+                </article>
+
+                <article class="media-video-card media-video-card--description-medium">
+                    <div class="media-video-card__frame">
+                        <iframe class="media-video-card__iframe" src="https://www.youtube.com/embed/kwJSlWc6hME" title="SYSTIR video performance" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+
+                    <h3 class="media-video-card__title">
+                        Performance archive
+                    </h3>
+
+                    <p class="media-video-card__description">
+                        A performance fragment where movement, breath, and texture sit just beneath the surface of the song.
+                    </p>
+                </article>
+
+                <article class="media-video-card media-video-card--description-narrow">
+                    <div class="media-video-card__frame">
+                        <iframe class="media-video-card__iframe" src="https://www.youtube.com/embed/Bsg-6yHHfB8" title="SYSTIR video performance" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+
+                    <h3 class="media-video-card__title">
+                        Performance archive
+                    </h3>
+
+                    <p class="media-video-card__description">
+                        The camera holds the ensemble in a quiet visual space, giving the music room to feel ancient and immediate.
+                    </p>
+                </article>
+
+                <article class="media-video-card media-video-card--description-wide">
+                    <div class="media-video-card__frame">
+                        <iframe class="media-video-card__iframe" src="https://www.youtube.com/embed/4LV4R6pYCQk" title="SYSTIR video performance" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+
+                    <h3 class="media-video-card__title">
+                        Performance archive
+                    </h3>
+
+                    <p class="media-video-card__description">
+                        A visual record of layered vocal writing, where the image feels formal while the sound remains intimate and human.
+                    </p>
+                </article>
+
+                <article class="media-video-card media-video-card--description-medium">
+                    <div class="media-video-card__frame">
+                        <iframe class="media-video-card__iframe" src="https://www.youtube.com/embed/8AgMQRXnhv4" title="SYSTIR video performance" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+
+                    <h3 class="media-video-card__title">
+                        Performance archive
+                    </h3>
+
+                    <p class="media-video-card__description">
+                        An archive piece that keeps the focus on ensemble presence, close listening, and the emotional shape of the performance.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- ================================================================
+            CONTACT SECTION
+        ================================================================= -->
+
+        <div id="contactSection"></div>
+    </main>
+
+    <!-- ================================================================
+        SHARED SITE FOOTER
+    ================================================================= -->
+
+    <div id="siteFooter"></div>
+    <!-- ================================================================
+    FIXED BACK BUTTON
+    ----------------------------------------------------------------
+    Purpose:
+    - Returns visitors to the previous page.
+    - Fixed to the bottom-left corner with breathing room.
+================================================================ -->
+
+    <button class="page-back-button" type="button" data-page-back>
+    <span aria-hidden="true">←</span>
+    <span>Back</span>
+</button>
+    <!-- ================================================================
+        FULLSCREEN IMAGE VIEWER
+        ----------------------------------------------------------------
+        Purpose:
+        - Opens selected gallery/media images fullscreen.
+        - Caption is populated by fullscreen-viewer.js.
+    ================================================================= -->
+
+    <div class="fullscreen-viewer" id="fullscreenViewer">
+        <button class="fullscreen-viewer__close" id="closeFullscreen" aria-label="Close fullscreen viewer">
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+
+        <button class="fullscreen-viewer__nav fullscreen-viewer__nav--prev" id="fullscreenPrev" aria-label="Previous image">
+            <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+        </button>
+
+        <img class="fullscreen-viewer__image" id="fullscreenImage" src="" alt="" />
+
+        <p class="fullscreen-viewer__caption" id="fullscreenCaption">
+            Image caption
+        </p>
+
+        <button class="fullscreen-viewer__nav fullscreen-viewer__nav--next" id="fullscreenNext" aria-label="Next image">
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+        </button>
+
+        <div class="ambient-glow"></div>
+    </div>
+</body>
+
+</html>

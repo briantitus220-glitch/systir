@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en-IE">
+
+<link>
+<!-- ================================================================
+        DOCUMENT SETUP
+        ----------------------------------------------------------------
+        Purpose:
+        - Defines the page metadata, mobile viewport behaviour, stylesheet
+          loading order, and shared JavaScript behaviour for this SYSTIR page.
+        - This shell is intentionally light: replace only the page-specific
+          <main> content when building the final page.
+    ================================================================= -->
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>SYSTIR | Member Profile</title>
+<meta name="description" content="Dynamic member profile page for SYSTIR performers." />
+
+<!-- ================================================================
+        CSS ARCHITECTURE
+        ----------------------------------------------------------------
+        Keep this order unchanged:
+        1. tokens.css      = design variables and colour themes
+        2. base.css        = reset, body, links, accessibility, typography
+        3. layout.css      = header, navbar, footer, section layouts
+        4. components.css  = buttons, cards, galleries, fullscreen viewer
+        5. homepage.css    = page-level visual sections currently shared
+        6. responsive.css  = tablet/mobile overrides
+    ================================================================= -->
+
+<link rel="stylesheet" href="css/tokens.css" />
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/layout.css" />
+<link rel="stylesheet" href="css/components.css" />
+<link rel="stylesheet" href="css/homepage.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+<!-- ================================================================
+        JAVASCRIPT ARCHITECTURE
+        ----------------------------------------------------------------
+        Each file controls one behaviour group. defer keeps page rendering
+        smooth while still allowing scripts to read the DOM safely.
+    ================================================================= -->
+<script src="js/header.js" defer></script>
+<script src="js/footer.js" defer></script>
+<script src="js/nav.js" defer></script>
+<script src="js/theme.js" defer></script>
+<script src="js/contact-section.js" defer></script>
+<script src="js/current-year.js" defer></script>
+<script src="js/parallax.js" defer></script>
+<script src="js/galleries.js" defer></script>
+<script src="js/fullscreen-viewer.js" defer></script>
+<script src="js/ambient-glow.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/members.js" defer></script>
+<script src="js/page-back.js" defer></script>
+</link>
+
+<body class="theme-dark">
+    <!-- ================================================================
+        ACCESSIBILITY SKIP LINK
+        ----------------------------------------------------------------
+        Allows keyboard users to jump past repeated navigation.
+    ================================================================= -->
+
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <!-- ================================================================
+    SHARED SITE HEADER
+    ----------------------------------------------------------------
+    Purpose:
+    - Header/navbar is injected by js/header.js.
+    - This keeps navigation consistent across all pages.
+================================================================ -->
+
+    <div id="siteHeader"></div>
+    <main id="main-content">
+        <!-- ================================================================
+            DYNAMIC MEMBER PROFILE PAGE
+            ----------------------------------------------------------------
+            Purpose:
+            - Uses one reusable HTML file for all member profiles.
+            - members.js reads the URL parameter, for example:
+              member.html?id=amelia-jones
+            - This avoids creating a separate HTML file for every performer.
+        ================================================================= -->
+
+        <section class="feature feature--media-right section section--ornament-left" aria-labelledby="member-name">
+            <div class="feature__text">
+                <p class="eyebrow" data-member-role>Member profile</p>
+                <h1 class="section-title" id="member-name" data-member-name>SYSTIR Member</h1>
+                <p data-member-bio>
+                    Member biography will load here. Add or edit performer details inside js/members.js.
+                </p>
+
+                <div class="hero__actions" aria-label="Member page actions">
+                    <a class="button2" href="media.html">Back to media/bio</a>
+                    <a class="button5" href="index.html#members-title">Back to members</a>
+                </div>
+            </div>
+
+            <div class="gallery-card gallery-card--portrait" aria-label="Member portrait">
+                <img class="gallery-card__figure">
+                <img class="gallery-card__image is-active" src="images/gallery/systir-media-image.png" alt="SYSTIR member portrait" data-member-image />
+                <figcaption class="gallery-card__caption" data-member-caption>
+                    SYSTIR member portrait
+                </figcaption>
+                </img>
+            </div>
+        </section>
+
+        <!-- ================================================================
+            CONTACT PLACEHOLDER
+            ----------------------------------------------------------------
+            Purpose:
+            - This is where the shared contact section will go later.
+            - We will fix/standardise this after the live page revamp.
+        ================================================================= -->
+
+        <div id="contactSection"></div>
+    </main>
+
+    <!-- ================================================================
+        SITE FOOTER
+        ----------------------------------------------------------------
+        Shared component. Replace placeholder # links when official platform
+        URLs are available.
+    ================================================================= -->
+
+    <!-- ================================================================
+    SHARED SITE FOOTER
+    ----------------------------------------------------------------
+    Purpose:
+    - Footer is injected by js/footer.js.
+    - This keeps footer/social/copyright content consistent across pages.
+================================================================ -->
+
+    <div id="siteFooter"></div>
+    <!-- ================================================================
+    FIXED BACK BUTTON
+    ----------------------------------------------------------------
+    Purpose:
+    - Returns visitors to the previous page.
+    - Fixed to the bottom-left corner with breathing room.
+================================================================ -->
+
+    <button class="page-back-button" type="button" data-page-back>
+    <span aria-hidden="true">←</span>
+    <span>Back</span>
+</button>
+    <!-- ================================================================
+        FULLSCREEN IMAGE VIEWER
+        ----------------------------------------------------------------
+        Shared component used by gallery/media images when available.
+    ================================================================= -->
+
+    <div class="fullscreen-viewer" id="fullscreenViewer">
+        <button class="fullscreen-viewer__close" id="closeFullscreen" aria-label="Close fullscreen viewer">×</button>
+        <button class="fullscreen-viewer__nav fullscreen-viewer__nav--prev" id="fullscreenPrev" aria-label="Previous image">‹</button>
+        <img class="fullscreen-viewer__image" id="fullscreenImage" src="" alt="" />
+        <p class="fullscreen-viewer__caption" id="fullscreenCaption">Image caption</p>
+        <button class="fullscreen-viewer__nav fullscreen-viewer__nav--next" id="fullscreenNext" aria-label="Next image">›</button>
+        <div class="ambient-glow"></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,452 @@
+/* ================================================================
+   SYSTIR CSS: HOMEPAGE
+   ----------------------------------------------------------------
+   APEX STRUCTURE NOTES
+   - This file contains styles unique to the homepage.
+   - The cinematic hero, featured performance frame, homepage CTA panel,
+     and hero texture enhancement live here.
+   - Reusable section backgrounds remain standardised in layout.css.
+   - Reusable component styling belongs in components.css.
+================================================================ */
+
+
+/* ================================================================
+   4.1 HOMEPAGE HERO LAYOUT
+   ----------------------------------------------------------------
+   Purpose:
+   - Creates the cinematic opening section for the homepage.
+   - This is intentionally separate from normal section backgrounds because
+     the hero uses a photographic background and overlay system.
+================================================================ */
+
+.hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(min(100%, 21.25rem), 0.72fr);
+    gap: var(--card-gap-lg);
+    align-items: center;
+    min-height: calc(100vh - var(--header-height));
+    padding: var(--section-padding-y-hero) var(--hero-padding);
+    background: linear-gradient( 90deg, var(--hero-overlay-left) 0%, var(--hero-overlay-mid) 50%, var(--hero-overlay-right) 100%), radial-gradient(circle at 82% 20%, rgba(199, 163, 90, 0.18), transparent 26rem), linear-gradient(var(--hero-vignette), var(--hero-vignette)), var(--hero-image) center / cover no-repeat, var(--color-bg-secondary);
+}
+
+.hero>* {
+    max-width: none;
+}
+
+.hero__ornament {
+    position: absolute;
+    left: var(--hero-padding);
+    bottom: var(--space-lg);
+    width: min(22rem, 38vw);
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-accent-primary), var(--color-accent-secondary), transparent);
+    opacity: 0.8;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    background: radial-gradient(circle at 20% 20%, rgba(199, 163, 90, 0.06), transparent 35%), radial-gradient(circle at 80% 70%, rgba(111, 51, 69, 0.08), transparent 40%);
+}
+
+
+/* ================================================================
+   4.2 HERO TEXT AND LOGO
+   ----------------------------------------------------------------
+   Purpose:
+   - Styles the homepage hero copy, logo h1, lead text, and primary
+     action group.
+   - Keeps the real h1 in the page while allowing the visible content to
+     be the SYSTIR logo image.
+================================================================ */
+
+.hero__content {
+    max-width: var(--section-width-narrow);
+    padding-left: clamp(0rem, 2vw, 2rem);
+}
+
+.hero__title {
+    margin: 0 0 var(--space-md);
+    color: var(--color-text-primary);
+    font-family: var(--font-logo);
+    font-size: var(--font-size-title-lg);
+    line-height: 0.95;
+    text-transform: uppercase;
+}
+
+.hero__title--logo {
+    margin: 0 0 var(--space-md);
+    line-height: 1;
+}
+
+.hero__logo {
+    display: block;
+    width: clamp(13.75rem, 34vw, 32.5rem);
+    height: auto;
+    object-fit: contain;
+}
+
+.hero__lede {
+    max-width: var(--section-width-narrow);
+    margin: 0 0 var(--space-md);
+    color: var(--color-text-primary);
+    font-size: clamp(1.18rem, 2.2vw, 2rem);
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.hero__text {
+    max-width: 42.5rem;
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-body);
+    line-height: 1.65;
+}
+
+.hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-top: var(--space-lg);
+}
+
+
+/* ================================================================
+   4.3 HERO VIDEO CARD
+   ----------------------------------------------------------------
+   Purpose:
+   - Styles the homepage hero media card.
+   - The card acts as a visual jump link to the featured performance
+     section.
+================================================================ */
+
+.hero__media {
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+}
+
+.video-card {
+    position: relative;
+    display: block;
+    width: 100%;
+    min-height: clamp(20rem, 46vw, 35rem);
+    overflow: hidden;
+    border: var(--border-strong);
+    background: var(--color-surface-primary);
+    color: var(--color-text-primary);
+    text-decoration: none;
+}
+
+.video-card__image {
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+    object-fit: cover;
+    opacity: 0.82;
+    filter: saturate(0.86) contrast(1.05);
+    transition: opacity var(--transition-slow), filter var(--transition-slow), transform var(--transition-slow);
+}
+
+.video-card:hover .video-card__image {
+    opacity: 0.96;
+    filter: saturate(1) contrast(1.08);
+    transform: scale(1.018);
+}
+
+.video-card__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    place-items: center;
+    width: clamp(3.5rem, 7vw, 4.5rem);
+    height: clamp(3.5rem, 7vw, 4.5rem);
+    transform: translate(-50%, -50%);
+    border: 1px solid var(--color-accent-primary);
+    background: rgba(7, 13, 11, 0.68);
+    color: var(--color-accent-soft);
+    font-size: clamp(1.2rem, 2.4vw, 1.5rem);
+}
+
+.video-card__caption {
+    right: var(--space-sm);
+    bottom: var(--space-sm);
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+
+/* ================================================================
+   4.4 FEATURED PERFORMANCE FRAME
+   ----------------------------------------------------------------
+   Purpose:
+   - Styles the embedded YouTube frame only.
+   - The section surface itself is inherited from .section in layout.css.
+================================================================ */
+
+.performance__frame {
+    position: relative;
+    max-width: var(--section-width-reading);
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border: var(--border-strong);
+    background: #000;
+}
+
+.performance__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+
+/* ================================================================
+   4.5 CONTACT / BOOKING CTA
+   ----------------------------------------------------------------
+   Purpose:
+   - Styles the reusable contact section when it appears on the homepage.
+   - Keeps the CTA centred, readable, and visually ceremonial without
+     becoming a narrow text column on smaller screens.
+================================================================ */
+
+.cta {
+    text-align: center;
+}
+
+.cta__inner {
+    width: min(100%, 57.5rem);
+    max-width: 57.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: var(--panel-padding-lg);
+    border: var(--border-strong);
+    background: linear-gradient( 135deg, color-mix(in srgb, var(--color-surface-primary) 72%, transparent), color-mix(in srgb, var(--color-surface-secondary) 44%, transparent));
+    backdrop-filter: blur(10px);
+}
+
+.cta__inner .section-title {
+    max-width: var(--section-width-narrow);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta__inner p:not(.eyebrow) {
+    max-width: 42.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: var(--font-size-body);
+    line-height: 1.65;
+}
+
+.cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-sm);
+    margin-top: var(--space-lg);
+}
+
+
+/* ================================================================
+   INTERNAL PAGE HERO DESKTOP ALIGNMENT
+   ----------------------------------------------------------------
+   Purpose:
+   - Left-aligns content only inside internal-page hero sections.
+   - Does not affect headings, introductions, or sections elsewhere.
+   - Keeps the homepage hero unchanged.
+================================================================ */
+
+@media (min-width: 981px) {
+    .media-page .media-page-hero__inner,
+    .news-page .news-hero__inner,
+    .members-page .members-hero__inner,
+    .live-page .live-page-hero__inner {
+        width: min(100%, var(--section-width-wide));
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .media-page .hero .media-page-hero__inner>.section-heading,
+    .news-page .news-hero__content,
+    .members-page .members-hero__content,
+    .live-page .live-page-hero__inner {
+        width: min(100%, 54rem);
+        max-width: 54rem;
+        margin-left: 0;
+        margin-right: auto;
+        text-align: left;
+    }
+    .media-page .hero .media-page-hero__inner>.section-heading .eyebrow,
+    .news-page .news-hero__content .eyebrow,
+    .members-page .members-hero__content .eyebrow,
+    .live-page .live-page-hero__inner .eyebrow {
+        margin-left: 0;
+        margin-right: auto;
+        text-align: left;
+    }
+    .media-page .hero .media-page-hero__inner>.section-heading .section-title,
+    .news-page .news-hero__content .section-title,
+    .members-page .members-hero__content .section-title,
+    .live-page .live-page-hero__inner .section-title {
+        max-width: 52rem;
+        margin-left: 0;
+        margin-right: auto;
+        font-size: clamp(3.75rem, 6vw, 6.5rem);
+        line-height: 0.98;
+        text-align: left;
+    }
+    .media-page .hero .media-page-hero__inner>.section-heading .section-intro,
+    .news-page .news-hero__content .section-intro,
+    .members-page .members-hero__content .section-intro,
+    .live-page .live-page-hero__inner .section-intro {
+        max-width: 44rem;
+        margin-left: 0;
+        margin-right: auto;
+        font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+        line-height: 1.55;
+        text-align: left;
+    }
+}
+
+
+/* ================================================================
+   INTERNAL PAGE HERO DESKTOP TYPOGRAPHY
+   ----------------------------------------------------------------
+   Purpose:
+   - Gives the Live, Media, Members, and News hero titles stronger
+     visual presence on larger screens.
+   - Adds breathing room beneath each hero title.
+   - Targets the exact hero wrappers used in the current HTML files.
+   - Does not affect headings elsewhere on the pages.
+================================================================ */
+
+@media (min-width: 981px) {
+    /* ------------------------------------------------------------
+       Shared internal-page hero title sizing
+    ------------------------------------------------------------ */
+    .live-page-hero__content>.section-title,
+    .media-page-hero__inner .section-heading>.section-title,
+    .members-hero__content>.members-hero__title,
+    .news-hero__content>.section-title {
+        max-width: 58rem;
+        margin-top: 0;
+        margin-bottom: clamp(1.75rem, 3vw, 3rem);
+        font-size: clamp(3.5rem, 5.5vw, 6rem);
+        line-height: 0.98;
+        padding-bottom: 4rem;
+    }
+    /* ------------------------------------------------------------
+       Live hero introductory text
+    ------------------------------------------------------------ */
+    .live-page-hero__content>.section-intro {
+        max-width: 46rem;
+        font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+        line-height: 1.6;
+    }
+    .live-page-hero__summary {
+        max-width: 46rem;
+        font-size: clamp(1rem, 1.2vw, 1.18rem);
+        line-height: 1.65;
+    }
+    /* ------------------------------------------------------------
+       Media hero introductory text
+    ------------------------------------------------------------ */
+    .media-page-hero__inner .section-heading>.section-intro {
+        max-width: 46rem;
+        font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+        line-height: 1.6;
+    }
+    /* ------------------------------------------------------------
+       Members hero introductory text
+    ------------------------------------------------------------ */
+    .members-hero__content>.members-hero__lede {
+        max-width: 46rem;
+        font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+        line-height: 1.5;
+    }
+    .members-hero__content>.members-hero__text {
+        max-width: 46rem;
+        font-size: clamp(1rem, 1.2vw, 1.18rem);
+        line-height: 1.65;
+    }
+    /* ------------------------------------------------------------
+       News hero introductory text
+    ------------------------------------------------------------ */
+    .news-hero__content>.section-intro {
+        max-width: 46rem;
+        font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+        line-height: 1.6;
+    }
+    /* ------------------------------------------------------------
+       Shared internal-page hero eyebrow sizing
+    ------------------------------------------------------------ */
+    .live-page-hero__content>.eyebrow,
+    .media-page-hero__inner .section-heading>.eyebrow,
+    .members-hero__content>.eyebrow,
+    .news-hero__content>.eyebrow {
+        font-size: clamp(0.78rem, 0.9vw, 0.95rem);
+    }
+}
+
+
+/* ================================================================
+   4.14 CONTACT PAGE HERO
+   ----------------------------------------------------------------
+   Purpose:
+   - Gives the full contact page the same internal-page hero treatment
+     used by Live, Media, Members, and News.
+   - Keeps the contact hero separate from the homepage two-column hero.
+================================================================ */
+
+.contact-page-hero {
+    grid-template-columns: 1fr;
+    min-height: clamp(18rem, 38vh, 27rem);
+    height: auto;
+}
+
+.contact-page-hero__inner {
+    width: min(100%, var(--section-width-wide));
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-page-hero__content {
+    width: min(100%, 58rem);
+    max-width: 58rem;
+    margin-left: 0;
+    margin-right: auto;
+    text-align: left;
+}
+
+.contact-page-hero__content>.eyebrow,
+.contact-page-hero__content>.section-title,
+.contact-page-hero__content>.section-intro {
+    margin-left: 0;
+    margin-right: auto;
+    text-align: left;
+}
+
+@media (min-width: 981px) {
+    .contact-page-hero__content>.section-title {
+        max-width: 58rem;
+        margin-top: 0;
+        margin-bottom: clamp(1.75rem, 3vw, 3rem);
+        font-size: clamp(3.5rem, 5.5vw, 6rem);
+        line-height: 0.98;
+    }
+    .contact-page-hero__content>.section-intro {
+        max-width: 46rem;
+        font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+        line-height: 1.6;
+    }
+    .contact-page-hero__content>.eyebrow {
+        font-size: clamp(0.78rem, 0.9vw, 0.95rem);
+    }
+}

@@ -1,0 +1,327 @@
+/* ================================================================
+   SYSTIR CSS: BASE
+   ----------------------------------------------------------------
+   APEX STRUCTURE NOTES
+   - This file handles global browser reset, body defaults, link states,
+     accessibility helpers, global typography helpers, and broad reusable
+     page defaults.
+   - It should stay broad and reusable across all SYSTIR pages.
+   - Component-specific styling belongs in components.css.
+   - Major sections are numbered 2.x for easier cross-file navigation.
+================================================================ */
+
+
+/* ================================================================
+   2.1 RESET / BOX MODEL
+   ----------------------------------------------------------------
+   Purpose:
+   - Makes sizing predictable across the site.
+   - Prevents default browser box-model behaviour from causing layout
+     surprises in component and page files.
+================================================================ */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+
+/* ================================================================
+   2.2 BODY DEFAULTS
+   ----------------------------------------------------------------
+   Purpose:
+   - Sets the global page background, typeface, colour, and reading rhythm.
+   - Keeps horizontal overflow hidden so decorative/full-width elements do
+     not create accidental sideways scrolling on mobile.
+================================================================ */
+
+body {
+    min-height: 100vh;
+    margin: 0;
+
+    background:
+        linear-gradient(var(--site-background-overlay), var(--site-background-overlay)),
+        var(--site-background-image) center top / cover fixed no-repeat;
+
+    color: var(--color-text-primary);
+
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    line-height: 1.65;
+    letter-spacing: 0.02em;
+
+    overflow-x: hidden;
+}
+
+
+/* ================================================================
+   2.3 MEDIA / FORM ELEMENT DEFAULTS
+   ----------------------------------------------------------------
+   Purpose:
+   - Keeps embedded media responsive by default.
+   - Prevents images from overflowing their containers.
+   - Makes form controls inherit the site typography.
+================================================================ */
+
+img,
+svg,
+iframe {
+    max-width: 100%;
+}
+
+img {
+    display: block;
+    height: auto;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+::selection {
+    background: var(--color-accent-primary);
+    color: var(--color-text-dark);
+}
+
+
+/* ================================================================
+   2.4 LINK STATES
+   ----------------------------------------------------------------
+   Purpose:
+   - Defines broad link behaviour.
+   - Preserves normal visited-link feedback for text links.
+   - Prevents button-like/component links from changing colour after being
+     visited by the browser.
+================================================================ */
+
+a {
+    color: inherit;
+}
+
+a:visited {
+    color: var(--color-accent-secondary);
+}
+
+a:hover,
+a:focus-visible {
+    color: var(--color-accent-primary);
+}
+
+
+/* Component links should remain visually stable after visiting. */
+
+.button:visited,
+.button2:visited,
+.button3:visited,
+.button5:visited,
+.button6:visited,
+.button7:visited,
+.button8:visited,
+.site-nav__link:visited,
+.media-tile:visited,
+.site-footer__socials a:visited {
+    color: inherit;
+}
+
+
+/* Media tile labels need their own visited colour because they sit inside
+   image tiles and should continue to read as small CTA labels. */
+
+.media-tile__label:visited {
+    color: var(--color-accent-soft);
+}
+
+
+/* Text links are allowed to show a visited state. */
+
+.text-link:visited {
+    color: var(--color-accent-secondary);
+}
+
+.text-link:hover,
+.text-link:focus-visible {
+    color: var(--color-accent-primary);
+}
+
+
+/* ================================================================
+   2.5 ACCESSIBILITY HELPERS
+   ----------------------------------------------------------------
+   Purpose:
+   - Provides a visible skip link for keyboard/screen-reader users.
+   - Gives all keyboard-focused elements a clear focus outline.
+================================================================ */
+
+.skip-link {
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 9999;
+
+    transform: translateY(-180%);
+
+    padding: var(--space-xs) var(--space-sm);
+
+    background: var(--color-accent-primary);
+    color: var(--color-text-dark);
+
+    font-size: var(--font-size-ui-sm);
+    font-weight: 900;
+    text-decoration: none;
+
+    transition: transform var(--transition-fast);
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
+:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 4px;
+}
+
+
+/* ================================================================
+   2.6 GLOBAL TYPOGRAPHY HELPERS
+   ----------------------------------------------------------------
+   Purpose:
+   - Provides reusable heading, intro, eyebrow, and section-heading styles.
+   - Keeps repeated typography decisions out of page-specific files.
+================================================================ */
+
+.eyebrow {
+    margin: 0 0 var(--space-sm);
+
+    color: var(--color-accent-primary);
+
+    font-size: var(--font-size-ui-sm);
+    font-weight: 900;
+    letter-spacing: 0.16em;
+    line-height: 1.25;
+    text-transform: uppercase;
+}
+
+
+/* Selected non-hero sections use the secondary accent for rhythm. */
+
+.feature:nth-of-type(even) .eyebrow,
+.media-preview .eyebrow {
+    color: var(--color-accent-secondary);
+}
+
+.section-title,
+.hero__title {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    letter-spacing: 0.04em;
+}
+
+.section-title {
+    margin: 0 0 var(--space-md);
+
+    color: var(--color-text-primary);
+
+    font-size: var(--font-size-title-md);
+    line-height: 1.08;
+}
+
+.section-intro {
+    max-width: 42.5rem;
+    margin: 0;
+
+    color: var(--color-accent-primary);
+
+    font-size: var(--font-size-body-lg);
+    line-height: 1.55;
+}
+
+.section-heading {
+    margin-bottom: var(--space-xl);
+}
+
+.section-heading--center {
+    text-align: center;
+}
+
+.section-heading--center .section-intro {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* ================================================================
+   2.7 TEXT LINK UNDERLINES
+   ----------------------------------------------------------------
+   Purpose:
+   - Gives text links and navigation links the same controlled underline
+     reveal without changing the broader link-state rules.
+================================================================ */
+
+.text-link {
+    position: relative;
+    display: inline-block;
+
+    color: var(--color-text-primary);
+
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.text-link::after,
+.site-nav__link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.25rem;
+
+    width: 100%;
+    height: 1px;
+
+    background: var(--color-accent-primary);
+
+    transform: scaleX(0);
+    transform-origin: right;
+
+    transition: transform var(--transition-medium);
+}
+
+.text-link:hover::after,
+.site-nav__link:hover::after,
+.site-nav__link.is-active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+
+/* ================================================================
+   2.8 GLOBAL STACKING CONTEXT
+   ----------------------------------------------------------------
+   Purpose:
+   - Keeps major readable page layers above fixed/decorative background
+     treatments.
+   - The old empty body ornament layer has been removed from tokens.css,
+     but this light stacking rule remains safe for future atmospherics.
+================================================================ */
+
+.site-header,
+main,
+.site-footer,
+.fullscreen-viewer {
+    position: relative;
+    z-index: 1;
+}

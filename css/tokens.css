@@ -1,0 +1,414 @@
+/* ================================================================
+   SYSTIR CSS: TOKENS
+   ----------------------------------------------------------------
+   APEX STRUCTURE NOTES
+   - This file is the design-system library.
+   - It defines fonts, spacing, layout values, motion values, asset paths,
+     and the parallel dark/light colour libraries.
+   - Component/page CSS should consume these variables rather than hard-coding
+     repeated values.
+   - Major sections are numbered 1.x for easier cross-file navigation.
+================================================================ */
+
+
+/* ================================================================
+   1.1 FONT IMPORTS
+   ----------------------------------------------------------------
+   Lato:
+   - Main body and heading font.
+
+   Libre Baskerville:
+   - Backup display serif.
+
+   Uncial Antiqua:
+   - Logo-like decorative fallback.
+
+   UnifrakturMaguntia:
+   - Decorative blackletter-style font used for first letters in selected
+     headings through .title-dropcap.
+================================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Libre+Baskerville:wght@400;700&family=Manufacturing+Consent&family=Monsieur+La+Doulaise&family=Uncial+Antiqua&family=UnifrakturMaguntia&display=swap");
+
+/* ================================================================
+   1.2 DESIGN TOKENS
+   ----------------------------------------------------------------
+   Purpose:
+   - Stores global non-colour variables.
+   - Theme colours live separately in body.theme-dark / body.theme-light.
+   - This keeps spacing, typography, sizing, motion, and image paths in
+     one predictable place.
+
+   Responsive strategy:
+   - rem/em are used for typography-linked spacing.
+   - clamp() is used where values should fluidly scale between mobile
+     and desktop.
+   - Percentages are mostly reserved for widths, not font sizes or
+     button padding.
+================================================================ */
+
+:root {
+    /* ------------------------------------------------------------
+       Font system
+    ------------------------------------------------------------ */
+    --font-body: "Lato", Arial, sans-serif;
+    --font-heading: "Lato", Arial, sans-serif;
+    --font-display: "Libre Baskerville", Georgia, serif;
+    --font-logo: "Uncial Antiqua", "Libre Baskerville", Georgia, serif;
+    --font-dropcap: "UnifrakturMaguntia", "Uncial Antiqua", Georgia, serif;
+    --font-dropcap2: "Monsieur La Doulaise", "UnifrakturMaguntia", "Uncial Antiqua", Georgia, serif;
+    --font-dropcap3: "Manufacturing Consent", "UnifrakturMaguntia", "Uncial Antiqua", Georgia, serif;
+    /* ------------------------------------------------------------
+       Fluid typography scale
+       ------------------------------------------------------------
+       Purpose:
+       - Gives headings, body text, and UI text a consistent responsive
+         scale.
+       - Components can reference these instead of hard-coding font sizes.
+    ------------------------------------------------------------ */
+    --font-size-ui-xs: clamp(0.68rem, 0.62rem + 0.18vw, 0.76rem);
+    --font-size-ui-sm: clamp(0.74rem, 0.68rem + 0.22vw, 0.84rem);
+    --font-size-ui-md: clamp(0.82rem, 0.76rem + 0.24vw, 0.92rem);
+    --font-size-body-sm: clamp(0.92rem, 0.88rem + 0.2vw, 1rem);
+    --font-size-body: clamp(1rem, 0.96rem + 0.25vw, 1.08rem);
+    --font-size-body-lg: clamp(1.08rem, 1rem + 0.45vw, 1.28rem);
+    --font-size-title-sm: clamp(1.65rem, 1.2rem + 2vw, 2.55rem);
+    --font-size-title-md: clamp(2rem, 1.35rem + 3vw, 3.6rem);
+    --font-size-title-lg: clamp(2.7rem, 1.6rem + 5vw, 5.4rem);
+    /* ------------------------------------------------------------
+       Spacing scale
+       ------------------------------------------------------------
+       Purpose:
+       - Global spacing values.
+       - These scale gently so sections and components breathe on desktop
+         without becoming cramped on mobile.
+    ------------------------------------------------------------ */
+    --space-2xs: clamp(0.28rem, 0.22rem + 0.25vw, 0.35rem);
+    --space-xs: clamp(0.45rem, 0.38rem + 0.35vw, 0.6rem);
+    --space-sm: clamp(0.65rem, 0.55rem + 0.45vw, 0.85rem);
+    --space-md: clamp(1rem, 0.85rem + 0.75vw, 1.35rem);
+    --space-lg: clamp(1.45rem, 1.15rem + 1.4vw, 2.15rem);
+    --space-xl: clamp(2.25rem, 1.6rem + 3vw, 3.75rem);
+    --space-2xl: clamp(3.5rem, 2.4rem + 5vw, 5.75rem);
+    --space-3xl: clamp(5rem, 3.4rem + 7vw, 8rem);
+    /* ------------------------------------------------------------
+       Layout scale
+       ------------------------------------------------------------
+       --container-width:
+       - Main readable website width.
+
+       --container-padding:
+       - Main edge spacing for header, footer, and sections.
+       - This must stay small enough on mobile to avoid squeezing content.
+
+       --hero-padding:
+       - Dedicated horizontal hero padding.
+       - Slightly more generous than normal sections on larger screens,
+         but still safe on mobile.
+
+       --section-padding-y:
+       - Default vertical rhythm for non-hero sections.
+
+       --section-padding-y-hero:
+       - Dedicated hero spacing, replacing older .section--spacious.
+    ------------------------------------------------------------ */
+    --container-width: 1120px;
+    --container-padding: clamp(1rem, 5vw, 5.5rem);
+    --hero-padding: clamp(1rem, 6vw, 7rem);
+    --section-padding-y: clamp(3.75rem, 8vw, 8rem);
+    --section-padding-y-hero: clamp(3.5rem, 7vw, 6rem);
+    /* ------------------------------------------------------------
+       Section width variants
+       ------------------------------------------------------------
+       Used by the simplified section library in layout.css.
+    ------------------------------------------------------------ */
+    --section-width-narrow: min(100%, clamp(18rem, 84vw, 47.5rem));
+    --section-width-reading: min(100%, clamp(18rem, 86vw, 55rem));
+    --section-width-standard: min(100%, clamp(18rem, 88vw, var(--container-width)));
+    --section-width-wide: min(100%, clamp(18rem, 90vw, 85rem));
+    /* ------------------------------------------------------------
+       Header / navbar sizing
+       ------------------------------------------------------------
+       Purpose:
+       - Keeps header spacing and logo sizing controlled from one place.
+       - The header can stay wide while content sections remain readable.
+    ------------------------------------------------------------ */
+    --header-height: clamp(4.5rem, 7vw, 5.4rem);
+    --header-padding-x: clamp(0.9rem, 2.5vw, 2rem);
+    --header-logo-width: clamp(8.25rem, 16vw, 13.75rem);
+    /* ------------------------------------------------------------
+       Button size system
+       ------------------------------------------------------------
+       Purpose:
+       - Lets all buttons scale consistently across mobile and desktop.
+       - Components should use these tokens rather than hard-coding
+         padding/font dimensions in each button class.
+    ------------------------------------------------------------ */
+    --button-min-height: clamp(2.65rem, 4.8vw, 3rem);
+    --button-padding-y: clamp(0.68rem, 1.2vw, 0.85rem);
+    --button-padding-x: clamp(0.95rem, 2.6vw, 1.55rem);
+    --button-font-size: clamp(0.74rem, 1.2vw, 0.86rem);
+    --button-letter-spacing: clamp(0.045em, 0.18vw, 0.08em);
+    --button-line-height: 1.15;
+    --button-compact-min-height: clamp(2.25rem, 4vw, 2.65rem);
+    --button-compact-padding-y: clamp(0.48rem, 1vw, 0.65rem);
+    --button-compact-padding-x: clamp(0.7rem, 2vw, 1rem);
+    /* ------------------------------------------------------------
+       Form / input size system
+       ------------------------------------------------------------
+       Purpose:
+       - Keeps search bars, selects, text inputs, and future contact form
+         controls consistent and mobile-safe.
+    ------------------------------------------------------------ */
+    --form-control-min-height: clamp(2.75rem, 5vw, 3rem);
+    --form-control-padding-y: clamp(0.68rem, 1.2vw, 0.85rem);
+    --form-control-padding-x: clamp(0.8rem, 2vw, 1rem);
+    --form-control-font-size: clamp(0.9rem, 1.4vw, 1rem);
+    /* ------------------------------------------------------------
+       Card / panel sizing
+       ------------------------------------------------------------
+       Purpose:
+       - Shared component dimensions for cards, CTA panels, and archive rows.
+       - Components can override locally when needed.
+    ------------------------------------------------------------ */
+    --panel-padding-sm: clamp(1rem, 3vw, 1.5rem);
+    --panel-padding-md: clamp(1.4rem, 4vw, 2.5rem);
+    --panel-padding-lg: clamp(2rem, 5vw, 4rem);
+    --card-gap-sm: clamp(0.75rem, 2vw, 1.25rem);
+    --card-gap-md: clamp(1rem, 3vw, 2rem);
+    --card-gap-lg: clamp(1.5rem, 5vw, 4rem);
+    /* ------------------------------------------------------------
+       Shape tokens
+    ------------------------------------------------------------ */
+    --radius-none: 0;
+    /* ------------------------------------------------------------
+       Motion tokens
+    ------------------------------------------------------------ */
+    --transition-fast: 180ms ease;
+    --transition-medium: 320ms ease;
+    --transition-slow: 650ms ease;
+    /* ------------------------------------------------------------
+       Decorative asset paths
+       ------------------------------------------------------------
+       Important path rule:
+       - This CSS file is inside /css/.
+       - Therefore image paths go up one level using ../
+    ------------------------------------------------------------ */
+    --hero-image: url("../images/gallery/systir-hero-image.png");
+}
+
+
+/* ================================================================
+   1.3 DARK THEME COLOUR LIBRARY
+   ----------------------------------------------------------------
+   Purpose:
+   - Dark mode is the default.
+   - The variable names must match the light theme exactly.
+   - Layout/component CSS should not care whether the site is dark or light;
+     it simply consumes these variable names.
+================================================================ */
+
+body,
+body.theme-dark {
+    /* ------------------------------------------------------------
+       Core backgrounds
+    ------------------------------------------------------------ */
+    --color-bg-primary: #070d0b;
+    --color-bg-secondary: #0d1714;
+    --color-bg-tertiary: #13221e;
+    /* ------------------------------------------------------------
+       Surfaces
+    ------------------------------------------------------------ */
+    --color-surface-primary: #101a17;
+    --color-surface-secondary: #182823;
+    --color-surface-contrast: #ede6d7;
+    /* ------------------------------------------------------------
+       Text
+    ------------------------------------------------------------ */
+    --color-text-primary: #f3eadb;
+    --color-text-secondary: #d6c9b8;
+    --color-text-muted: #a9998b;
+    --color-text-dark: #0a100e;
+    /* ------------------------------------------------------------
+       Accent system
+    ------------------------------------------------------------ */
+    --color-accent-primary: #c7a35a;
+    --color-accent-secondary: #6d1b34;
+    --color-accent-tertiary: #17a085;
+    --color-accent-soft: #fdce5f;
+    /* ------------------------------------------------------------
+       Functional colours
+    ------------------------------------------------------------ */
+    --color-navbar-bg: #0b1a1700;
+    --color-navbar-border: rgba(199, 163, 90, 0.28);
+    --color-footer-bg: #060a09;
+    --color-button-bg: transparent;
+    --color-button-border: var(--color-accent-primary);
+    --color-button-hover-bg: var(--color-accent-primary);
+    --color-button-hover-text: var(--color-text-dark);
+    --color-focus: var(--color-accent-soft);
+    /* ------------------------------------------------------------
+       Functional borders
+    ------------------------------------------------------------ */
+    --border-thin: 1px solid rgba(199, 163, 90, 0.34);
+    --border-strong: 1px solid rgba(199, 163, 90, 0.75);
+    --navbar-border-bottom: 2px solid rgba(199, 163, 90, 0.55);
+    /* ------------------------------------------------------------
+       Page atmosphere
+    ------------------------------------------------------------ */
+    --bg-glow-primary: rgba(31, 93, 81, 0.36);
+    --bg-glow-secondary: rgba(111, 51, 69, 0.26);
+    --bg-glow-tertiary: rgba(199, 163, 90, 0.14);
+    --bg-gradient-start: #070d0b;
+    --bg-gradient-mid: #0d1714;
+    --bg-gradient-end: #11100e;
+    /* ------------------------------------------------------------
+       Hero atmosphere
+    ------------------------------------------------------------ */
+    --hero-overlay-left: rgba(7, 13, 11, 0.96);
+    --hero-overlay-mid: rgba(7, 13, 11, 0.78);
+    --hero-overlay-right: rgba(7, 13, 11, 0.42);
+    --hero-vignette: rgba(0, 0, 0, 0.34);
+    /* ------------------------------------------------------------
+       Site background atmosphere
+    ------------------------------------------------------------ */
+    --site-background-image: url("../images/wallpaper/systir-bg-dark.jpg");
+    --site-background-overlay: rgba(7, 13, 11, 0.76);
+}
+
+
+/* ================================================================
+   1.4 LIGHT THEME COLOUR LIBRARY
+   ----------------------------------------------------------------
+   Purpose:
+   - Same variable names as dark mode.
+   - Only the values change.
+   - This makes the theme system predictable and easy to maintain.
+================================================================ */
+
+body.theme-light {
+    /* ------------------------------------------------------------
+       Core backgrounds
+       ------------------------------------------------------------
+       Purpose:
+       - These are the broad page/background colours.
+       - Slightly separated so stacked elements do not collapse into the
+         same beige tone.
+    ------------------------------------------------------------ */
+    --color-bg-primary: #efe4d4;
+    --color-bg-secondary: #dfcfb8;
+    --color-bg-tertiary: #cdb798;
+    /* ------------------------------------------------------------
+       Surfaces
+       ------------------------------------------------------------
+       Purpose:
+       - Used for cards, panels, gallery blocks, and raised elements.
+       - These sit clearly above the page background.
+    ------------------------------------------------------------ */
+    --color-surface-primary: #f8efe2;
+    --color-surface-secondary: #e8d4b9;
+    --color-surface-contrast: #111714;
+    /* ------------------------------------------------------------
+       Text
+       ------------------------------------------------------------
+       Purpose:
+       - Stronger dark text for readability on warm backgrounds.
+       - Muted text remains softer but not washed out.
+    ------------------------------------------------------------ */
+    --color-text-primary: #17140f;
+    --color-text-secondary: #3f3429;
+    --color-text-muted: #75614f;
+    --color-text-dark: #dadada;
+    /* ------------------------------------------------------------
+       Accent system
+       ------------------------------------------------------------
+       Purpose:
+       - Gold is slightly deeper for contrast.
+       - Wine remains the stronger visited/secondary accent.
+       - Green is darkened slightly so it reads clearly in light mode.
+    ------------------------------------------------------------ */
+    --color-accent-primary: #8f6726;
+    --color-accent-secondary: #813044;
+    --color-accent-tertiary: #13483f;
+    --color-accent-soft: #fff1c2;
+    /* ------------------------------------------------------------
+       Functional colours
+       ------------------------------------------------------------
+       Purpose:
+       - Navbar remains visually light/transparent while still using
+         shared navbar border tokens.
+    ------------------------------------------------------------ */
+    --color-navbar-bg: rgba(230, 215, 194, 0);
+    --color-navbar-border: rgba(129, 48, 68, 0.36);
+    --color-footer-bg: #17110f;
+    --color-button-bg: transparent;
+    --color-button-border: var(--color-accent-secondary);
+    --color-button-hover-bg: var(--color-accent-secondary);
+    --color-button-hover-text: #fff4e6;
+    --color-focus: var(--color-accent-secondary);
+    /* ------------------------------------------------------------
+       Functional borders
+       ------------------------------------------------------------
+       Purpose:
+       - Borders are strong enough that cards/buttons do not disappear
+         into pale cream surfaces.
+    ------------------------------------------------------------ */
+    --border-thin: 1px solid rgba(199, 163, 90, 0.34);
+    --border-strong: 1px solid rgba(199, 163, 90, 0.75);
+    --navbar-border-bottom: 2px solid rgba(199, 163, 90, 0.55);
+    /* ------------------------------------------------------------
+       Page atmosphere
+       ------------------------------------------------------------
+       Purpose:
+       - The gradient has movement from warm cream to parchment to muted
+         rose-beige, reducing the flat stacked-beige effect.
+    ------------------------------------------------------------ */
+    --bg-glow-primary: rgba(19, 72, 63, 0.14);
+    --bg-glow-secondary: rgba(129, 48, 68, 0.16);
+    --bg-glow-tertiary: rgba(143, 103, 38, 0.14);
+    --bg-gradient-start: #f1e5d4;
+    --bg-gradient-mid: #dfcfb8;
+    --bg-gradient-end: #ead8c2;
+    /* ------------------------------------------------------------
+       Hero atmosphere
+       ------------------------------------------------------------
+       Purpose:
+       - Keeps the hero readable in light mode while still allowing the
+         image to show through.
+    ------------------------------------------------------------ */
+    --hero-overlay-left: rgba(239, 228, 212, 0.94);
+    --hero-overlay-mid: rgba(239, 228, 212, 0.76);
+    --hero-overlay-right: rgba(239, 228, 212, 0.42);
+    --hero-vignette: rgba(129, 48, 68, 0.14);
+    /* ------------------------------------------------------------
+       Site background atmosphere
+       ------------------------------------------------------------
+       Purpose:
+       - Sets the global background image and overlay used by base.css.
+    ------------------------------------------------------------ */
+    --site-background-image: url("../images/wallpaper/systir-bg-light.jpg");
+    --site-background-overlay: rgba(239, 228, 212, 0.74);
+}
+
+
+/* ================================================================
+   1.5 DECORATIVE FIRST-LETTER TITLES
+   ----------------------------------------------------------------
+   Purpose:
+   - Applies a blackletter / medieval-style first letter to selected
+     headings only.
+   - Uses UnifrakturMaguntia from Google Fonts.
+   - Add .title-dropcap to any heading where this should appear.
+
+   Example:
+   <h2 class="section-title title-dropcap">Performers and collaborators</h2>
+================================================================ */
+
+.title-dropcap::first-letter {
+    font-family: var(--font-dropcap3);
+    font-size: 1.45em;
+    line-height: 0.78;
+    color: var(--color-text-primary);
+    letter-spacing: 0.015em;
+}
+

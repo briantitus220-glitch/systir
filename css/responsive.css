@@ -1,0 +1,1024 @@
+/* ================================================================
+   6.0 FILE OVERVIEW
+   ----------------------------------------------------------------
+   APEX STRUCTURE NOTES
+   - This file contains responsive overrides.
+   - It is loaded last so it can safely override layout, component, and
+     homepage rules for smaller screens.
+   - Deprecated section classes have been removed from this file.
+
+   Responsive strategy:
+   - Base CSS should already be flexible through clamp/rem/em tokens.
+   - This file should mostly change layout direction, column counts,
+     stacking behaviour, and mobile-specific readability.
+================================================================ */
+
+
+/* ================================================================
+   6.1 TABLET / SMALL DESKTOP RESPONSIVE RULES
+   ----------------------------------------------------------------
+   Breakpoint:
+   - 980px and below.
+
+   Purpose:
+   - Switches the main navigation to a collapsible mobile menu.
+   - Stacks hero and feature grids into one column.
+   - Adjusts media grids and footer layout.
+================================================================ */
+
+@media (max-width: 980px) {
+    /* ------------------------------------------------------------
+       Mobile navigation trigger
+       ------------------------------------------------------------
+       Purpose:
+       - Keeps the hamburger anchored to the far-right header column.
+       - The nav itself becomes a fixed dropdown, so explicit grid
+         placement prevents the toggle from sitting beside the logo.
+    ------------------------------------------------------------ */
+    .site-header__inner {
+        grid-template-columns: auto 1fr auto;
+    }
+    .site-header__brand {
+        grid-column: 1;
+    }
+    .site-header__toggle {
+        display: block;
+        grid-column: 3;
+        justify-self: end;
+    }
+    /* ------------------------------------------------------------
+       Collapsible navigation panel
+    ------------------------------------------------------------ */
+    .site-nav {
+        grid-column: 1 / -1;
+        justify-self: end;
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        right: 0;
+        display: grid;
+        max-height: 0;
+        overflow: hidden;
+        background: var(--color-surface-secondary);
+        border-bottom: var(--border-thin);
+        transition: max-height var(--transition-medium);
+    }
+    .site-nav.is-open {
+        max-height: min(76vh, 32rem);
+    }
+    .site-nav__list {
+        display: grid;
+        gap: 0;
+        padding: var(--space-md) var(--container-padding) 0;
+    }
+    .site-nav__theme {
+        display: flex;
+        justify-content: center;
+        margin: var(--space-sm) var(--container-padding) var(--space-md);
+        padding-top: var(--space-sm);
+        border-top: 1px solid color-mix(in srgb, var(--color-accent-primary) 24%, transparent);
+    }
+    .site-nav__link {
+        display: block;
+        padding: var(--space-sm) 0;
+        font-size: var(--font-size-ui-md);
+    }
+    /* ------------------------------------------------------------
+       Hero and feature stacking
+       ------------------------------------------------------------
+       The homepage hero and feature sections become one-column layouts.
+    ------------------------------------------------------------ */
+    .hero,
+    .feature,
+    .feature--media-left,
+    .feature--media-right {
+        grid-template-columns: 1fr;
+    }
+    .hero {
+        min-height: auto;
+        background: linear-gradient( 180deg, var(--hero-overlay-left), var(--hero-overlay-mid)), radial-gradient( circle at 80% 20%, rgba(199, 163, 90, 0.18), transparent 26rem), linear-gradient( var(--hero-vignette), var(--hero-vignette)), var(--hero-image) center / cover no-repeat, var(--color-bg-secondary);
+    }
+    .hero__media,
+    .feature__text {
+        width: 100%;
+        max-width: 100%;
+    }
+    .hero__media {
+        width: min(100%, 47.5rem);
+        max-width: 100%;
+    }
+    /* ------------------------------------------------------------
+       Feature media order
+       ------------------------------------------------------------
+       Purpose:
+       - Keeps text before media on smaller screens where appropriate.
+    ------------------------------------------------------------ */
+    .feature--media-left .gallery-card {
+        order: 2;
+    }
+    .feature--media-left .feature__text {
+        order: 1;
+    }
+    /* ------------------------------------------------------------
+       Media archive grid
+    ------------------------------------------------------------ */
+    .media-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .media-tile--large,
+    .media-tile--wide {
+        grid-column: span 2;
+    }
+    /* ------------------------------------------------------------
+       General members list
+       ------------------------------------------------------------
+       Used on the full members page and other wider contexts.
+    ------------------------------------------------------------ */
+    .members-list {
+        grid-template-columns: repeat(2, minmax(min(100%, 9rem), 1fr));
+        width: min(100%, 42.5rem);
+    }
+    /* ------------------------------------------------------------
+       Homepage feature-section members list
+       ------------------------------------------------------------
+       The homepage members list sits beside a gallery at desktop widths,
+       so it uses a narrower layout before stacking.
+    ------------------------------------------------------------ */
+    .feature .members-list {
+        grid-template-columns: repeat(2, minmax(min(100%, 9rem), 1fr));
+        width: min(100%, 42.5rem);
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .feature .members-list li:last-child {
+        grid-column: auto;
+    }
+    /* ------------------------------------------------------------
+       Footer stacking
+    ------------------------------------------------------------ */
+    .site-footer__inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .site-footer__socials {
+        justify-content: center;
+    }
+    .site-footer__credit {
+        justify-self: center;
+    }
+}
+
+
+/* ================================================================
+   6.2 HOMEPAGE MOBILE IMAGE BREATHING ROOM
+   ----------------------------------------------------------------
+   Purpose:
+   - Makes homepage images/media feel more intentional on smaller screens.
+   - Prevents gallery/video/media blocks from occupying the full screen width.
+   - Keeps the centre of the screen active while leaving clear visual edges.
+
+   Notes:
+   - 76vw means the image block uses about 76% of the viewport width.
+   - On very small phones, this relaxes slightly so images do not become
+     too narrow.
+================================================================ */
+
+@media (max-width: 720px) {
+    .homepage .hero__media,
+    .homepage .video-card,
+    .homepage .media-grid {
+        width: min(100%, 70vw);
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .homepage .video-card {
+        min-height: clamp(15rem, 62vw, 20rem);
+    }
+    .homepage .media-grid {
+        justify-self: center;
+    }
+}
+
+
+/* ================================================================
+   6.3 VERY SMALL HOMEPAGE IMAGE SAFETY
+   ----------------------------------------------------------------
+   Purpose:
+   - Prevents images from becoming too tiny on narrow phones.
+   - Still keeps visible edges, but allows a little more width.
+================================================================ */
+
+@media (max-width: 420px) {
+    .homepage .hero__media,
+    .homepage .video-card,
+    .homepage .feature .gallery-card,
+    .homepage .feature .gallery-card--portrait,
+    .homepage .media-grid {
+        width: min(100%, 84vw);
+    }
+    .homepage .video-card {
+        min-height: clamp(14rem, 70vw, 18rem);
+    }
+}
+
+
+/* ================================================================
+   6.4 MEDIUM MOBILE / LARGE PHONE RULES
+   ----------------------------------------------------------------
+   Breakpoint:
+   - 720px and below.
+
+   Purpose:
+   - Makes sections, feature layouts, live events, and viewer controls
+     more comfortable on phone-sized screens.
+================================================================ */
+
+@media (max-width: 720px) {
+    /* ------------------------------------------------------------
+       Section rhythm
+       ------------------------------------------------------------
+       Purpose:
+       - Uses tokenised spacing instead of fixed mobile padding.
+       - Keeps sections readable without creating huge vertical gaps.
+    ------------------------------------------------------------ */
+    .section {
+        width: 100%;
+        padding-left: var(--container-padding);
+        padding-right: var(--container-padding);
+        padding-top: clamp(3.25rem, 10vw, 4.75rem);
+        padding-bottom: clamp(3.25rem, 10vw, 4.75rem);
+    }
+    .section-hero {
+        padding-left: var(--container-padding);
+        padding-right: var(--container-padding);
+        padding-top: clamp(3rem, 9vw, 4.5rem);
+        padding-bottom: clamp(3rem, 9vw, 4.5rem);
+    }
+    .section>* {
+        width: 100%;
+        max-width: 100%;
+    }
+    /* ------------------------------------------------------------
+       Typography safety
+       ------------------------------------------------------------
+       Purpose:
+       - Prevents headings/buttons from breaking into awkward fragments.
+    ------------------------------------------------------------ */
+    .section-heading,
+    .section-heading--center {
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+    }
+    .section-title {
+        max-width: 100%;
+        font-size: clamp(1.85rem, 10vw, 3rem);
+        line-height: 1.08;
+        overflow-wrap: normal;
+        word-break: normal;
+        hyphens: none;
+    }
+    .section-intro {
+        max-width: min(100%, 42rem);
+        margin-left: auto;
+        margin-right: auto;
+        font-size: var(--font-size-body);
+        line-height: 1.6;
+        overflow-wrap: normal;
+        word-break: normal;
+        hyphens: none;
+    }
+    /* ------------------------------------------------------------
+       Fullscreen viewer controls
+    ------------------------------------------------------------ */
+    .fullscreen-viewer__nav {
+        width: clamp(2.5rem, 11vw, 2.875rem);
+        height: clamp(2.5rem, 11vw, 2.875rem);
+        font-size: clamp(1.6rem, 7vw, 2rem);
+    }
+    .fullscreen-viewer__nav--prev {
+        left: var(--space-sm);
+    }
+    .fullscreen-viewer__nav--next {
+        right: var(--space-sm);
+    }
+    .fullscreen-viewer__close {
+        top: var(--space-sm);
+        right: var(--space-sm);
+    }
+    .fullscreen-viewer__caption {
+        max-width: calc(100vw - 2rem);
+    }
+    /* ------------------------------------------------------------
+       Responsive live events
+       ------------------------------------------------------------
+       Purpose:
+       - Converts the desktop table-like event archive into readable
+         stacked mobile cards.
+    ------------------------------------------------------------ */
+    .live-events-filter__inner {
+        grid-template-columns: 1fr;
+    }
+    .live-events__year-title,
+    .live-events__month-title {
+        transform: none;
+    }
+    .live-events__list-header {
+        display: none;
+    }
+    .live-event {
+        grid-template-columns: 1fr;
+        gap: var(--space-sm);
+    }
+    .live-event__date,
+    .live-event__time,
+    .live-event__availability,
+    .live-event__action {
+        justify-content: flex-start;
+    }
+    .live-event__date::before,
+    .live-event__time::before,
+    .live-event__availability::before,
+    .live-event__action::before {
+        display: block;
+        margin-bottom: var(--space-2xs);
+        color: var(--color-text-muted);
+        font-size: var(--font-size-ui-xs);
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+    }
+    .live-event__date::before {
+        content: "Date";
+    }
+    .live-event__time::before {
+        content: "Time";
+    }
+    .live-event__availability::before {
+        content: "Availability";
+    }
+    .live-event__action::before {
+        content: "Action";
+    }
+    .live-event__action {
+        display: grid;
+        justify-items: start;
+    }
+}
+
+
+/* ================================================================
+   6.5 MOBILE RESPONSIVE RULES
+   ----------------------------------------------------------------
+   Breakpoint:
+   - 620px and below.
+
+   Purpose:
+   - Tightens header height.
+   - Stacks buttons only where full-width mobile actions are useful.
+   - Converts media grid to one column.
+================================================================ */
+
+@media (max-width: 620px) {
+    /* ------------------------------------------------------------
+       Header and mobile nav vertical positioning
+    ------------------------------------------------------------ */
+    .site-header__inner {
+        min-height: var(--header-height);
+        gap: var(--space-sm);
+    }
+    .site-nav {
+        top: var(--header-height);
+    }
+    /* ------------------------------------------------------------
+       Hero text sizing
+    ------------------------------------------------------------ */
+    .hero__title {
+        font-size: clamp(2.4rem, 16vw, 4.2rem);
+    }
+    /* ------------------------------------------------------------
+       Action button stacking
+       ------------------------------------------------------------
+       Purpose:
+       - Buttons only become full width inside action groups.
+       - This avoids making small inline/icon buttons unnecessarily wide.
+    ------------------------------------------------------------ */
+    .hero__actions,
+    .cta__actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-sm);
+        align-items: stretch;
+        width: min(100%, 22rem);
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .hero__actions .button,
+    .hero__actions .button2,
+    .hero__actions .button3,
+    .hero__actions .button4,
+    .hero__actions .button5,
+    .hero__actions .button6,
+    .hero__actions .button7,
+    .hero__actions .button8,
+    .cta__actions .button,
+    .cta__actions .button2,
+    .cta__actions .button3,
+    .cta__actions .button4,
+    .cta__actions .button5,
+    .cta__actions .button6,
+    .cta__actions .button7,
+    .cta__actions .button8 {
+        width: 100%;
+    }
+    /* ------------------------------------------------------------
+       Media archive grid
+    ------------------------------------------------------------ */
+    .media-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: clamp(13rem, 58vw, 16rem);
+    }
+    .media-tile--large,
+    .media-tile--wide {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+    /* ------------------------------------------------------------
+       Contact / booking CTA
+       ------------------------------------------------------------
+       Purpose:
+       - Prevents the shared contact CTA from collapsing into a narrow
+         unreadable column on phone screens.
+    ------------------------------------------------------------ */
+    #contactSection {
+        width: 100%;
+        max-width: 100%;
+    }
+    .cta {
+        width: 100%;
+        text-align: center;
+    }
+    .cta__inner {
+        width: 100%;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        padding: var(--panel-padding-md);
+    }
+    .cta__inner .section-title {
+        width: 100%;
+        max-width: 100%;
+        font-size: clamp(1.85rem, 10vw, 2.85rem);
+        line-height: 1.08;
+        text-align: center;
+        overflow-wrap: normal;
+        word-break: normal;
+        hyphens: none;
+    }
+    .cta__inner p:not(.eyebrow) {
+        width: 100%;
+        max-width: 36rem;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: var(--font-size-body);
+        line-height: 1.65;
+        text-align: center;
+        overflow-wrap: normal;
+        word-break: normal;
+        hyphens: none;
+    }
+}
+
+
+/* ================================================================
+   6.6 VERY SMALL MOBILE SAFETY RULES
+   ----------------------------------------------------------------
+   Breakpoint:
+   - 420px and below.
+
+   Purpose:
+   - Protects against tiny phone widths where letter spacing and
+     uppercase labels can become cramped.
+================================================================ */
+
+@media (max-width: 420px) {
+    .button,
+    .button2,
+    .button3,
+    .button4,
+    .button5,
+    .button6,
+    .button7,
+    .button8,
+    .live-event__action-link,
+    .live-event__action-button,
+    .live-event__action-label,
+    .media-tile__label {
+        letter-spacing: 0.045em;
+    }
+    .eyebrow,
+    .live-events-filter__label,
+    .live-events__list-header,
+    .live-event__country {
+        letter-spacing: 0.09em;
+    }
+    .section-title {
+        font-size: clamp(1.7rem, 11vw, 2.65rem);
+    }
+    .live-event {
+        padding: var(--panel-padding-sm);
+    }
+}
+
+
+/* ================================================================
+   6.7 RESPONSIVE LIVE EVENT DETAILS DROPDOWN
+================================================================ */
+
+@media (max-width: 720px) {
+    .live-event-details {
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: -0.1rem;
+    }
+    .live-event-details__inner {
+        padding: var(--panel-padding-sm);
+    }
+    .live-event-details__text {
+        font-size: var(--font-size-body-sm);
+        line-height: 1.65;
+    }
+}
+
+
+/* ================================================================
+   6.8 MOBILE NAVIGATION CENTRING
+   ----------------------------------------------------------------
+   Purpose:
+   - Centres the mobile dropdown navigation links.
+   - Keeps the header row split normally, but makes the opened menu feel
+     deliberate and balanced.
+================================================================ */
+
+@media (max-width: 980px) {
+    .site-nav__list {
+        justify-items: center;
+        text-align: center;
+    }
+    .site-nav__item {
+        width: 100%;
+        text-align: center;
+    }
+    .site-nav__link {
+        width: max-content;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+}
+
+
+/* ================================================================
+   6.9 HOMEPAGE MEDIA / GALLERY CENTRING
+   ----------------------------------------------------------------
+   Purpose:
+   - Keeps homepage media cards visually centred on mobile.
+   - Prevents image/gallery blocks from feeling flush to one side.
+   - Gives image content a deliberate centre-column width.
+================================================================ */
+
+@media (max-width: 720px) {
+    .homepage .gallery-card,
+    .homepage .gallery-card--portrait,
+    .homepage .media-grid,
+    .homepage .video-card {
+        width: min(calc(100vw - clamp(3rem, 14vw, 5rem)), 24rem);
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        justify-self: center;
+        place-self: center;
+    }
+}
+
+@media (max-width: 420px) {
+    .homepage .gallery-card,
+    .homepage .gallery-card--portrait,
+    .homepage .media-grid,
+    .homepage .video-card {
+        width: min(calc(100vw - clamp(2rem, 10vw, 3.5rem)), 22rem);
+    }
+}
+
+
+/* ================================================================
+   6.10 PAGE TITLE WIDTH CONTROL
+   ----------------------------------------------------------------
+   Purpose:
+   - Keeps large page titles inside a comfortable mobile reading width.
+================================================================ */
+
+@media (max-width: 720px) {
+    #page-title {
+        width: min(100%, 86vw);
+    }
+}
+
+
+/* ================================================================
+   6.11 SECTION 3 MEMBERS MOBILE GRID
+   ----------------------------------------------------------------
+   Purpose:
+   - Centres the complete Section 3 members block on mobile.
+   - Keeps the list as a balanced two-column grid on normal phones.
+   - Falls back to one column only on very narrow screens.
+   - Removes earlier duplicate members-list overrides so alignment is
+     controlled from one predictable place.
+================================================================ */
+
+@media (max-width: 720px) {
+    .homepage .feature.section3 {
+        width: min(calc(100vw - clamp(2rem, 10vw, 4rem)), 24rem);
+        margin-inline: auto;
+        padding-inline: 0;
+        justify-items: center;
+    }
+    .homepage .feature.section3 .feature__text {
+        display: grid;
+        justify-items: center;
+        width: 100%;
+        max-width: 100%;
+        margin-inline: auto;
+        text-align: center;
+    }
+    .homepage .feature.section3 .feature__text>p {
+        width: min(100%, 32rem);
+        margin-inline: auto;
+    }
+    .homepage .feature.section3 .members-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-sm);
+        width: 100%;
+        max-width: 100%;
+        margin: var(--space-md) auto 0;
+        padding: 0;
+        list-style: none;
+        justify-items: stretch;
+    }
+    .homepage .feature.section3 .members-list li {
+        width: 100%;
+        min-width: 0;
+        margin: 0;
+        padding: 0;
+    }
+    .homepage .feature.section3 .members-list .button5 {
+        display: flex;
+        width: 100%;
+        min-width: 0;
+        min-height: clamp(3.25rem, 9vw, 3.85rem);
+        margin: 0;
+        padding: clamp(0.75rem, 2.2vw, 0.95rem) clamp(0.75rem, 2.6vw, 1rem);
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        white-space: normal;
+        overflow-wrap: normal;
+        word-break: normal;
+    }
+}
+
+@media (max-width: 390px) {
+    .homepage .feature.section3 {
+        width: min(calc(100vw - 2rem), 20rem);
+    }
+    .homepage .feature.section3 .members-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ------------------------------------------------------------
+   Responsive collective media carousel frame
+   ------------------------------------------------------------
+   Purpose:
+   - Keeps the single/stacked collective gallery elegant on tablets
+     and phones.
+   - The slide structure stays the same; only the frame height and
+     spacing are adjusted.
+------------------------------------------------------------ */
+
+@media (max-width: 980px) {
+    .media-gallery-frame {
+        width: min(calc(100vw - clamp(2rem, 8vw, 5rem)), 62rem);
+    }
+    .media-gallery-frame__viewport {
+        height: clamp(30rem, 72vw, 40rem);
+    }
+    .media-gallery-frame__set {
+        gap: var(--space-sm);
+        padding: var(--space-sm);
+    }
+}
+
+@media (max-width: 620px) {
+    .media-gallery-frame {
+        width: min(calc(100vw - clamp(1.5rem, 8vw, 3rem)), 100%);
+    }
+    .media-gallery-frame__viewport {
+        height: clamp(34rem, 130vw, 46rem);
+    }
+    .media-gallery-frame__set {
+        gap: var(--space-xs);
+        padding: var(--space-xs);
+    }
+    .media-gallery-frame__caption {
+        left: var(--space-xs);
+        bottom: var(--space-xs);
+        max-width: calc(100% - 2 * var(--space-xs));
+        padding: var(--space-xs);
+    }
+    .media-gallery-frame__title {
+        font-size: clamp(0.95rem, 4vw, 1.12rem);
+    }
+}
+
+
+/* ================================================================
+   6.13 RESPONSIVE MEDIA PAGE VIDEO GALLERY
+   ----------------------------------------------------------------
+   Purpose:
+   - Reduces the YouTube video gallery from 3 columns to 2 columns,
+     then 1 column on phones.
+   - Keeps the video cards centred and comfortably sized.
+================================================================ */
+
+@media (max-width: 980px) {
+    .media-video-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: min(100%, 56rem);
+    }
+}
+
+@media (max-width: 620px) {
+    .media-video-grid {
+        grid-template-columns: 1fr;
+        width: min(100%, 86vw);
+        gap: var(--space-sm);
+    }
+    .media-video-card {
+        padding: var(--space-xs);
+    }
+}
+
+
+/* ================================================================
+   6.14 RESPONSIVE MEDIA VIDEO DESCRIPTIONS
+   ----------------------------------------------------------------
+   Purpose:
+   - Prevents widened video description boxes from overflowing on phones.
+   - Removes the desktop overhang so text panels stay inside the screen.
+================================================================ */
+
+@media (max-width: 620px) {
+    .media-video-card__description {
+        --media-video-description-extra: 0rem;
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+
+/* ================================================================
+   6.15 HOMEPAGE HERO MID-SCREEN FLEX LAYOUT
+   ----------------------------------------------------------------
+   Purpose:
+   - Prevents the homepage hero from stacking too early.
+   - Uses available tablet / mid-screen width more meaningfully.
+   - Keeps the text and media separated with space-between.
+   - Falls back to the existing stacked mobile layout below 720px.
+================================================================ */
+
+@media (min-width: 721px) and (max-width: 980px) {
+    .homepage .hero {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: clamp(2rem, 5vw, 4rem);
+    }
+    .homepage .hero__content,
+    .homepage .hero__text {
+        flex: 0 1 min(52%, 34rem);
+        max-width: 34rem;
+    }
+    .homepage .hero__media {
+        flex: 0 1 min(42%, 30rem);
+        width: min(42vw, 30rem);
+        max-width: 30rem;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+
+/* ================================================================
+   6.16 MEMBERS HERO RESPONSIVE LAYOUT
+   ----------------------------------------------------------------
+   Purpose:
+   - Keeps the members hero balanced on tablets and phones.
+   - Stacks the directory panel beneath the text before the layout becomes
+     cramped.
+================================================================ */
+
+@media (max-width: 980px) {
+    .members-hero {
+        min-height: auto;
+        background-position: center;
+    }
+    .members-hero__inner {
+        grid-template-columns: 1fr;
+        align-items: start;
+    }
+    .members-hero__content {
+        max-width: 42rem;
+    }
+    .members-hero__panel {
+        justify-self: start;
+        width: min(100%, 30rem);
+    }
+}
+
+@media (max-width: 620px) {
+    .members-hero {
+        text-align: left;
+    }
+    .members-hero__panel {
+        width: 100%;
+        padding: var(--panel-padding-sm);
+    }
+}
+
+
+/* ================================================================
+   6.17 RESPONSIVE NEWS PAGE EDITORIAL FEED
+   ----------------------------------------------------------------
+   Purpose:
+   - Reduces alternating news rows to one column on smaller screens.
+   - Keeps media centred.
+   - Justifies paragraph text on both sides as requested.
+================================================================ */
+
+@media (max-width: 980px) {
+    .news-story,
+    .news-story--media-left {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .news-story--media-left .news-story__media,
+    .news-story--media-left .news-story__content {
+        grid-column: auto;
+        grid-row: auto;
+    }
+    .news-story__content {
+        order: 1;
+        width: 100%;
+    }
+    .news-story__media {
+        order: 2;
+        width: 100%;
+    }
+    .news-story__title,
+    .news-story__content p:not(.eyebrow) {
+        max-width: 100%;
+    }
+    .news-story__content p:not(.eyebrow) {
+        text-align: justify;
+        text-justify: inter-word;
+    }
+    .news-story__media .media-video-card__frame,
+    .news-story__image {
+        width: min(100%, 42rem);
+    }
+    .news-story__actions {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 620px) {
+    .news-feed {
+        gap: clamp(3rem, 14vw, 5rem);
+    }
+    .news-story {
+        padding-top: var(--space-lg);
+        padding-bottom: var(--space-lg);
+    }
+    .news-story__content p:not(.eyebrow) {
+        line-height: 1.68;
+    }
+    .news-story__actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        width: min(100%, 22rem);
+    }
+    .news-story__actions .button4 {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+
+/* ================================================================
+   6.18 RESPONSIVE CONTACT PAGE
+   ----------------------------------------------------------------
+   Purpose:
+   - Stacks the visual and form panels on tablets and phones.
+   - Keeps controls readable and touch-friendly.
+   - Preserves deliberate screen-edge breathing room.
+================================================================ */
+
+@media (max-width: 980px) {
+    .contact-form-layout {
+        grid-template-columns: 1fr;
+        width: min(100%, 48rem);
+    }
+    .contact-form-visual {
+        min-height: clamp(22rem, 62vw, 34rem);
+    }
+    .contact-form-panel {
+        width: 100%;
+    }
+}
+
+@media (max-width: 720px) {
+    .contact-page-hero__content {
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+    }
+    .contact-page-hero__content>.eyebrow,
+    .contact-page-hero__content>.section-title,
+    .contact-page-hero__content>.section-intro {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+    .contact-form-layout {
+        width: min(100%, 88vw);
+    }
+    .contact-form-panel {
+        padding: clamp(1rem, 5vw, 1.5rem);
+    }
+    .contact-form-panel>.section-heading {
+        text-align: center;
+    }
+    .contact-form-panel>.section-heading .section-intro {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .contact-form__grid {
+        grid-template-columns: 1fr;
+    }
+    .contact-form__field--full,
+    .contact-form__field--message {
+        grid-column: auto;
+    }
+    .contact-member-picker__toolbar {
+        grid-template-columns: 1fr;
+    }
+    .contact-member-picker__actions {
+        justify-content: center;
+    }
+    .contact-member-picker__grid {
+        grid-template-columns: 1fr;
+    }
+    .contact-form__help-row,
+    .contact-form__submit-row {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .contact-form__count {
+        text-align: left;
+    }
+    .contact-form__submit {
+        width: 100%;
+    }
+}
+
+@media (max-width: 420px) {
+    .contact-form-layout {
+        width: min(100%, 92vw);
+    }
+    .contact-member-picker__actions {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .contact-member-picker__actions .button4 {
+        width: 100%;
+        max-width: 100%;
+    }
+}
