@@ -94,56 +94,32 @@
         ================================================================= -->
 
         <section class="member-profile section section--ornament-left" aria-labelledby="member-name">
-            <!-- ============================================================
-                MEMBER PROFILE INTRODUCTION
-                ------------------------------------------------------------
-                Purpose:
-                - Keeps the opening profile screen as two intentional slots.
-                - Desktop: text/name/quote on the left, portrait on the right.
-                - Mobile: portrait appears first, then the text and quote.
-            ============================================================= -->
-
-            <div class="member-profile__intro-grid">
-                <article class="member-profile__intro-copy">
+            <div class="member-profile__opening">
+                <div class="member-profile__intro">
                     <p class="eyebrow" data-member-role>Member profile</p>
 
-                    <h1 class="section-title member-profile__title" id="member-name" data-member-name>
+                    <h1 class="section-title title-dropcap member-profile__title" id="member-name" data-member-name>
                         SYSTIR Member
                     </h1>
 
                     <blockquote class="member-profile__quote" data-member-quote>
                         Member quote will load here.
                     </blockquote>
-                </article>
+                </div>
 
-                <aside class="member-profile__intro-media" aria-label="Member portrait">
-                    <img class="member-profile__portrait-card">
+                <figure class="member-profile__portrait-card">
                     <img class="member-profile__portrait-image" src="images/gallery/systir-media-image.png" alt="SYSTIR member portrait" data-member-image />
 
                     <figcaption class="member-profile__portrait-caption" data-member-caption>
                         SYSTIR member portrait
                     </figcaption>
-                    </img>
-                </aside>
+                </figure>
             </div>
 
-            <!-- ============================================================
-                EDITORIAL STORY AREA
-                ------------------------------------------------------------
-                Purpose:
-                - members.js injects alternating image/text story sections.
-                - This preserves the homepage-style visual rhythm while keeping
-                  long biographies readable.
-            ============================================================= -->
-
             <div class="member-profile__story" data-member-story>
-                <div class="member-profile__story-section member-profile__story-section--text-only">
-                    <div class="member-profile__story-copy">
-                        <p class="member-profile__paragraph">
-                            Member biography will load here. Add or edit performer details inside js/members.js.
-                        </p>
-                    </div>
-                </div>
+                <p class="member-profile__paragraph">
+                    Member biography will load here. Add or edit performer details inside js/members.js.
+                </p>
             </div>
 
             <div class="hero__actions member-profile__actions" aria-label="Member page actions">

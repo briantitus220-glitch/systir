@@ -3181,3 +3181,58 @@ body.theme-light .member-profile__story-section--text-only .member-profile__para
 .member-profile__story-section--text-only .member-profile__paragraph:last-child {
     margin-bottom: 0;
 }
+
+
+/* ================================================================
+   5.X MEMBER PROFILE OPENING LAYOUT
+   ----------------------------------------------------------------
+   Purpose:
+   - Creates the top member intro area.
+   - Desktop uses two columns: title/quote left, portrait right.
+   - Mobile can stack title first, image second.
+================================================================ */
+
+.member-profile__opening {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
+    align-items: center;
+    gap: clamp(2rem, 5vw, 5rem);
+    width: min(100%, 76rem);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: clamp(3rem, 7vw, 6rem);
+}
+
+.member-profile__intro {
+    min-width: 0;
+}
+
+.member-profile__title {
+    max-width: 10ch;
+}
+
+.member-profile__quote {
+    max-width: 34rem;
+    margin-top: clamp(1.25rem, 3vw, 2rem);
+    padding-left: clamp(1rem, 2vw, 1.5rem);
+    border-left: 2px solid rgba(199, 163, 90, 0.72);
+    color: var(--color-accent-primary);
+    font-size: clamp(1.4rem, 2.3vw, 2.15rem);
+    line-height: 1.25;
+}
+
+.member-profile__portrait-card {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid rgba(199, 163, 90, 0.32);
+    background: rgba(7, 13, 11, 0.5);
+}
+
+.member-profile__portrait-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+}
