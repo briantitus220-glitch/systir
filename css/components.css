@@ -2928,6 +2928,256 @@ body.theme-light .contact-form-visual__overlay {
     background: rgba(248, 239, 226, 0.86);
 }
 
-[data-member-bio] {
-    white-space: pre-line;
+
+/* ================================================================
+   5.44 MEMBER PROFILE EDITORIAL ARTICLE
+   ----------------------------------------------------------------
+   Purpose:
+   - Styles member.html as a clean but asymmetrical profile article.
+   - Desktop uses the same kind of alternating visual rhythm as the homepage:
+     text / image, then image / text, then a calmer closing passage.
+   - Mobile collapses into a readable single-column article through
+     responsive.css.
+================================================================ */
+
+.member-profile {
+    overflow: hidden;
+}
+
+.member-profile__intro-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.03fr) minmax(18rem, 0.82fr);
+    align-items: center;
+    gap: clamp(2.5rem, 5.5vw, 5.25rem);
+    width: min(100%, 76rem);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.member-profile__intro-copy {
+    width: min(100%, 47rem);
+    justify-self: end;
+}
+
+.member-profile__intro-media {
+    width: min(100%, 31rem);
+    justify-self: start;
+}
+
+.member-profile__portrait-card,
+.member-profile__story-image {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+    border: var(--border-strong);
+    background: color-mix(in srgb, var(--color-surface-primary) 86%, transparent);
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.22);
+}
+
+.member-profile__portrait-caption {
+    display: none;
+}
+
+.member-profile__portrait-card::before,
+.member-profile__story-image::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(180deg, transparent 52%, rgba(7, 13, 11, 0.74));
+}
+
+.member-profile__portrait-image,
+.member-profile__story-image-media {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    filter: saturate(0.95) contrast(1.05);
+}
+
+.member-profile__portrait-caption,
+.member-profile__story-image-caption {
+    position: absolute;
+    left: var(--space-sm);
+    right: var(--space-sm);
+    bottom: var(--space-sm);
+    z-index: 2;
+    padding: clamp(0.45rem, 1.2vw, 0.6rem) clamp(0.65rem, 1.6vw, 0.85rem);
+    border-left: 2px solid var(--color-accent-secondary);
+    background: rgba(7, 13, 11, 0.78);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-ui-sm);
+    letter-spacing: 0.05em;
+    line-height: 1.35;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(10px);
+}
+
+.member-profile__title {
+    margin-bottom: var(--space-md);
+}
+
+.member-profile__quote {
+    position: relative;
+    margin: 0;
+    max-width: 42rem;
+    padding: clamp(1.15rem, 3vw, 1.6rem) 0 clamp(1.15rem, 3vw, 1.6rem) clamp(1rem, 2.5vw, 1.35rem);
+    border-left: 2px solid var(--color-accent-primary);
+    color: var(--color-accent-soft);
+    font-family: var(--font-family-display);
+    font-size: clamp(1.2rem, 2.4vw, 1.65rem);
+    line-height: 1.35;
+}
+
+.member-profile__story {
+    display: grid;
+    gap: clamp(4rem, 8vw, 7rem);
+    width: min(100%, 76rem);
+    margin-top: clamp(4rem, 8vw, 6.5rem);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.member-profile__story-section {
+    display: grid;
+    align-items: center;
+    gap: clamp(2rem, 5vw, 5rem);
+}
+
+.member-profile__story-section--image-left {
+    grid-template-columns: minmax(16rem, 0.78fr) minmax(0, 1.1fr);
+}
+
+.member-profile__story-section--image-right {
+    grid-template-columns: minmax(0, 1.1fr) minmax(16rem, 0.78fr);
+}
+
+.member-profile__story-section--text-only {
+    grid-template-columns: minmax(0, 44rem);
+    justify-content: center;
+    text-align: center;
+}
+
+.member-profile__story-section--text-only .member-profile__story-copy {
+    padding-top: clamp(1.25rem, 3vw, 2rem);
+    border-top: 1px solid rgba(199, 163, 90, 0.22);
+}
+
+.member-profile__story-copy {
+    display: grid;
+    gap: clamp(1rem, 2.4vw, 1.35rem);
+    min-width: 0;
+    width: min(100%, 45rem);
+}
+
+.member-profile__story-section--image-left .member-profile__story-copy {
+    justify-self: start;
+}
+
+.member-profile__story-section--image-right .member-profile__story-copy {
+    justify-self: end;
+}
+
+.member-profile__story-image {
+    width: min(100%, 24rem);
+}
+
+.member-profile__story-section--image-left .member-profile__story-image {
+    justify-self: end;
+    transform: translateY(clamp(-1.25rem, -2vw, -0.5rem));
+}
+
+.member-profile__story-section--image-right .member-profile__story-image {
+    justify-self: start;
+    transform: translateY(clamp(0.75rem, 2vw, 1.75rem));
+}
+
+.member-profile__paragraph {
+    max-width: 44rem;
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: clamp(1rem, 1.15vw, 1.08rem);
+    line-height: 1.72;
+}
+
+.member-profile__story-section:first-child .member-profile__paragraph:first-child {
+    color: var(--color-text-primary);
+    font-size: clamp(1.05rem, 1.25vw, 1.15rem);
+}
+
+.member-profile__story-section--text-only .member-profile__paragraph:last-child {
+    color: var(--color-accent-soft);
+    font-family: var(--font-family-display);
+    font-size: clamp(1.12rem, 2vw, 1.4rem);
+    line-height: 1.45;
+}
+
+.member-profile__actions {
+    width: min(100%, 76rem);
+    margin-top: clamp(3rem, 7vw, 5rem);
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+}
+
+body.theme-light .member-profile__portrait-caption,
+body.theme-light .member-profile__story-image-caption {
+    background: rgba(248, 239, 226, 0.88);
+    color: var(--color-text-primary);
+    border-left-color: var(--color-accent-secondary);
+    box-shadow: 0 10px 24px rgba(69, 45, 28, 0.16);
+}
+
+body.theme-light .member-profile__quote,
+body.theme-light .member-profile__story-section--text-only .member-profile__paragraph:last-child {
+    color: var(--color-accent-secondary);
+}
+
+
+/* ================================================================
+   5.X MEMBER PROFILE CLOSING BACKDROP
+   ----------------------------------------------------------------
+   Purpose:                                     
+   - Gives the final centred biography section an atmospheric image
+     backdrop without harming readability.
+================================================================ */
+
+.member-profile__story-section--text-only {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-height: clamp(24rem, 48vw, 36rem);
+    padding: clamp(3rem, 7vw, 6rem) clamp(1.25rem, 4vw, 3rem);
+    border: 1px solid rgba(199, 163, 90, 0.24);
+    background-color: var(--color-surface-primary);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.member-profile__story-section--text-only::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient( circle at 50% 35%, rgba(199, 163, 90, 0.14), transparent 34rem);
+    pointer-events: none;
+}
+
+.member-profile__story-section--text-only .member-profile__story-copy {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 44rem);
+    margin-left: auto;
+    margin-right: auto;
+    padding: clamp(1.5rem, 4vw, 2.75rem);
+    background: rgba(7, 13, 11, 0.52);
+    border-left: 2px solid rgba(199, 163, 90, 0.55);
+    backdrop-filter: blur(10px);
+}
+
+.member-profile__story-section--text-only .member-profile__paragraph:last-child {
+    margin-bottom: 0;
 }

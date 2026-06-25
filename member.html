@@ -1,24 +1,26 @@
 <!doctype html>
 <html lang="en-IE">
 
-<link>
-<!-- ================================================================
+<head>
+    <!-- ================================================================
         DOCUMENT SETUP
         ----------------------------------------------------------------
         Purpose:
-        - Defines the page metadata, mobile viewport behaviour, stylesheet
-          loading order, and shared JavaScript behaviour for this SYSTIR page.
-        - This shell is intentionally light: replace only the page-specific
-          <main> content when building the final page.
+        - Defines the reusable dynamic member profile page.
+        - members.js reads the URL parameter, for example:
+          member.html?id=amelia-jones
+        - The layout is designed as an editorial profile article, with a
+          main portrait, pull quote, readable biography paragraphs, and
+          optional inline images.
     ================================================================= -->
 
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>SYSTIR | Member Profile</title>
-<meta name="description" content="Dynamic member profile page for SYSTIR performers." />
+    <title>SYSTIR | Member Profile</title>
+    <meta name="description" content="Dynamic member profile page for SYSTIR performers." />
 
-<!-- ================================================================
+    <!-- ================================================================
         CSS ARCHITECTURE
         ----------------------------------------------------------------
         Keep this order unchanged:
@@ -30,35 +32,37 @@
         6. responsive.css  = tablet/mobile overrides
     ================================================================= -->
 
-<link rel="stylesheet" href="css/tokens.css" />
-<link rel="stylesheet" href="css/base.css" />
-<link rel="stylesheet" href="css/layout.css" />
-<link rel="stylesheet" href="css/components.css" />
-<link rel="stylesheet" href="css/homepage.css" />
-<link rel="stylesheet" href="css/responsive.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-<!-- ================================================================
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/homepage.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <!-- ================================================================
         JAVASCRIPT ARCHITECTURE
         ----------------------------------------------------------------
         Each file controls one behaviour group. defer keeps page rendering
         smooth while still allowing scripts to read the DOM safely.
     ================================================================= -->
-<script src="js/header.js" defer></script>
-<script src="js/footer.js" defer></script>
-<script src="js/nav.js" defer></script>
-<script src="js/theme.js" defer></script>
-<script src="js/contact-section.js" defer></script>
-<script src="js/current-year.js" defer></script>
-<script src="js/parallax.js" defer></script>
-<script src="js/galleries.js" defer></script>
-<script src="js/fullscreen-viewer.js" defer></script>
-<script src="js/ambient-glow.js" defer></script>
-<script src="js/main.js" defer></script>
-<script src="js/members.js" defer></script>
-<script src="js/page-back.js" defer></script>
-</link>
 
-<body class="theme-dark">
+    <script src="js/header.js" defer></script>
+    <script src="js/footer.js" defer></script>
+    <script src="js/nav.js" defer></script>
+    <script src="js/theme.js" defer></script>
+    <script src="js/contact-section.js" defer></script>
+    <script src="js/current-year.js" defer></script>
+    <script src="js/parallax.js" defer></script>
+    <script src="js/galleries.js" defer></script>
+    <script src="js/fullscreen-viewer.js" defer></script>
+    <script src="js/ambient-glow.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/members.js" defer></script>
+    <script src="js/page-back.js" defer></script>
+</head>
+
+<body class="theme-dark member-profile-page">
     <!-- ================================================================
         ACCESSIBILITY SKIP LINK
         ----------------------------------------------------------------
@@ -66,15 +70,17 @@
     ================================================================= -->
 
     <a class="skip-link" href="#main-content">Skip to content</a>
+
     <!-- ================================================================
-    SHARED SITE HEADER
-    ----------------------------------------------------------------
-    Purpose:
-    - Header/navbar is injected by js/header.js.
-    - This keeps navigation consistent across all pages.
-================================================================ -->
+        SHARED SITE HEADER
+        ----------------------------------------------------------------
+        Purpose:
+        - Header/navbar is injected by js/header.js.
+        - This keeps navigation consistent across all pages.
+    ================================================================= -->
 
     <div id="siteHeader"></div>
+
     <main id="main-content">
         <!-- ================================================================
             DYNAMIC MEMBER PROFILE PAGE
@@ -83,30 +89,66 @@
             - Uses one reusable HTML file for all member profiles.
             - members.js reads the URL parameter, for example:
               member.html?id=amelia-jones
-            - This avoids creating a separate HTML file for every performer.
+            - The image is intentionally placed before the article text on
+              mobile, and beside the text on desktop.
         ================================================================= -->
 
-        <section class="feature feature--media-right section section--ornament-left" aria-labelledby="member-name">
-            <div class="feature__text">
-                <p class="eyebrow" data-member-role>Member profile</p>
-                <h1 class="section-title" id="member-name" data-member-name>SYSTIR Member</h1>
-                <p data-member-bio>
-                    Member biography will load here. Add or edit performer details inside js/members.js.
-                </p>
+        <section class="member-profile section section--ornament-left" aria-labelledby="member-name">
+            <!-- ============================================================
+                MEMBER PROFILE INTRODUCTION
+                ------------------------------------------------------------
+                Purpose:
+                - Keeps the opening profile screen as two intentional slots.
+                - Desktop: text/name/quote on the left, portrait on the right.
+                - Mobile: portrait appears first, then the text and quote.
+            ============================================================= -->
 
-                <div class="hero__actions" aria-label="Member page actions">
-                    <a class="button2" href="media.html">Back to media/bio</a>
-                    <a class="button5" href="index.html#members-title">Back to members</a>
+            <div class="member-profile__intro-grid">
+                <article class="member-profile__intro-copy">
+                    <p class="eyebrow" data-member-role>Member profile</p>
+
+                    <h1 class="section-title member-profile__title" id="member-name" data-member-name>
+                        SYSTIR Member
+                    </h1>
+
+                    <blockquote class="member-profile__quote" data-member-quote>
+                        Member quote will load here.
+                    </blockquote>
+                </article>
+
+                <aside class="member-profile__intro-media" aria-label="Member portrait">
+                    <img class="member-profile__portrait-card">
+                    <img class="member-profile__portrait-image" src="images/gallery/systir-media-image.png" alt="SYSTIR member portrait" data-member-image />
+
+                    <figcaption class="member-profile__portrait-caption" data-member-caption>
+                        SYSTIR member portrait
+                    </figcaption>
+                    </img>
+                </aside>
+            </div>
+
+            <!-- ============================================================
+                EDITORIAL STORY AREA
+                ------------------------------------------------------------
+                Purpose:
+                - members.js injects alternating image/text story sections.
+                - This preserves the homepage-style visual rhythm while keeping
+                  long biographies readable.
+            ============================================================= -->
+
+            <div class="member-profile__story" data-member-story>
+                <div class="member-profile__story-section member-profile__story-section--text-only">
+                    <div class="member-profile__story-copy">
+                        <p class="member-profile__paragraph">
+                            Member biography will load here. Add or edit performer details inside js/members.js.
+                        </p>
+                    </div>
                 </div>
             </div>
 
-            <div class="gallery-card gallery-card--portrait" aria-label="Member portrait">
-                <img class="gallery-card__figure">
-                <img class="gallery-card__image is-active" src="images/gallery/systir-media-image.png" alt="SYSTIR member portrait" data-member-image />
-                <figcaption class="gallery-card__caption" data-member-caption>
-                    SYSTIR member portrait
-                </figcaption>
-                </img>
+            <div class="hero__actions member-profile__actions" aria-label="Member page actions">
+                <a class="button2" href="media.html">Back to media/bio</a>
+                <a class="button2" href="index.html#members-title">Back to members</a>
             </div>
         </section>
 
@@ -114,41 +156,35 @@
             CONTACT PLACEHOLDER
             ----------------------------------------------------------------
             Purpose:
-            - This is where the shared contact section will go later.
-            - We will fix/standardise this after the live page revamp.
+            - Shared contact section is injected by js/contact-section.js.
         ================================================================= -->
 
         <div id="contactSection"></div>
     </main>
 
     <!-- ================================================================
-        SITE FOOTER
+        SHARED SITE FOOTER
         ----------------------------------------------------------------
-        Shared component. Replace placeholder # links when official platform
-        URLs are available.
+        Purpose:
+        - Footer is injected by js/footer.js.
+        - This keeps footer/social/copyright content consistent across pages.
     ================================================================= -->
 
-    <!-- ================================================================
-    SHARED SITE FOOTER
-    ----------------------------------------------------------------
-    Purpose:
-    - Footer is injected by js/footer.js.
-    - This keeps footer/social/copyright content consistent across pages.
-================================================================ -->
-
     <div id="siteFooter"></div>
+
     <!-- ================================================================
-    FIXED BACK BUTTON
-    ----------------------------------------------------------------
-    Purpose:
-    - Returns visitors to the previous page.
-    - Fixed to the bottom-left corner with breathing room.
-================================================================ -->
+        FIXED BACK BUTTON
+        ----------------------------------------------------------------
+        Purpose:
+        - Returns visitors to the previous page.
+        - Fixed to the bottom-left corner with breathing room.
+    ================================================================= -->
 
     <button class="page-back-button" type="button" data-page-back>
-    <span aria-hidden="true">←</span>
-    <span>Back</span>
-</button>
+        <span aria-hidden="true">←</span>
+        <span>Back</span>
+    </button>
+
     <!-- ================================================================
         FULLSCREEN IMAGE VIEWER
         ----------------------------------------------------------------

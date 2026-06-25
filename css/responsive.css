@@ -1022,3 +1022,160 @@
         max-width: 100%;
     }
 }
+
+
+/* ================================================================
+   6.13 MEMBER PROFILE RESPONSIVE RULES
+   ----------------------------------------------------------------
+   Purpose:
+   - Keeps the profile article readable below desktop widths.
+   - Mobile receives a calm single-column flow:
+     portrait, name/quote, text, image, text, image, closing.
+================================================================ */
+
+@media (max-width: 980px) {
+    .member-profile__intro-grid,
+    .member-profile__story-section,
+    .member-profile__story-section--image-left,
+    .member-profile__story-section--image-right,
+    .member-profile__story-section--text-only {
+        grid-template-columns: 1fr;
+    }
+
+    .member-profile__intro-grid {
+        width: min(100%, 46rem);
+        gap: clamp(1.75rem, 5vw, 3rem);
+    }
+
+    .member-profile__intro-media {
+        order: 1;
+        width: min(100%, 28rem);
+        margin-left: auto;
+        margin-right: auto;
+        justify-self: center;
+    }
+
+    .member-profile__intro-copy {
+        order: 2;
+        width: min(100%, 42rem);
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+        justify-self: center;
+    }
+
+    .member-profile__title,
+    .member-profile__intro-copy > .eyebrow,
+    .member-profile__quote {
+        text-align: center;
+    }
+
+    .member-profile__quote {
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 0;
+        border-left: 0;
+        border-top: 1px solid rgba(199, 163, 90, 0.26);
+        border-bottom: 1px solid rgba(199, 163, 90, 0.18);
+    }
+
+    .member-profile__story {
+        width: min(100%, 46rem);
+        gap: clamp(3rem, 8vw, 4.5rem);
+        margin-top: clamp(3rem, 8vw, 4.5rem);
+    }
+
+    .member-profile__story-section {
+        gap: clamp(1.5rem, 5vw, 2.5rem);
+    }
+
+    .member-profile__story-copy,
+    .member-profile__story-section--image-left .member-profile__story-copy,
+    .member-profile__story-section--image-right .member-profile__story-copy {
+        width: min(100%, 42rem);
+        margin-left: auto;
+        margin-right: auto;
+        justify-self: center;
+    }
+
+    .member-profile__story-image,
+    .member-profile__story-section--image-left .member-profile__story-image,
+    .member-profile__story-section--image-right .member-profile__story-image {
+        width: min(100%, 28rem);
+        margin-left: auto;
+        margin-right: auto;
+        justify-self: center;
+        transform: none;
+    }
+
+    .member-profile__story-section--image-left .member-profile__story-image {
+        order: 2;
+    }
+
+    .member-profile__story-section--image-left .member-profile__story-copy {
+        order: 1;
+    }
+
+    .member-profile__story-section--image-right .member-profile__story-copy {
+        order: 1;
+    }
+
+    .member-profile__story-section--image-right .member-profile__story-image {
+        order: 2;
+    }
+
+    .member-profile__story-section--text-only {
+        text-align: left;
+    }
+
+    .member-profile__story-section--text-only .member-profile__story-copy {
+        padding-top: clamp(1.25rem, 5vw, 1.75rem);
+    }
+}
+
+@media (max-width: 720px) {
+    .member-profile {
+        padding-top: clamp(2.5rem, 9vw, 4rem);
+    }
+
+    .member-profile__intro-grid,
+    .member-profile__story {
+        width: 100%;
+    }
+
+    .member-profile__intro-media,
+    .member-profile__story-image {
+        width: min(100%, 82vw);
+    }
+
+    .member-profile__portrait-image,
+    .member-profile__story-image-media {
+        aspect-ratio: 4 / 5;
+    }
+
+    .member-profile__intro-copy,
+    .member-profile__story-copy {
+        width: min(100%, 38rem);
+    }
+
+    .member-profile__paragraph {
+        font-size: var(--font-size-body);
+        line-height: 1.68;
+    }
+
+    .member-profile__actions {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 420px) {
+    .member-profile__intro-media,
+    .member-profile__story-image {
+        width: min(100%, 88vw);
+    }
+
+    .member-profile__quote {
+        font-size: clamp(1.1rem, 7vw, 1.35rem);
+    }
+}
