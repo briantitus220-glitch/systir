@@ -25,37 +25,38 @@
     <script src="js/fullscreen-viewer.js" defer></script>
     <script src="js/ambient-glow.js" defer></script>
     <script src="js/page-back.js" defer></script>
-    <!-- <script src="js/contact-form.js" defer></script> -->
     <script src="js/main.js" defer></script>
-</head>
+    <script src="js/contact-form.js" defer>
+    </script>
+    </script>
 
-<body class="theme-dark contact-page">
-    <a class="skip-link" href="#main-content">Skip to content</a>
-    <div id="siteHeader"></div>
+    <body class="theme-dark contact-page">
+        <a class="skip-link" href="#main-content">Skip to content</a>
+        <div id="siteHeader"></div>
 
-    <main id="main-content">
-        <!-- ================================================================
+        <main id="main-content">
+            <!-- ================================================================
             CONTACT HERO
         ================================================================= -->
-        <section class="contact-page-hero hero section section-hero" aria-labelledby="page-title">
-            <div class="hero__ornament" aria-hidden="true"></div>
+            <section class="contact-page-hero hero section section-hero" aria-labelledby="page-title">
+                <div class="hero__ornament" aria-hidden="true"></div>
 
-            <div class="contact-page-hero__inner">
-                <div class="contact-page-hero__content">
-                    <p class="eyebrow">Contact</p>
+                <div class="contact-page-hero__inner">
+                    <div class="contact-page-hero__content">
+                        <p class="eyebrow">Contact</p>
 
-                    <h1 class="section-title title-dropcap" id="page-title">
-                        Bookings and enquiries
-                    </h1>
+                        <h1 class="section-title title-dropcap" id="page-title">
+                            Bookings and enquiries
+                        </h1>
 
-                    <p class="section-intro">
-                        Tell us about your event, project, press request, or collaboration idea.
-                    </p>
+                        <p class="section-intro">
+                            Tell us about your event, project, press request, or collaboration idea.
+                        </p>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- ================================================================
+            <!-- ================================================================
             CONTACT FORM SECTION
             ----------------------------------------------------------------
             Backend note:
@@ -63,71 +64,71 @@
             - Client-side validation is supportive only; the backend must
               repeat all validation and spam checks.
         ================================================================= -->
-        <section class="contact-form-section section section5" aria-labelledby="contact-form-title">
-            <div class="contact-form-layout">
-                <aside class="contact-form-visual" aria-label="SYSTIR contact image">
-                    <img class="contact-form-visual__image" src="images/gallery/systir-youtube-thumbnail.png" alt="SYSTIR ensemble performance" loading="eager" />
+            <section class="contact-form-section section section5" aria-labelledby="contact-form-title">
+                <div class="contact-form-layout">
+                    <aside class="contact-form-visual" aria-label="SYSTIR contact image">
+                        <img class="contact-form-visual__image" src="images/gallery/systir-youtube-thumbnail.png" alt="SYSTIR ensemble performance" loading="eager" />
 
-                    <div class="contact-form-visual__overlay">
-                        <p class="eyebrow">Begin a conversation</p>
+                        <div class="contact-form-visual__overlay">
+                            <p class="eyebrow">Begin a conversation</p>
 
-                        <h2 class="contact-form-visual__title">
-                            Bring SYSTIR into your next performance, recording, or creative project.
-                        </h2>
+                            <h2 class="contact-form-visual__title">
+                                Bring SYSTIR into your next performance, recording, or creative project.
+                            </h2>
 
-                        <p class="contact-form-visual__text">
-                            Provide as much detail as possible so the enquiry can be directed to the right person.
-                        </p>
-                    </div>
-                </aside>
+                            <p class="contact-form-visual__text">
+                                Provide as much detail as possible so the enquiry can be directed to the right person.
+                            </p>
+                        </div>
+                    </aside>
 
-                <div class="contact-form-panel">
-                    <div class="section-heading">
-                        <p class="eyebrow">Enquiry form</p>
+                    <div class="contact-form-panel">
+                        <div class="section-heading">
+                            <p class="eyebrow">Enquiry form</p>
 
-                        <h2 class="section-title title-dropcap" id="contact-form-title">
-                            How can we help?
-                        </h2>
+                            <h2 class="section-title title-dropcap" id="contact-form-title">
+                                How can we help?
+                            </h2>
 
-                        <p class="section-intro">Fields marked with an asterisk are required.</p>
-                    </div>
+                            <p class="section-intro">Fields marked with an asterisk are required.</p>
+                        </div>
 
-                    <form class="contact-form" id="contactForm" method="POST" action="https://submit-form.com/dlYwrROsk">
-                        <input type="hidden" name="_redirect" value="https://systir.netlify.app/contact-success.html" />
+                        <form class="contact-form" id="contactForm" method="POST" action="https://submit-form.com/dlYwrROsk">
+                            <input type="hidden" name="_redirect" value="https://systir.netlify.app/contact-success.html" />
 
-                        <input type="hidden" name="_append" value="false" />
-                        <div class="contact-form__honeypot" aria-hidden="true">
-                            <label for="companyWebsite">
+                            <input type="hidden" name="_append" value="false" />
+                            <div class="contact-form__honeypot" aria-hidden="true">
+                                <label for="companyWebsite">
         Leave this field empty
     </label>
 
-                            <input id="companyWebsite" name="company_website" type="text" tabindex="-1" autocomplete="off" />
-                        </div>
-
-                        <div class="contact-form__grid">
-                            <div class="contact-form__field">
-                                <label class="contact-form__label" for="contactName">Name <span aria-hidden="true">*</span></label>
-                                <input class="contact-form__control" id="contactName" name="name" type="text" autocomplete="name" required />
+                                <input id="companyWebsite" name="company_website" type="text" tabindex="-1" autocomplete="off" />
                             </div>
 
-                            <div class="contact-form__field">
-                                <label class="contact-form__label" for="contactEmail">Email address <span aria-hidden="true">*</span></label>
-                                <input class="contact-form__control" id="contactEmail" name="email" type="email" autocomplete="email" required />
-                            </div>
+                            <div class="contact-form__grid">
+                                <div class="contact-form__field">
+                                    <label class="contact-form__label" for="contactName">Name <span aria-hidden="true">*</span></label>
+                                    <input class="contact-form__control" id="contactName" name="name" type="text" autocomplete="name" required />
+                                </div>
 
-                            <div class="contact-form__field">
-                                <label class="contact-form__label" for="contactOrganisation">Organisation</label>
-                                <input class="contact-form__control" id="contactOrganisation" name="organisation" type="text" autocomplete="organization" />
-                            </div>
+                                <div class="contact-form__field">
+                                    <label class="contact-form__label" for="contactEmail">Email address <span aria-hidden="true">*</span></label>
+                                    <input class="contact-form__control" id="contactEmail" name="email" type="email" autocomplete="email" required />
+                                </div>
 
-                            <div class="contact-form__field">
-                                <label class="contact-form__label" for="contactPhone">Telephone</label>
-                                <input class="contact-form__control" id="contactPhone" name="telephone" type="tel" autocomplete="tel" />
-                            </div>
+                                <div class="contact-form__field">
+                                    <label class="contact-form__label" for="contactOrganisation">Organisation</label>
+                                    <input class="contact-form__control" id="contactOrganisation" name="organisation" type="text" autocomplete="organization" />
+                                </div>
 
-                            <div class="contact-form__field">
-                                <label class="contact-form__label" for="contactType">Enquiry type <span aria-hidden="true">*</span></label>
-                                <select class="contact-form__control contact-form__select" id="contactType" name="enquiry_type" required>
+                                <div class="contact-form__field">
+                                    <label class="contact-form__label" for="contactPhone">Telephone</label>
+                                    <input class="contact-form__control" id="contactPhone" name="telephone" type="tel" autocomplete="tel" />
+                                </div>
+
+                                <div class="contact-form__field">
+                                    <label class="contact-form__label" for="contactType">Enquiry type <span aria-hidden="true">*</span></label>
+                                    <select class="contact-form__control contact-form__select" id="contactType" name="enquiry_type" required>
                                     <option value="">Choose an enquiry type</option>
                                     <option value="booking">Performance booking</option>
                                     <option value="festival">Festival or venue programming</option>
@@ -137,100 +138,100 @@
                                     <option value="member">Specific member enquiry</option>
                                     <option value="general">General enquiry</option>
                                 </select>
-                            </div>
+                                </div>
 
-                            <div class="contact-form__field">
-                                <label class="contact-form__label" for="contactDate">Proposed date</label>
-                                <input class="contact-form__control" id="contactDate" name="proposed_date" type="date" />
-                            </div>
+                                <div class="contact-form__field">
+                                    <label class="contact-form__label" for="contactDate">Proposed date</label>
+                                    <input class="contact-form__control" id="contactDate" name="proposed_date" type="date" />
+                                </div>
 
-                            <div class="contact-form__field contact-form__field--full">
-                                <label class="contact-form__label" for="contactLocation">Event or project location</label>
-                                <input class="contact-form__control" id="contactLocation" name="location" type="text" autocomplete="address-level2" placeholder="Venue, city, and country" />
-                            </div>
-                        </div>
-
-                        <fieldset class="contact-member-picker">
-                            <legend class="contact-member-picker__legend">Members requested</legend>
-
-                            <p class="contact-member-picker__intro">
-                                If you have a specific member you believe would suit your request, you can select their name below.
-                            </p>
-
-                            <div class="contact-member-picker__toolbar">
-                                <label class="contact-member-picker__search-label" for="memberSearch">Filter members</label>
-                                <input class="contact-form__control contact-member-picker__search" id="memberSearch" type="search" placeholder="Search member names" autocomplete="off" data-member-search />
-
-                                <div class="contact-member-picker__actions">
-                                    <button class="button4" type="button" data-members-select-all>Select all</button>
-                                    <button class="button4" type="button" data-members-clear>Clear</button>
+                                <div class="contact-form__field contact-form__field--full">
+                                    <label class="contact-form__label" for="contactLocation">Event or project location</label>
+                                    <input class="contact-form__control" id="contactLocation" name="location" type="text" autocomplete="address-level2" placeholder="Venue, city, and country" />
                                 </div>
                             </div>
 
-                            <p class="contact-member-picker__status" aria-live="polite">
-                                <span data-members-selected-count>0</span> selected
-                            </p>
+                            <fieldset class="contact-member-picker">
+                                <legend class="contact-member-picker__legend">Members requested</legend>
 
-                            <div class="contact-member-picker__grid" data-member-options>
-                                <label class="contact-member-option"><input type="checkbox" name="members[]" value="Amelia Jones" /><span>Amelia Jones</span></label>
-                                <label class="contact-member-option"><input type="checkbox" name="members[]" value="Ash McGlynn" /><span>Ash McGlynn</span></label>
-                                <label class="contact-member-option"><input type="checkbox" name="members[]" value="Judith Lyons" /><span>Judith Lyons</span></label>
-                                <label class="contact-member-option"><input type="checkbox" name="members[]" value="Lauren McGlynn" /><span>Lauren McGlynn</span></label>
-                                <label class="contact-member-option"><input type="checkbox" name="members[]" value="Lorna Breen" /><span>Lorna Breen</span></label>
-                                <label class="contact-member-option"><input type="checkbox" name="members[]" value="Sara Weeda" /><span>Sara Weeda</span></label>
-                                <label class="contact-member-option"><input type="checkbox" name="members[]" value="Sara Di Bella" /><span>Sara Di Bella</span></label>
-                                <label class="contact-member-option"><input type="checkbox" name="members[]" value="Sigrid Algesten" /><span>Sigrid Algesten</span></label>
-                                <label class="contact-member-option"><input type="checkbox" name="members[]" value="Sorcha Fenlon" /><span>Sorcha Fenlon</span></label>
-                                <label class="contact-member-option"><input type="checkbox" name="members[]" value="Stephanie Devlin" /><span>Stephanie Devlin</span></label>
-                            </div>
-                        </fieldset>
-
-                        <div class="contact-form__field contact-form__field--message">
-                            <label class="contact-form__label" for="contactMessage">Enquiry details <span aria-hidden="true">*</span></label>
-                            <textarea class="contact-form__control contact-form__textarea" id="contactMessage" name="message" rows="9" maxlength="3000" required aria-describedby="contactMessageHelp contactMessageCount"></textarea>
-
-                            <div class="contact-form__help-row">
-                                <p class="contact-form__help" id="contactMessageHelp">
-                                    Include expected dates, location, format, audience, and budget where relevant.
+                                <p class="contact-member-picker__intro">
+                                    If you have a specific member you believe would suit your request, you can select their name below.
                                 </p>
-                                <p class="contact-form__count" id="contactMessageCount"><span data-message-count>0</span>/3000</p>
-                            </div>
-                        </div>
 
-                        <label class="contact-form__consent">
+                                <div class="contact-member-picker__toolbar">
+                                    <label class="contact-member-picker__search-label" for="memberSearch">Filter members</label>
+                                    <input class="contact-form__control contact-member-picker__search" id="memberSearch" type="search" placeholder="Search member names" autocomplete="off" data-member-search />
+
+                                    <div class="contact-member-picker__actions">
+                                        <button class="button4" type="button" data-members-select-all>Select all</button>
+                                        <button class="button4" type="button" data-members-clear>Clear</button>
+                                    </div>
+                                </div>
+
+                                <p class="contact-member-picker__status" aria-live="polite">
+                                    <span data-members-selected-count>0</span> selected
+                                </p>
+
+                                <div class="contact-member-picker__grid" data-member-options>
+                                    <label class="contact-member-option"><input type="checkbox" name="members[]" value="Amelia Jones" /><span>Amelia Jones</span></label>
+                                    <label class="contact-member-option"><input type="checkbox" name="members[]" value="Ash McGlynn" /><span>Ash McGlynn</span></label>
+                                    <label class="contact-member-option"><input type="checkbox" name="members[]" value="Judith Lyons" /><span>Judith Lyons</span></label>
+                                    <label class="contact-member-option"><input type="checkbox" name="members[]" value="Lauren McGlynn" /><span>Lauren McGlynn</span></label>
+                                    <label class="contact-member-option"><input type="checkbox" name="members[]" value="Lorna Breen" /><span>Lorna Breen</span></label>
+                                    <label class="contact-member-option"><input type="checkbox" name="members[]" value="Sara Weeda" /><span>Sara Weeda</span></label>
+                                    <label class="contact-member-option"><input type="checkbox" name="members[]" value="Sara Di Bella" /><span>Sara Di Bella</span></label>
+                                    <label class="contact-member-option"><input type="checkbox" name="members[]" value="Sigrid Algesten" /><span>Sigrid Algesten</span></label>
+                                    <label class="contact-member-option"><input type="checkbox" name="members[]" value="Sorcha Fenlon" /><span>Sorcha Fenlon</span></label>
+                                    <label class="contact-member-option"><input type="checkbox" name="members[]" value="Stephanie Devlin" /><span>Stephanie Devlin</span></label>
+                                </div>
+                            </fieldset>
+
+                            <div class="contact-form__field contact-form__field--message">
+                                <label class="contact-form__label" for="contactMessage">Enquiry details <span aria-hidden="true">*</span></label>
+                                <textarea class="contact-form__control contact-form__textarea" id="contactMessage" name="message" rows="9" maxlength="3000" required aria-describedby="contactMessageHelp contactMessageCount"></textarea>
+
+                                <div class="contact-form__help-row">
+                                    <p class="contact-form__help" id="contactMessageHelp">
+                                        Include expected dates, location, format, audience, and budget where relevant.
+                                    </p>
+                                    <p class="contact-form__count" id="contactMessageCount"><span data-message-count>0</span>/3000</p>
+                                </div>
+                            </div>
+
+                            <label class="contact-form__consent">
                             <input class="contact-form__consent-input" type="checkbox" name="privacy_consent" value="accepted" required />
                             <span>I consent to SYSTIR using these details to respond to this enquiry. <span aria-hidden="true">*</span></span>
                         </label>
 
-                        <div class="contact-form__status" role="status" aria-live="polite" data-contact-status></div>
+                            <div class="contact-form__status" role="status" aria-live="polite" data-contact-status></div>
 
-                        <div class="contact-form__submit-row">
-                            <button class="button6 contact-form__submit" type="submit">Submit enquiry</button>
-                            <p class="contact-form__privacy-note">
-                                Your information should only be retained for handling the enquiry and related follow-up.
-                            </p>
-                        </div>
-                    </form>
+                            <div class="contact-form__submit-row">
+                                <button class="button6 contact-form__submit" type="submit">Submit enquiry</button>
+                                <p class="contact-form__privacy-note">
+                                    Your information should only be retained for handling the enquiry and related follow-up.
+                                </p>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </div>
-        </section>
-    </main>
+            </section>
+        </main>
 
-    <div id="siteFooter"></div>
+        <div id="siteFooter"></div>
 
-    <button class="page-back-button" type="button" data-page-back>
+        <button class="page-back-button" type="button" data-page-back>
         <span aria-hidden="true">←</span>
         <span>Back</span>
     </button>
 
-    <div class="fullscreen-viewer" id="fullscreenViewer">
-        <button class="fullscreen-viewer__close" id="closeFullscreen" aria-label="Close fullscreen viewer"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
-        <button class="fullscreen-viewer__nav fullscreen-viewer__nav--prev" id="fullscreenPrev" aria-label="Previous image"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
-        <img class="fullscreen-viewer__image" id="fullscreenImage" src="" alt="" />
-        <p class="fullscreen-viewer__caption" id="fullscreenCaption">Image caption</p>
-        <button class="fullscreen-viewer__nav fullscreen-viewer__nav--next" id="fullscreenNext" aria-label="Next image"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
-        <div class="ambient-glow"></div>
-    </div>
-</body>
+        <div class="fullscreen-viewer" id="fullscreenViewer">
+            <button class="fullscreen-viewer__close" id="closeFullscreen" aria-label="Close fullscreen viewer"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+            <button class="fullscreen-viewer__nav fullscreen-viewer__nav--prev" id="fullscreenPrev" aria-label="Previous image"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+            <img class="fullscreen-viewer__image" id="fullscreenImage" src="" alt="" />
+            <p class="fullscreen-viewer__caption" id="fullscreenCaption">Image caption</p>
+            <button class="fullscreen-viewer__nav fullscreen-viewer__nav--next" id="fullscreenNext" aria-label="Next image"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+            <div class="ambient-glow"></div>
+        </div>
+    </body>
 
 </html>

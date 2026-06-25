@@ -23,9 +23,22 @@ const systirMembers = {
     "amelia-jones": {
         name: "Amelia Jones",
         role: "SYSTIR performer",
-        image: "images/gallery/systir-media-image.png",
+        image: "images/members/amelia-jones-image.png",
         caption: "Amelia Jones — SYSTIR performer",
-        bio: "Biography placeholder for Amelia Jones. Replace this text with final performer details, credits, and links when available."
+        bio: `The first time I sang as part of a choir was the moment I decided to pursue a singing career. I had experienced powerful moments through singing before, but my first rehearsal with a university group at the age of nineteen was on another level. Singing with others felt like a revelation. I immediately felt safe and secure, yet electric and liberated, and part of something far bigger than myself.
+The law and arts degree I was half-heartedly pursuing did not last long after that moment. I decided to audition for the Classical Singing course at WAAPA, a performing arts school in Western Australia. My favourite part of my studies was singing with the vocal ensemble. We would stretch and roll around on the floor like babies, then sing Rheinberger. In the middle of so much operatic repertoire, I began to yearn for other genres. I adored art song, and wanted to sing it without constant vibrato, occasionally adding an expressive glide, folk ornament, or breathy tone — not just for effect, but to tell the story honestly and stay true to how the song made me feel. Regardless of those motivations, I got told off rather a lot in singing lessons.
+
+Around this time, I first discovered ANÚNA. I had chosen to sing “My Lagan Love” in a workshop and searched for recordings until I found the track on Invocation. I was blown away by the effortless purity of the singers, the harmonies that made the hair on the back of my neck stand up, and the extraordinary storytelling quality of Michael McGlynn’s writing and singing.
+
+I kept ANÚNA close to my heart for the best part of a decade. Listening brought me peace and inspiration, and made me feel somehow connected to my heritage and close to home. In the present day, I enjoy a diverse performance career in the UK that encompasses oratorio, baroque, and contemporary music. I also record and improvise vocals for video games, anime, documentaries, and other media. Highlights include singing Enya’s Watermark album with full orchestra, and performing music from video games with my chamber ensemble, Sonaris.
+
+Many years ago, I had the opportunity to record a beautiful vocal line for an indie game called Hollow Knight. I receive messages from people in various languages who tell me very special things: that the song gets their children ready for bed every evening, that it was played at a loved one’s funeral, or that it calms rescue kittens when they become hyperactive. These messages remind me of the incredible power of music to bring people, and even kittens, together. They also bring me back to the powerful effect ANÚNA had on me.
+
+I never thought I would have the opportunity to meet Michael and ANÚNA, to sing with them, or to have the privilege of becoming a member and being endlessly inspired by everyone in the group. Every singer is bursting with authenticity and has something unique and beautiful to share. Singing with ANÚNA is an unmatched experience, where connection and presence in the moment are key. It is extraordinary to have Michael there as composer and director, as well as so many experienced members who can tell us the stories behind the music.
+
+The voices, and Michael’s writing, capture a humanness I do not find anywhere else. It feels ancient, yet immediate, and always truthful. There is nothing else like it.
+
+All that is needed is the words and the breath; the music will take care of the rest.`
     },
 
     "ash-mcglynn": {

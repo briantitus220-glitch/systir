@@ -2927,3 +2927,7 @@ body.theme-light .contact-form__control {
 body.theme-light .contact-form-visual__overlay {
     background: rgba(248, 239, 226, 0.86);
 }
+
+[data-member-bio] {
+    white-space: pre-line;
+}
