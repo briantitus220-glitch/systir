@@ -99,15 +99,20 @@ function buildMemberProfile(memberId, memberName) {
         story: buildDefaultStory()
     };
 }
-
 /* ================================================================
-   2. MEMBER DATA LIBRARY
+   1. MEMBER LIBRARY
    ----------------------------------------------------------------
-   Each member is stored under a URL-friendly key.
-   Example:
-   "amelia-jones" connects to member.html?id=amelia-jones
-================================================================ */
+   Purpose:
+   - Contains the actual webpage content, including image paths and biographies
 
+   Image role:
+   - image1 = main portrait / opening profile image
+   - image2 = first supporting story image
+   - image3 = second supporting story image
+   - image4 = final centred paragraph backdrop image
+   Amelia has a preconstructed function based image path layout
+   Ash has a hard coded image path layout (in the nterest of sharing images)
+================================================================ */
 const systirMembers = {
     "amelia-jones": {
         name: "Amelia Jones",
@@ -133,32 +138,131 @@ const systirMembers = {
             "All that is needed is the words and the breath; the music will take care of the rest."
         ],
         images: buildMemberImages("amelia-jones", "Amelia Jones"),
-        story: [{
-                layout: "image-left",
-                imagePlacement: "story-1",
-                paragraphIndexes: [0, 1]
-            },
-            {
-                layout: "image-right",
-                imagePlacement: "story-2",
-                paragraphIndexes: [2, 3, 4]
-            },
-            {
-                layout: "text-only",
-                paragraphIndexes: [5, 6, 7]
-            }
-        ]
+        story: buildDefaultStory()
     },
 
-    "ash-mcglynn": buildMemberProfile("ash-mcglynn", "Ash McGlynn"),
-    "judith-lyons": buildMemberProfile("judith-lyons", "Judith Lyons"),
-    "lauren-mcglynn": buildMemberProfile("lauren-mcglynn", "Lauren McGlynn"),
-    "lorna-breen": buildMemberProfile("lorna-breen", "Lorna Breen"),
-    "sara-weeda": buildMemberProfile("sara-weeda", "Sara Weeda"),
-    "sara-di-bella": buildMemberProfile("sara-di-bella", "Sara Di Bella"),
-    "sigrid-algesten": buildMemberProfile("sigrid-algesten", "Sigrid Algesten"),
-    "sorcha-fenlon": buildMemberProfile("sorcha-fenlon", "Sorcha Fenlon"),
-    "stephanie-devlin": buildMemberProfile("stephanie-devlin", "Stephanie Devlin")
+    "ash-mcglynn": {
+        name: "Ash McGlynn",
+        role: "SYSTIR performer",
+        image: "images/members/ash-mcglynn-image1.png",
+        caption: "Ash McGlynn — SYSTIR performer",
+        quote: "Biography coming soon.",
+        bio: buildPlaceholderBio("Ash McGlynn"),
+        images: [{
+                src: "images/members/ash-mcglynn-image1.png",
+                alt: "Ash McGlynn portrait",
+                caption: "Ash McGlynn",
+                placement: "main"
+            },
+            {
+                src: "images/members/amelia-jones-image2.jpeg",
+                alt: "SYSTIR performance image",
+                caption: "SYSTIR in performance",
+                placement: "story-1"
+            },
+            {
+                src: "images/members/ash-mcglynn-image3.png",
+                alt: "Ash McGlynn profile image",
+                caption: "Ash McGlynn profile image",
+                placement: "story-2"
+            },
+            {
+                src: "images/members/ash-mcglynn-image4.png",
+                alt: "Ash McGlynn atmospheric backdrop image",
+                caption: "Ash McGlynn backdrop image",
+                placement: "closing-backdrop"
+            }
+        ],
+        story: buildDefaultStory()
+    },
+
+    "judith-lyons": {
+        name: "Judith Lyons",
+        role: "SYSTIR performer",
+        image: "images/members/judith-lyons-image1.png",
+        caption: "Judith Lyons — SYSTIR performer",
+        quote: "Biography coming soon.",
+        bio: buildPlaceholderBio("Judith Lyons"),
+        images: buildMemberImages("judith-lyons", "Judith Lyons"),
+        story: buildDefaultStory()
+    },
+
+    "lauren-mcglynn": {
+        name: "Lauren McGlynn",
+        role: "SYSTIR performer",
+        image: "images/members/lauren-mcglynn-image1.png",
+        caption: "Lauren McGlynn — SYSTIR performer",
+        quote: "Biography coming soon.",
+        bio: buildPlaceholderBio("Lauren McGlynn"),
+        images: buildMemberImages("lauren-mcglynn", "Lauren McGlynn"),
+        story: buildDefaultStory()
+    },
+
+    "lorna-breen": {
+        name: "Lorna Breen",
+        role: "SYSTIR performer",
+        image: "images/members/lorna-breen-image1.png",
+        caption: "Lorna Breen — SYSTIR performer",
+        quote: "Biography coming soon.",
+        bio: buildPlaceholderBio("Lorna Breen"),
+        images: buildMemberImages("lorna-breen", "Lorna Breen"),
+        story: buildDefaultStory()
+    },
+
+    "sara-weeda": {
+        name: "Sara Weeda",
+        role: "SYSTIR performer",
+        image: "images/members/sara-weeda-image1.png",
+        caption: "Sara Weeda — SYSTIR performer",
+        quote: "Biography coming soon.",
+        bio: buildPlaceholderBio("Sara Weeda"),
+        images: buildMemberImages("sara-weeda", "Sara Weeda"),
+        story: buildDefaultStory()
+    },
+
+    "sara-di-bella": {
+        name: "Sara Di Bella",
+        role: "SYSTIR performer",
+        image: "images/members/sara-di-bella-image1.png",
+        caption: "Sara Di Bella — SYSTIR performer",
+        quote: "Biography coming soon.",
+        bio: buildPlaceholderBio("Sara Di Bella"),
+        images: buildMemberImages("sara-di-bella", "Sara Di Bella"),
+        story: buildDefaultStory()
+    },
+
+    "sigrid-algesten": {
+        name: "Sigrid Algesten",
+        role: "SYSTIR performer",
+        image: "images/members/sigrid-algesten-image1.png",
+        caption: "Sigrid Algesten — SYSTIR performer",
+        quote: "Biography coming soon.",
+        bio: buildPlaceholderBio("Sigrid Algesten"),
+        images: buildMemberImages("sigrid-algesten", "Sigrid Algesten"),
+        story: buildDefaultStory()
+    },
+
+    "sorcha-fenlon": {
+        name: "Sorcha Fenlon",
+        role: "SYSTIR performer",
+        image: "images/members/sorcha-fenlon-image1.png",
+        caption: "Sorcha Fenlon — SYSTIR performer",
+        quote: "Biography coming soon.",
+        bio: buildPlaceholderBio("Sorcha Fenlon"),
+        images: buildMemberImages("sorcha-fenlon", "Sorcha Fenlon"),
+        story: buildDefaultStory()
+    },
+
+    "stephanie-devlin": {
+        name: "Stephanie Devlin",
+        role: "SYSTIR performer",
+        image: "images/members/stephanie-devlin-image1.png",
+        caption: "Stephanie Devlin — SYSTIR performer",
+        quote: "Biography coming soon.",
+        bio: buildPlaceholderBio("Stephanie Devlin"),
+        images: buildMemberImages("stephanie-devlin", "Stephanie Devlin"),
+        story: buildDefaultStory()
+    }
 };
 
 /* ================================================================
