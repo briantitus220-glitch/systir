@@ -3274,3 +3274,8 @@ body.theme-light .member-profile__story-section--text-only .member-profile__para
     color: inherit;
     cursor: zoom-in;
 }
+
+.news-story__actions .button4.is-active {
+    transform: translateY(-0.08rem);
+    box-shadow: 0 0.8rem 1.8rem rgba(0, 0, 0, 0.24);
+}

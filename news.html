@@ -37,6 +37,7 @@
     <script src="js/ambient-glow.js" defer></script>
     <script src="js/main.js" defer></script>
     <script src="js/page-back.js" defer></script>
+    <script src="js/news-language-toggle.js" defer></script>
 </head>
 
 <body class="theme-dark news-page">
@@ -256,10 +257,10 @@
                 </article>
 
                 <!-- ========================================================
-                    STORY 7: ITALY — TEXT-HEAVY FULL-WIDTH ROW
-                ========================================================= -->
+    STORY 7: ITALY — TEXT-HEAVY FULL-WIDTH ROW
+========================================================= -->
 
-                <article class="news-story news-story--full">
+                <article class="news-story news-story--full" data-news-language-scope>
                     <div class="news-story__content news-story__content--wide">
                         <p class="eyebrow">Italy</p>
 
@@ -267,17 +268,34 @@
                             SYSTIR in Italy, August 1–4
                         </h2>
 
-                        <p>
-                            SYSTIR will be performing and taking part in the ANÚNA Summer School in the mountain town of Pavullo nel Frignano.
-                        </p>
+                        <div data-news-language-panel="en">
+                            <p>
+                                SYSTIR will be performing and taking part in the ANÚNA Summer School in the mountain town of Pavullo nel Frignano.
+                            </p>
 
-                        <p>
-                            Italy — Pavullo nel Frignano, Modena — August 1–4 — ANÚNA Summer School.
-                        </p>
+                            <p>
+                                Italy — Pavullo nel Frignano, Modena — August 1–4 — ANÚNA Summer School.
+                            </p>
+                        </div>
 
-                        <div class="news-story__actions">
-                            <a class="button4" href="#">Details in English</a>
-                            <a class="button4" href="#">Dettagli in italiano</a>
+                        <div data-news-language-panel="it" hidden>
+                            <p>
+                                SYSTIR si esibirà e prenderà parte alla ANÚNA Summer School nella cittadina montana di Pavullo nel Frignano.
+                            </p>
+
+                            <p>
+                                Italia — Pavullo nel Frignano, Modena — 1–4 agosto — ANÚNA Summer School.
+                            </p>
+                        </div>
+
+                        <div class="news-story__actions" aria-label="Choose details language">
+                            <button class="button4 is-active" type="button" data-news-language="en" aria-pressed="true">
+                Details in English
+            </button>
+
+                            <button class="button4" type="button" data-news-language="it" aria-pressed="false">
+                Dettagli in italiano
+            </button>
                         </div>
                     </div>
                 </article>
