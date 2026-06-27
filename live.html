@@ -175,61 +175,64 @@
       labels, so options like Tickets and Details still work.
 ================================================================ -->
 
-    <form class="live-events-filter" id="liveEventsFilter" role="search">
-        <div class="live-events-filter__inner">
+    <section class="live-events-section section section5" aria-labelledby="live-events-title">
+        <div class="section-heading section-heading--center">
+            <p class="eyebrow">Tour dates</p>
 
-            <label class="live-events-filter__field">
-            <span class="live-events-filter__label">Search</span>
-
-            <input
-                class="live-events-filter__input"
-                type="search"
-                id="liveEventsSearch"
-                placeholder="Search country, city, venue, festival, date..."
-                autocomplete="off"
-            />
-        </label>
-
-            <label class="live-events-filter__field">
-            <span class="live-events-filter__label">Year</span>
-
-            <select class="live-events-filter__select" id="liveEventsYear">
-                <option value="">All years</option>
-                <option value="2026">2026</option>
-                <option value="2025">2025</option>
-                <option value="2024">2024</option>
-                <option value="2023">2023</option>
-            </select>
-        </label>
-
-            <label class="live-events-filter__field">
-            <span class="live-events-filter__label">Availability</span>
-
-            <select class="live-events-filter__select" id="liveEventsStatus">
-                <option value="">All availability</option>
-                <option value="tickets">Tickets</option>
-                <option value="details">Details</option>
-                <option value="sold out">Sold out</option>
-                <option value="tbc">TBC</option>
-            </select>
-        </label>
-
+            <h2 class="section-title" id="live-events-title">
+                Live Events
+            </h2>
         </div>
-    </form>
-    <div class="live-events" id="liveEvents" aria-label="SYSTIR live performance dates">
-        <!-- js/live-events.js renders the event archive here. -->
-    </div>
 
-    <!-- ================================================================
-            CONTACT PLACEHOLDER
-            ----------------------------------------------------------------
-            Purpose:
-            - This is where the shared contact section will go later.
-            - We will fix/standardise this after the live page revamp.
-        ================================================================= -->
+        <form class="live-events-filter" id="liveEventsFilter" role="search">
+            <div class="live-events-filter__inner">
 
-    <div id="contactSection"></div>
+                <label class="live-events-filter__field">
+                <span class="live-events-filter__label">Search</span>
+
+                <input
+                    class="live-events-filter__input"
+                    type="search"
+                    id="liveEventsSearch"
+                    placeholder="Search country, city, venue, festival, date..."
+                    autocomplete="off"
+                />
+            </label>
+
+                <label class="live-events-filter__field">
+                <span class="live-events-filter__label">Year</span>
+
+                <select class="live-events-filter__select" id="liveEventsYear">
+                    <option value="">All years</option>
+                    <option value="2026">2026</option>
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                </select>
+            </label>
+
+                <label class="live-events-filter__field">
+                <span class="live-events-filter__label">Availability</span>
+
+                <select class="live-events-filter__select" id="liveEventsStatus">
+                    <option value="">All availability</option>
+                    <option value="tickets">Tickets</option>
+                    <option value="details">Details</option>
+                    <option value="sold out">Sold out</option>
+                    <option value="tbc">TBC</option>
+                </select>
+            </label>
+
+            </div>
+        </form>
+
+        <div class="live-events" id="liveEvents" aria-label="SYSTIR live performance dates">
+            <!-- js/live-events.js renders the event archive here. -->
+        </div>
+        <div id="contactSection"></div>
     </section>
+
+
 
     <!-- ================================================================
         SHARED SITE FOOTER

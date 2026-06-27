@@ -659,8 +659,8 @@
     .homepage .feature.section3 .members-list {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: var(--space-sm);
-        width: 100%;
+        gap: 0.8rem;
+        width: min(100%, 28rem);
         max-width: 100%;
         margin: var(--space-md) auto 0;
         padding: 0;

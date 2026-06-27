@@ -146,8 +146,26 @@ const systirMembers = {
         role: "SYSTIR performer",
         image: "images/members/ash-mcglynn-image1.png",
         caption: "Ash McGlynn — SYSTIR performer",
-        quote: "Biography coming soon.",
-        bio: buildPlaceholderBio("Ash McGlynn"),
+        quote: "I never remember a time when ANÚNA was not part of my life.",
+        bio: [
+            "Aisling, or Ash McGlynn, is from Dublin, Ireland, and has sung with ANÚNA since she first appeared on the album Christmas with ANÚNA in 2009 at the age of six. She travelled to China in 2018, performing at the Three Gorges Festival and representing Ireland as part of ANÚNA. The performance was broadcast on Chinese National Television.",
+
+            "In 2019, Aisling appeared on Japan’s NHK TV as part of the legendary Nodojiman, singing the solo part of the classic anime theme “Mononoke Hime”. She is also a featured soloist on the latest ANÚNA album Eilífð.",
+
+            "In June 2021, she was one of the soloists in the globe-spanning “Maalaulu”, commissioned as part of the Tampere Vocal Music Festival. She performed alongside ANÚNA, Finnish soprano Marjukka Tepponen, and Isaac S. Cates’ gospel group Ordained from Kansas City, USA.",
+
+            "Aisling features as soloist on three songs on the soundtrack of the video game Chrono Cross: The Radical Dreamers Edition, composed by Yasunori Mitsuda and released in April 2022. Under the baton of conductor Eímear Noone, she has performed as a soloist with the Royal Philharmonic Orchestra at the Royal Albert Hall, and at the Concertgebouw in Amsterdam with the Antwerp Philharmonic Orchestra.",
+
+            "In March 2023, Aisling featured in the lineup of Daughters of the Pirate Queen, singing with the National Symphony Orchestra of Ireland under the baton of Eímear Noone at Dublin’s National Concert Hall. The performance featured her own song, “The Blood of the Boar”.",
+
+            "Aisling is featured on the soundtracks of two recent animé projects: Spice and Wolf: Merchant Meets the Wise Wolf, singing the music of Kevin Penkin, and the hugely successful Netflix series Delicious in Dungeon, alongside her sister Lauren, singing the music of Yasunori Mitsuda. She has also recorded an EP of her own work that will be released in the near future.",
+
+            "I never remember a time when ANÚNA was not part of my life. There are pictures of me, just a few months old, lying in my little cot asleep in the Queen Elizabeth Hall in London. I remember travelling in the tour bus, playing with Hozier and the other singers, listening to them sing and talk about music and so many things I never thought would become part of my own little world.",
+
+            "Then one day my Dad asked me to learn the song “Cúnnla” and recorded me in studio singing it. Suddenly, I was a recording artist with a video and a track on an album. It kind of snuck up on me in a way, and today I suppose I take things in my stride that others tell me are scary or nerve-wracking. But it has always just been the way for myself and my sister Lauren.",
+
+            "Highlights of my time with ANÚNA include travelling to China and Japan, and recently being able to sing on the soundtrack of two video games with Yasunori Mitsuda. His beautiful music has been a hugely important part of my life, and I think that being part of SYSTIR also takes my musical journey on to a new level."
+        ],
         images: [{
                 src: "images/members/ash-mcglynn-image1.png",
                 alt: "Ash McGlynn portrait",
@@ -161,7 +179,7 @@ const systirMembers = {
                 placement: "story-1"
             },
             {
-                src: "images/members/ash-mcglynn-image3.png",
+                src: "images/members/ash-mcglynn-image2.png",
                 alt: "Ash McGlynn profile image",
                 caption: "Ash McGlynn profile image",
                 placement: "story-2"
@@ -173,7 +191,21 @@ const systirMembers = {
                 placement: "closing-backdrop"
             }
         ],
-        story: buildDefaultStory()
+        story: [{
+                layout: "image-left",
+                imagePlacement: "story-1",
+                paragraphIndexes: [0, 1, 2]
+            },
+            {
+                layout: "image-right",
+                imagePlacement: "story-2",
+                paragraphIndexes: [3, 4, 5]
+            },
+            {
+                layout: "text-only",
+                paragraphIndexes: [6, 7, 8]
+            }
+        ]
     },
 
     "judith-lyons": {
