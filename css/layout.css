@@ -270,7 +270,7 @@ body.theme-light .site-header__brand::before {
 }
 
 .section5>* {
-    max-width: var(--section-width-wide);
+    max-width: var(--section-width-standard);
 }
 
 .section6>* {

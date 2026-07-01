@@ -570,6 +570,11 @@
         width: 100%;
         text-align: center;
     }
+    .site-nav-important__item {
+        width: 100%;
+        text-align: center;
+        color: var(--color-accent-tertiary);
+    }
     .site-nav__link {
         width: max-content;
         margin-left: auto;

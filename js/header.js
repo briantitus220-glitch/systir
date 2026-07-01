@@ -132,7 +132,7 @@
                             <a class="${getActiveClass("merch.html")}" href="https://anuna.sellfy.store/merch/"${getAriaCurrent("merch.html")}>Merch - The Anuna Collective</a>
                         </li>
 
-                        <li class="site-nav__item">
+                        <li class="site-nav-important__item">
                             <a class="${getActiveClass("contact.html")}" href="contact.html"${getAriaCurrent("contact.html")}>Contact</a>
                         </li>
                     </ul>
