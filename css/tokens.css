@@ -29,6 +29,15 @@
 ================================================================ */
 
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Libre+Baskerville:wght@400;700&family=Manufacturing+Consent&family=Monsieur+La+Doulaise&family=Uncial+Antiqua&family=UnifrakturMaguntia&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap");
+@font-face {
+    font-family: "Rothenburg Decorative";
+    src: url("../fonts/zenda.ttf") format("woff2"), url("../fonts/zenda.ttf") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 
 /* ================================================================
    1.2 DESIGN TOKENS
@@ -52,12 +61,13 @@
        Font system
     ------------------------------------------------------------ */
     --font-body: "Lato", Arial, sans-serif;
-    --font-heading: "Lato", Arial, sans-serif;
+    --font-heading: "Playfair Display", Georgia, "Times New Roman", serif;
     --font-display: "Libre Baskerville", Georgia, serif;
     --font-logo: "Uncial Antiqua", "Libre Baskerville", Georgia, serif;
     --font-dropcap: "UnifrakturMaguntia", "Uncial Antiqua", Georgia, serif;
     --font-dropcap2: "Monsieur La Doulaise", "UnifrakturMaguntia", "Uncial Antiqua", Georgia, serif;
     --font-dropcap3: "Manufacturing Consent", "UnifrakturMaguntia", "Uncial Antiqua", Georgia, serif;
+    --font-dropcap4: "Rothenburg Decorative", Georgia, "Times New Roman", serif;
     /* ------------------------------------------------------------
        Fluid typography scale
        ------------------------------------------------------------
@@ -405,10 +415,9 @@ body.theme-light {
 ================================================================ */
 
 .title-dropcap::first-letter {
-    font-family: var(--font-dropcap3);
+    font-family: var(--font-dropcap4);
     font-size: 1.45em;
     line-height: 0.78;
     color: var(--color-text-primary);
     letter-spacing: 0.015em;
 }
-
