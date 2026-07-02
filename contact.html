@@ -116,86 +116,31 @@
                                     <input class="contact-form__control" id="contactEmail" name="email" type="email" autocomplete="email" required />
                                 </div>
 
-                                <div class="contact-form__field">
-                                    <label class="contact-form__label" for="contactOrganisation">Organisation</label>
-                                    <input class="contact-form__control" id="contactOrganisation" name="organisation" type="text" autocomplete="organization" />
-                                </div>
-
-                                <div class="contact-form__field">
-                                    <label class="contact-form__label" for="contactPhone">Telephone</label>
-                                    <input class="contact-form__control" id="contactPhone" name="telephone" type="tel" autocomplete="tel" />
-                                </div>
-
-                                <div class="contact-form__field">
-                                    <label class="contact-form__label" for="contactType">Enquiry type <span aria-hidden="true">*</span></label>
-                                    <select class="contact-form__control contact-form__select" id="contactType" name="enquiry_type" required>
-                                    <option value="">Choose an enquiry type</option>
-                                    <option value="booking">Performance booking</option>
-                                    <option value="festival">Festival or venue programming</option>
-                                    <option value="press">Press or interview request</option>
-                                    <option value="collaboration">Creative collaboration</option>
-                                    <option value="recording">Recording or media project</option>
-                                    <option value="member">Specific member enquiry</option>
-                                    <option value="general">General enquiry</option>
-                                </select>
-                                </div>
-
-                                <div class="contact-form__field">
-                                    <label class="contact-form__label" for="contactDate">Proposed date</label>
-                                    <input class="contact-form__control" id="contactDate" name="proposed_date" type="date" />
-                                </div>
-
                                 <div class="contact-form__field contact-form__field--full">
                                     <label class="contact-form__label" for="contactLocation">Event or project location</label>
                                     <input class="contact-form__control" id="contactLocation" name="location" type="text" autocomplete="address-level2" placeholder="Venue, city, and country" />
                                 </div>
                             </div>
 
-                            <fieldset class="contact-member-picker">
-                                <legend class="contact-member-picker__legend">Members requested</legend>
-
-                                <p class="contact-member-picker__intro">
-                                    If you have a specific member you believe would suit your request, you can select their name below.
-                                </p>
-
-                                <div class="contact-member-picker__toolbar">
-                                    <label class="contact-member-picker__search-label" for="memberSearch">Filter members</label>
-                                    <input class="contact-form__control contact-member-picker__search" id="memberSearch" type="search" placeholder="Search member names" autocomplete="off" data-member-search />
-
-                                    <div class="contact-member-picker__actions">
-                                        <button class="button4" type="button" data-members-select-all>Select all</button>
-                                        <button class="button4" type="button" data-members-clear>Clear</button>
-                                    </div>
-                                </div>
-
-                                <p class="contact-member-picker__status" aria-live="polite">
-                                    <span data-members-selected-count>0</span> selected
-                                </p>
-
-                                <div class="contact-member-picker__grid" data-member-options>
-                                    <label class="contact-member-option"><input type="checkbox" name="members[]" value="Amelia Jones" /><span>Amelia Jones</span></label>
-                                    <label class="contact-member-option"><input type="checkbox" name="members[]" value="Ash McGlynn" /><span>Ash McGlynn</span></label>
-                                    <label class="contact-member-option"><input type="checkbox" name="members[]" value="Judith Lyons" /><span>Judith Lyons</span></label>
-                                    <label class="contact-member-option"><input type="checkbox" name="members[]" value="Lauren McGlynn" /><span>Lauren McGlynn</span></label>
-                                    <label class="contact-member-option"><input type="checkbox" name="members[]" value="Lorna Breen" /><span>Lorna Breen</span></label>
-                                    <label class="contact-member-option"><input type="checkbox" name="members[]" value="Sara Weeda" /><span>Sara Weeda</span></label>
-                                    <label class="contact-member-option"><input type="checkbox" name="members[]" value="Sara Di Bella" /><span>Sara Di Bella</span></label>
-                                    <label class="contact-member-option"><input type="checkbox" name="members[]" value="Sigrid Algesten" /><span>Sigrid Algesten</span></label>
-                                    <label class="contact-member-option"><input type="checkbox" name="members[]" value="Sorcha Fenlon" /><span>Sorcha Fenlon</span></label>
-                                    <label class="contact-member-option"><input type="checkbox" name="members[]" value="Stephanie Devlin" /><span>Stephanie Devlin</span></label>
-                                </div>
-                            </fieldset>
+                            <p class="contact-form__help" id="contactDescriptionGuide">
+                                You can include alternative methods of communication, the type of enquiry, preferred members, organisation details, or any other useful context in your description.
+                            </p>
 
                             <div class="contact-form__field contact-form__field--message">
                                 <label class="contact-form__label" for="contactMessage">Enquiry details <span aria-hidden="true">*</span></label>
-                                <textarea class="contact-form__control contact-form__textarea" id="contactMessage" name="message" rows="9" maxlength="3000" required aria-describedby="contactMessageHelp contactMessageCount"></textarea>
+                                <textarea class="contact-form__control contact-form__textarea" id="contactMessage" name="message" rows="9" maxlength="3000" required aria-describedby="contactDescriptionGuide contactMessageHelp contactMessageCount"></textarea>
 
                                 <div class="contact-form__help-row">
                                     <p class="contact-form__help" id="contactMessageHelp">
-                                        Include expected dates, location, format, audience, and budget where relevant.
+                                        Include format, audience, budget, and any extra detail that will help us respond properly.
                                     </p>
                                     <p class="contact-form__count" id="contactMessageCount"><span data-message-count>0</span>/3000</p>
                                 </div>
+                            </div>
+
+                            <div class="contact-form__field">
+                                <label class="contact-form__label" for="contactDate">Preferred date</label>
+                                <input class="contact-form__control" id="contactDate" name="proposed_date" type="date" />
                             </div>
 
                             <label class="contact-form__consent">

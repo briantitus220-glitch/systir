@@ -3108,7 +3108,7 @@ body.theme-light .contact-form-visual__overlay {
 .member-profile__paragraph {
     max-width: 44rem;
     margin: 0;
-    color: var(--color-text-secondary);
+    color: var(--color-text-primary);
     font-size: clamp(1rem, 1.15vw, 1.08rem);
     line-height: 1.72;
 }
@@ -3141,9 +3141,12 @@ body.theme-light .member-profile__story-image-caption {
     box-shadow: 0 10px 24px rgba(69, 45, 28, 0.16);
 }
 
-body.theme-light .member-profile__quote,
 body.theme-light .member-profile__story-section--text-only .member-profile__paragraph:last-child {
-    color: var(--color-accent-secondary);
+    color: var(--color-accent-soft);
+}
+
+body.theme-light .member-profile__quote {
+    color: var(--color-accent-primary);
 }
 
 
@@ -3184,7 +3187,7 @@ body.theme-light .member-profile__story-section--text-only .member-profile__para
     margin-left: auto;
     margin-right: auto;
     padding: clamp(1.5rem, 4vw, 2.75rem);
-    background: rgba(7, 13, 11, 0.52);
+    background: radial-gradient( circle at center, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0.45) 100%), #cdb79881;
     border-left: 2px solid rgba(199, 163, 90, 0.55);
     backdrop-filter: blur(10px);
 }
