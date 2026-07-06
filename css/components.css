@@ -1189,7 +1189,7 @@ body.theme-light .fullscreen-viewer__caption {
     display: grid;
     justify-self: center;
     gap: var(--space-sm);
-    max-width: min(70%, 1080px);
+    max-width: min(80%, 1080px);
 }
 
 

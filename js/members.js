@@ -761,6 +761,70 @@ const systirMembers = {
             }
         ]
     },
+    "chris-cole": {
+        name: "Chris-Cole",
+        role: "SYSTIR collaborator",
+        image: "images/members/chris-cole-image1.png",
+        caption: "Chris Cole — SYSTIR collaborator",
+        quote: "It is an ensemble like no other.",
+        bio: [
+            "Andrew Boushell is a multi-instrumentalist and singer from Dublin. He is a graduate of D.I.T. Conservatory of Music and Drama, the Royal College of Music, and Operastudio Vlaanderen, Belgium.",
+
+            "Andrew’s concert career has brought him to venues including the National Concert Hall, Dublin; St George’s Hanover Square, London; Brugge Concertgebouw, Bruges; De Singel, Antwerp; and Handel Halle, Germany. His repertoire includes Puccini’s Messa di Gloria, Rossini’s Petite Messe Solennelle, Elgar’s The Apostles, and Bach’s St John and St Matthew Passions.",
+
+            "Most recently, Andrew completed an MA in Ethnomusicology at U.C.C., with a thesis entitled “Politics, Song, and the Proletariat: An Exploration of Irish Diasporic Identity in the UK”. Andrew is a member of M’ANAM.",
+
+            "Like many people brought up in Ireland during the nineties, my first exposure to ANÚNA came courtesy of Riverdance at Eurovision 1994. The lyrical beauty of that performance immersed the world in an Irish sound, the like of which had never been witnessed. In that moment, Ireland and Irish culture was catapulted into the mainstream, providing the catalyst for a subsequent Irish cultural renaissance.",
+
+            "ANÚNA managed, and continues, to create a liminal space for both performers and audience members alike. The performances transport both musician and listener to very individual spaces, wherein temporal sequences and actualities dissolve, and new empirical expressions and positions emerge.",
+
+            "Having recently become involved with the wider ANÚNA Collective, I am excited to see what the future brings through SYSTIR. It is an ensemble like no other, with friendly, talented, and most importantly passionate individuals coming together to create something special.",
+
+            "SYSTIR feels like an ideal instance of modern-day communitas. Anthropologist Victor Turner labelled communitas as “a matter of giving recognition to an essential and generic human bond, without which there could be no society”.",
+
+            "For me, SYSTIR provides a platform to express and interact with my own sense of Irishness alongside like-minded people, while also promoting the best of Irish music and culture to the world at large."
+        ],
+        images: [{
+                src: "images/members/andrew-boushell-image1.png",
+                alt: "Ash McGlynn portrait",
+                caption: "Ash McGlynn",
+                placement: "main"
+            },
+            {
+                src: "images/gallery/systir-youtube-thumbnail.png",
+                alt: "SYSTIR performance image",
+                caption: "SYSTIR in performance",
+                placement: "story-1"
+            },
+            {
+                src: "images/gallery/systir-members-image.png",
+                alt: "Ash McGlynn profile image",
+                caption: "Ash McGlynn profile image",
+                placement: "story-2"
+            },
+            {
+                src: "images/members/ash-mcglynn-image4.png",
+                alt: "Ash McGlynn atmospheric backdrop image",
+                caption: "Ash McGlynn backdrop image",
+                placement: "closing-backdrop"
+            }
+        ],
+        story: [{
+                layout: "image-left",
+                imagePlacement: "story-1",
+                paragraphIndexes: [0, 1, 2]
+            },
+            {
+                layout: "image-right",
+                imagePlacement: "story-2",
+                paragraphIndexes: [3, 4, 5]
+            },
+            {
+                layout: "text-only",
+                paragraphIndexes: [6, 7]
+            }
+        ]
+    },
 
 };
 

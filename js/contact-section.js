@@ -66,7 +66,7 @@
 
                 <div class="cta__actions">
                     <a class="button6" href="contact.html">Contact SYSTIR</a>
-                    <a class="button6" href="live.html">View live dates</a>
+                    <a class="button6" href="https://www.anuna.ie/">The ANUNA Collective</a>
                 </div>
             </div>
         </section>

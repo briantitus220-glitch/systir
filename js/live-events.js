@@ -606,6 +606,22 @@
             return new Date(year, month, day);
         }
 
+        function getEventTimestamp(event) {
+            const eventDate = getEventDate(event);
+
+            if (!eventDate) {
+                return 0;
+            }
+
+            return eventDate.getTime();
+        }
+
+        function sortEventsNewestFirst(events) {
+            return [...events].sort(function(a, b) {
+                return getEventTimestamp(b) - getEventTimestamp(a);
+            });
+        }
+
         function isPastEvent(event) {
             const eventDate = getEventDate(event);
 
@@ -817,7 +833,7 @@
         const selectedYear = yearSelect ? yearSelect.value : "";
         const selectedStatus = statusSelect ? statusSelect.value.toLowerCase() : "";
 
-        return liveEvents.filter(event => {
+        const filteredEvents = liveEvents.filter(event => {
             const matchesSearch = !searchValue || getSearchText(event).includes(searchValue);
             const matchesYear = !selectedYear || event.year === selectedYear;
 
@@ -831,6 +847,8 @@
 
             return matchesSearch && matchesYear && matchesStatus;
         });
+
+        return sortEventsNewestFirst(filteredEvents);
     }
 
 
@@ -868,7 +886,7 @@
             return `
                 <a
                     class="live-event__action-link"
-                    href="${event.actionLink}"
+                    href="https://www.ztix.de/mainz-klassik/events/sonderkonzert-vokalensemble-systir-StCUaQ"
                     data-event-action="tickets"
                 >
                     Tickets
@@ -1013,13 +1031,22 @@
             return;
         }
 
-        const groupedEvents = groupEventsByYearAndMonth(events);
+        const sortedEvents = sortEventsNewestFirst(events);
+        const groupedEvents = groupEventsByYearAndMonth(sortedEvents);
 
-        const archiveMarkup = Object.keys(groupedEvents).map(year => {
-            const months = groupedEvents[year];
+        const archiveMarkup = Object.keys(groupedEvents)
+            .sort(function(a, b) {
+                return Number(b) - Number(a);
+            })
+            .map(year => {
+                const months = groupedEvents[year];
 
-            const monthMarkup = Object.keys(months).map(month => {
-                const eventCards = months[month].map(buildEventCard).join("");
+                const monthMarkup = Object.keys(months)
+                    .sort(function(a, b) {
+                        return monthIndexes[String(b).toLowerCase()] - monthIndexes[String(a).toLowerCase()];
+                    })
+                    .map(month => {
+                        const eventCards = sortEventsNewestFirst(months[month]).map(buildEventCard).join("");
 
                 return `
                     <section class="live-events__month" aria-label="${month} ${year}">

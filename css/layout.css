@@ -143,6 +143,23 @@ body.theme-light .site-header__brand::before {
     color: var(--color-accent-primary);
 }
 
+.site-nav-important__item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    border: 1px, var(--color-accent-primary);
+    color: var(--color-accent-primary);
+    font-size: var(--font-size-ui-sm);
+    font-weight: 100;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color var(--transition-fast);
+}
+
 
 /* ================================================================
    3.4 MOBILE MENU TOGGLE

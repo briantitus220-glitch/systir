@@ -113,7 +113,7 @@
                         </li>
 
                         <li class="site-nav__item">
-                            <a class="${getActiveClass("live.html")}" href="live.html"${getAriaCurrent("live.html")}>Live</a>
+                            <a class="${getActiveClass("live.html")}" href="live.html"${getAriaCurrent("live.html")}>Shows & Tickets</a>
                         </li>
 
                         <li class="site-nav__item">
@@ -129,7 +129,7 @@
                         </li>
 
                         <li class="site-nav__item">
-                            <a class="${getActiveClass("merch.html")}" href="https://anuna.sellfy.store/merch/"${getAriaCurrent("merch.html")}>Merch - The Anuna Collective</a>
+                            <a class="${getActiveClass("merch.html")}" href="https://www.anuna.ie/"${getAriaCurrent("merch.html")}>The Anuna Collective</a>
                         </li>
 
                         <li class="site-nav-important__item">
