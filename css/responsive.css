@@ -319,7 +319,6 @@
     ------------------------------------------------------------ */
     .live-events-filter__inner {
         grid-template-columns: 1fr;
-        min-width: 700px;
     }
     .live-events__year-title,
     .live-events__month-title {
