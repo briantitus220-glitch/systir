@@ -51,13 +51,13 @@
     </li>
 
     <li>
-        <a href="#" aria-label="Spotify">
+        <a href="https://open.spotify.com/artist/4DFvPUUdIWLMKkqru9i3aV" aria-label="Spotify">
             <i class="fa-brands fa-spotify" aria-hidden="true"></i>
         </a>
     </li>
 
     <li>
-        <a href="#" aria-label="YouTube">
+        <a href="https://www.youtube.com/@anunachoir" aria-label="YouTube">
             <i class="fa-brands fa-youtube" aria-hidden="true"></i>
         </a>
     </li>
