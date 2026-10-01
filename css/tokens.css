@@ -262,7 +262,7 @@ body.theme-dark {
        Functional borders
     ------------------------------------------------------------ */
     --border-thin: 1px solid rgba(199, 163, 90, 0.34);
-    --border-strong: 1px solid rgba(199, 163, 90, 0.75);
+    --border-strong: 5px solid rgba(199, 163, 90, 0.75);
     --navbar-border-bottom: 2px solid rgba(199, 163, 90, 0.55);
     /* ------------------------------------------------------------
        Page atmosphere
@@ -365,7 +365,7 @@ body.theme-light {
          into pale cream surfaces.
     ------------------------------------------------------------ */
     --border-thin: 1px solid rgba(199, 163, 90, 0.34);
-    --border-strong: 1px solid rgba(199, 163, 90, 0.75);
+    --border-strong: 5px solid rgba(199, 163, 90, 0.75);
     --navbar-border-bottom: 2px solid rgba(199, 163, 90, 0.55);
     /* ------------------------------------------------------------
        Page atmosphere
